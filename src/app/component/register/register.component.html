@@ -1,0 +1,75 @@
+<div class="register mb-3" style="z-index: 0;">
+    <div class="w-75 m-auto py-5">
+        <div *ngIf="error" class="alert alert-danger">
+            <p>{{ error }}</p>
+        </div>
+        <form [formGroup]="registerform" (ngSubmit)="submitRegister(registerform)" class="mx-5">
+            <div class="form-group">
+                <label class="my-2" for="firstname">Firstname:</label>
+                <input formControlName="firstname" class="form-control  w-75" type="text" placeholder="enter firstname"
+                    id="firstname">
+                <div *ngIf="registerform.get('firstname')?.errors != null && registerform.get('firstname')?.touched"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    <p *ngIf="registerform.get('firstname')?.errors?.['required']">firstname is required</p>
+                    <p *ngIf="registerform.get('firstname')?.errors?.['minlength']">firstname is minlength 3</p>
+                    <p *ngIf="registerform.get('firstname')?.errors?.['maxlength']">firstname is maxlength 10</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="my-2" for="lastname">lastname:</label>
+                <input formControlName="lastname" class="form-control w-75" type="text" placeholder="enter lastname"
+                    id="lastname">
+                <div *ngIf="registerform.get('lastname')?.errors != null && registerform.get('lastname')?.touched"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    <p *ngIf="registerform.get('lastname')?.errors?.['required']">lastname is required</p>
+                    <p *ngIf="registerform.get('lastname')?.errors?.['minlength']">lastname is minlength 3</p>
+                    <p *ngIf="registerform.get('lastname')?.errors?.['maxlength']">lastname is maxlength 10</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="my-2" for="email">email:</label>
+                <input formControlName="email" class="form-control w-75" type="email" placeholder="enter email"
+                    id="email">
+                <div *ngIf="registerform.get('email')?.errors != null && registerform.get('email')?.touched"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    <p *ngIf="registerform.get('email')?.errors?.['required']">email is required</p>
+                    <p *ngIf="registerform.get('email')?.errors?.['email']">email is invalid</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="my-2" for="password">password:</label>
+                <input formControlName="password" class="form-control w-75" type="password" placeholder="enter password"
+                    id="password">
+                <div *ngIf="registerform.get('password')?.errors != null && registerform.get('password')?.touched"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    <p *ngIf="registerform.get('password')?.errors?.['required']">password is required</p>
+                    <p *ngIf="registerform.get('password')?.errors?.['pattern']">password must star with captail and
+                        contain with lower character and numbers</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="my-2" for="confirmPassword">confirmPassword:</label>
+                <input #asd formControlName="confirmPassword" class="form-control w-75" type="password"
+                    placeholder="confirmPassword" id="password">
+                <div *ngIf="registerform.get('confirmPassword')?.errors != null && registerform.get('confirmPassword')?.touched && registerform.value.password == registerform.value.confirmPassword"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    <p *ngIf="registerform.get('confirmPassword')?.errors?.['required']">confirmPassword is required</p>
+                </div>
+                <div *ngIf="registerform.value.password != registerform.value.confirmPassword"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    password is not Match
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="my-2" for="image">image:</label>
+                <input formControlName="image" class="form-control w-75" type="file" placeholder="enter image"
+                    id="image" (change)="uploadFile($event)">
+                <div *ngIf="registerform.get('image')?.errors != null && registerform.get('image')?.touched"
+                    class="alert my-2 alert-danger w-75" style="height: 8vh;">
+                    <p *ngIf="registerform.get('image')?.errors?.['required']">image is required</p>
+                </div>
+            </div>
+            <button [disabled]="registerform.invalid" class=" my-2 btn btn-info submit-button mt-5 w-25">Submit</button>
+        </form>
+    </div>
+</div>

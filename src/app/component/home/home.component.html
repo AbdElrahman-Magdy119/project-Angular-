@@ -1,0 +1,81 @@
+<app-homeheader [books]="books"  ></app-homeheader>
+<div class="container">
+     <div class="row py-5">
+        <div class="col-md-4 d-flex align-items-center unimation">
+            <div>
+                <div class="brdr w-25 mb-4"></div>
+                <h1><b>Books</b></h1>
+                <div class="brdr w-75 mt-4"></div>
+            </div>
+
+        </div>
+        <div *ngFor="let book of books" class="col-md-2 unimation">
+                <div class="movie my-2 position-relative">
+                    <div class=" h-75">
+                        <a routerLink='/books/{{ book._id }}' >  <img class="w-100" [src]="book.image" > </a> 
+                    </div>              
+                    <h3 class="my-2 h6 text-white">{{book.title | titlecase }}</h3>
+                </div>
+        </div>
+     </div>
+      
+     <div class="row py-5">
+        
+
+        <div class="col-md-4 d-flex align-items-center unimation ">
+            <div>
+                <div class="brdr w-25 mb-4"></div>
+                <h2>authors nfijfnvinuoidheuoineoufc <br/> ebwciecbeucebf9e8ibewic</h2>
+                <p class="second-color my-2">authors kfmofdinbbofbnb</p>
+                <div class="brdr w-75 mt-4"></div>
+            </div>
+
+        </div>
+
+        <div *ngFor="let author of authors" class="col-md-2 unimation">
+                <div class="movie my-2 position-relative">
+                    <!-- ***********               image -->
+                    <img class="w-100" src="{{author.photo}}">
+                    <!-- ***** tittle -->
+                    <h3 class="my-2 h6 text-white">{{author.firstName }} {{ author.lastName }}</h3>
+                    <div class="vote">
+                      <!-- ****** vote or rate   -->
+                        {{7.8}}
+                    </div>
+                </div>
+        </div>
+
+
+     </div>
+     
+     <div class="row py-5">
+        
+
+        <div class="col-md-4 d-flex align-items-center unimation">
+            <div>
+                <div class="brdr w-25 mb-4"></div>
+                <h2>categories nfijfnvinuoidheuoineoufc <br/> ebwciecbeucebf9e8ibewic</h2>
+                <p class="second-color my-2">categories kfmofdinbbofbnb</p>
+                <div class="brdr w-75 mt-4"></div>
+            </div>
+
+        </div>
+
+        <div *ngFor="let category of categories" class="col-md-2 unimation">
+                <div class="movie my-2 position-relative">
+                    <!-- ***********               image -->
+                    <img class="w-100" [src]="category">
+                    <!-- ***** tittle -->
+                    <h3 class="my-2 h6">{{category}}</h3>
+                    <div class="vote">
+                      <!-- ****** vote or rate   -->
+                        {{category}}
+                    </div>
+                </div>
+        </div>
+
+
+     </div>
+
+
+</div>
