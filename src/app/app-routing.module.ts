@@ -8,6 +8,7 @@ import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
+import { OneAuthorComponent } from './component/oneauthor/one-author.component';
 import { OnebookComponent } from './component/onebook/onebook.component';
 import { RegisterComponent } from './component/register/register.component';
 
@@ -16,10 +17,11 @@ const routes: Routes = [
   {path:'home'  , component: HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component: RegisterComponent},
-  {path:'authors',canActivate:[AuthGuard]   , component: AuthorsComponent},
+  {path:'authors' , component: AuthorsComponent},
   {path:'books'  , component: BooksComponent},
   {path:'categories'  , component: CategoriesComponent},
   {path:'books/:id'  , component: OnebookComponent},
+  {path:'authors/:id'  , component: OneAuthorComponent},
   {path:'**', component:NotfoundComponent },
 
 ];

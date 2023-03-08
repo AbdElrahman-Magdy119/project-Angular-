@@ -13,8 +13,7 @@ export class AuthorsComponent {
   constructor(private _AuthorsService: AuthorsService)
   {
        _AuthorsService.getAllauthors().subscribe (authors => {
-           this.authors = authors;
-           console.log(this.authors)
+           this.authors = authors.slice(0,20);
       })
     
       

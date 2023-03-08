@@ -3,7 +3,7 @@ export interface book {
   title: string;
     description: string;
     categoryId:string;
-    authorId:string;
+    authorId:any;
     image: string;
     reviewId:string;
   }

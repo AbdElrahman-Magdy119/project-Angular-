@@ -17,6 +17,7 @@ import { HomeheaderComponent } from './component/homeheader/homeheader.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OnebookComponent } from './component/onebook/onebook.component';
+import { OneAuthorComponent } from './component/oneauthor/one-author.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OnebookComponent } from './component/onebook/onebook.component';
     NotfoundComponent,
     NavbarComponent,
     HomeheaderComponent,
-    OnebookComponent
+    OnebookComponent,
+    OneAuthorComponent
   ],
   imports: [
     BrowserModule,

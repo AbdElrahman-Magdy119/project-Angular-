@@ -1,2 +1,11 @@
-<p class="text-white">{{authors[1].firstName}}</p>
-<img src="{{authors[2].photo}}"/>
+<div class="container">
+    <div class="row py-5">
+       <div *ngFor="let author of authors"  class="col-md-2 unimation">
+               <div class="movie my-2 position-relative">
+                   <div class=" h-75">
+                    <a routerLink='/authors/{{ author._id }}' ><img class="w-100" [src]="author.photo" >  </a> 
+                   </div>          
+                   <a routerLink='/authors/{{ author._id }}' ><h1 class="my-2 h5" style="color:  #45171d;"><b>{{author.firstName}} {{author.lastName}}</b></h1> </a>       
+               </div>
+       </div>
+    </div>
