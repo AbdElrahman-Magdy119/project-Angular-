@@ -16,7 +16,7 @@ export class AuthorsService {
     return this.http.get<author[]>('http://localhost:5000/authors');
   }
   
-  getauthor(id:string):Observable<author> {
+  getauthor(id:any):Observable<author> {
     return this.http.get<author>(
       `http://localhost:5000/authors/${id}`
     );

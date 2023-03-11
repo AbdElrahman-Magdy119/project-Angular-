@@ -19,16 +19,16 @@ export class HomeComponent {
   {
     _HomeService.getAlldata("books").subscribe (books => {
           this.books = books;
-          console.log(this.books)
+          
    })
     
    _HomeService.getAlldata("authors").subscribe (categories => {
          this.authors = categories;
-         console.log(this.authors)
+       
 
     _HomeService.getAlldata("categories").subscribe (categories => {
         this.categories = categories.slice(0,10);
-      console.log(this.categories)
+    
 })
 
 

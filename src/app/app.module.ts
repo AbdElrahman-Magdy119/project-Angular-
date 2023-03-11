@@ -18,6 +18,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OnebookComponent } from './component/onebook/onebook.component';
 import { OneAuthorComponent } from './component/oneauthor/one-author.component';
+import { OneCategoryComponent } from './component/one-category/one-category.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatOptionModule } from '@angular/material/core';
+import { MainComponentComponent } from './component/main-component/main-component.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+
+import { NgxStarsModule } from 'ngx-stars';
 
 @NgModule({
   declarations: [
@@ -32,15 +40,24 @@ import { OneAuthorComponent } from './component/oneauthor/one-author.component';
     NavbarComponent,
     HomeheaderComponent,
     OnebookComponent,
-    OneAuthorComponent
+    OneAuthorComponent,
+    OneCategoryComponent,
+    MainComponentComponent
   ],
+
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    MatSlideToggleModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatCardModule,
+    NgxStarsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,87 @@
+
 <div class="container py-5">
      <div class="row">
-      <div class="col-md-4">
-          <img class="w-100" [src]="book.image"  >
-      </div>
-
-       <div class="col-md-8">
-            <h3>{{ book.title | titlecase  }}</h3>
-            <p class="px-5">{{ book.description }}</p>
-            <h1>{{author?.firstName}} {{author?.lastName}}</h1>
-       </div>
+          <div class="col-md-4">
+               <img class="w-100 image" [src]="book.image">
+               <mat-form-field appearance="fill" style="width: 26vw;margin-top: 1rem;">
+                    <mat-label style="color: #45171d ;"><b>Status</b></mat-label>
+                    <mat-select class="selected" (selectionChange)="getStatus($event)">
+                         <mat-option class="select" *ngFor="let status of status" [value]="status.value">
+                              <b> {{status.viewValue}} </b>
+                         </mat-option>
+                    </mat-select>
+               </mat-form-field>
+               <div style="display: flex; align-items: center;margin-left: 2rem;">
+                    <ngx-stars  [readonly]="false" [size]="2" [maxStars]="5" (ratingOutput)="getrate($event)" [color]="'#ff9f43'" [initialStars]="3.5"  ></ngx-stars>
+               </div>
+          </div>
+          <div class="col-md-8">
+               <h1 class="head1"><b>{{ book.title | uppercase }}</b></h1>
+               <a routerLink='/authors/{{ author._id }}'>
+                    <h3 class="head3">By {{author?.firstName}} {{author?.lastName}}</h3>
+               </a>
+               <a routerLink='/categories/{{ category._id }}'>
+                    <h5 class="head5">{{category?.name}}</h5>
+               </a>
+               <div style="display: flex; align-items: center;margin-top: 1rem;margin-bottom: 1rem;">
+                    <ngx-stars  [readonly]="true" [size]="2" [maxStars]="5"  [color]="'#ff9f43'" [initialStars]="3.5"  ></ngx-stars>
+                    <pre>    average   number </pre>
+               </div>
+               <p class="paragraph">{{ book.description }}</p>
+          </div>
 
      </div>
+     
+          <section style="background-color: #f7f6f6;">
+                    <div class="container my-5 py-5 text-dark">
+                         <div class="row d-flex justify-content-center">
+                              <h4 style="color: #45171d;margin-left: 60rem;margin-bottom: 30rem;font-size: 3vw;" class=" mb-0"><b>Reviwes</b> </h4>
+                              <div class="col-md-12 col-lg-10 col-xl-8">
+                                   <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-floating">
+                                             <textarea #newreviews class="form-control"
+                                                  style="color:#45171d;border: 0px;width: 45vw;height: 12vh;margin-top: 3rem;"
+                                                  id="comment" name="text" placeholder="Comment goes here"></textarea>
+                                             <label for="comment" class="wt-5"><b>Comments</b></label>
+                                        </div>
+                                        <div class="card mt-3">
+                                             <div class="card-body p-2 d-flex align-items-center">
+                                                  <button [disabled]="!islogin" (click)="addReviwe(newreviews)"
+                                                       class="text-primary fw-bold small mb-0 me-1 ">Add</button>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div [style.display]="check_remove ? 'none' : 'block'  " class="card mb-3">
+                                        <div class="card-body">
+                                             <div class="d-flex flex-start">
+                                                  <img class="rounded-circle shadow-1-strong me-3"
+                                                       src="../../../assets/Abdo111.jpg" alt="avatar" width="40"
+                                                       height="40" />
+                                                  <div class="w-100">
+                                                       <div
+                                                            class="d-flex justify-content-between align-items-center mb-3">
+                                                            <h6 class="text-primary fw-bold mb-0">
+                                                                 lara_stewart
+                                                            </h6>
+                                                       </div>
+                                                       <div class="d-flex justify-content-between align-items-center">
+                                                            <p class="fw-bold mb-0 w-100"
+                                                                 style="color:#45171d;border: 0px;"
+                                                                 placeholder="comments">revies</p>
+                                                       </div><br>
+                                                       <p class="small mb-0">
+                                                            <button (click)="remove()" [disabled]="!islogin"
+                                                                 class="text text-primary"><b>remove</b></button>
+                                                            <button [disabled]="!islogin"
+                                                                 class="ms-3 text-primary"><b>edit</b></button>
+                                                       </p>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+          </section>
 
-</div>
+     
