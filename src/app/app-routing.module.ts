@@ -7,6 +7,7 @@ import { CategoriesComponent } from './component/categories/categories.component
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { MainComponentComponent } from './component/main-component/main-component.component';
+import { MybooksComponent } from './component/mybooks/mybooks.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
 import { OneCategoryComponent } from './component/one-category/one-category.component';
@@ -15,19 +16,24 @@ import { OnebookComponent } from './component/onebook/onebook.component';
 import { RegisterComponent } from './component/register/register.component';
 
 const routes: Routes = [
-  {path:'',component:MainComponentComponent,children:[
-    {path:'',redirectTo:'home',pathMatch:'full'},
-    {path:'home'  , component: HomeComponent},
-    {path:'login', component:LoginComponent},
-    {path:'register', component: RegisterComponent},
-    {path:'authors' , component: AuthorsComponent},
-    {path:'books'  , component: BooksComponent},
-    {path:'categories'  , component: CategoriesComponent},
-    {path:'books/:id'  , component: OnebookComponent},
-    {path:'authors/:id'  , component: OneAuthorComponent},
-    {path:'categories/:id'  , component: OneCategoryComponent},
-  ]},
-  {path:'**', component:NotfoundComponent },
+  {
+    path: '',
+    component: MainComponentComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'mybooks', component: MybooksComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'authors', component: AuthorsComponent },
+      { path: 'books', component: BooksComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'books/:id', component: OnebookComponent },
+      { path: 'authors/:id', component: OneAuthorComponent },
+      { path: 'categories/:id', component: OneCategoryComponent },
+    ],
+  },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({

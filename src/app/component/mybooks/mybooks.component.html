@@ -1,0 +1,131 @@
+<!-- <p>mybooks works!</p> -->
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div
+      class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
+      style="background-color: #45171d"
+    >
+      <div
+        class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+      >
+        <a
+          href="/"
+          class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
+        >
+          <span class="d-none d-sm-inline mt-1" style="font-size: 2rem; "><b> Bookshelves</b></span>
+        </a>
+        <ul
+          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+          id="menu"
+        >
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline">All</span></a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-people"></i>
+              <span class="ms-1 d-none d-sm-inline">Read</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-people"></i>
+              <span class="ms-1 d-none d-sm-inline">Currently Reading</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-people"></i>
+              <span class="ms-1 d-none d-sm-inline">Want to Read</span>
+            </a>
+          </li>
+        </ul>
+        <hr />
+      </div>
+    </div>
+    <div class="col py-3">
+      <!--Table-->
+      <table class="table table-striped">
+        <!--Table head-->
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Avg Rate</th>
+            <th>Rating</th>
+            <th>shelve</th>
+          </tr>
+        </thead>
+        <!--Table head-->
+        <!--Table body-->
+        <tbody *ngFor="let book of books">
+          <tr>
+            <td class="w-25"><img class="w-25 image" [src]="book.image" /></td>
+            <td>{{ book.title }}</td>
+            <td>
+              {{ book?.authorId?.firstName }} {{ book?.authorId?.firstName }}
+            </td>
+            <td>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  margin-top: 1rem;
+                  margin-bottom: 1rem;
+                "
+              >
+                <ngx-stars
+                  [readonly]="true"
+                  [size]="1"
+                  [maxStars]="5"
+                  [color]="'#ff9f43'"
+                  [initialStars]="3.5"
+                ></ngx-stars>
+              </div>
+            </td>
+            <td>
+              <div
+                style="display: flex; align-items: center; margin-top: 1rem; margin-bottom: 1rem;"
+              >
+                <ngx-stars
+                  [readonly]="false"
+                  [size]="1"
+                  [maxStars]="5"
+                  (ratingOutput)="getrate($event)"
+                  [color]="'#ff9f43'"
+                  [initialStars]="3.5"
+                ></ngx-stars>
+              </div>
+            </td>
+            <td>
+                  <!-- <mat-form-field appearance="fill" style="width: 26vw;margin-top: 1rem;">
+                    <mat-label style="color: #45171d ;"><b>Status</b></mat-label>
+                    <mat-select class="selected" (selectionChange)="getStatus($event)">
+                         <mat-option class="select" *ngFor="let status of status" [value]="status.value">
+                              <b> {{status.viewValue}} </b>
+                         </mat-option>
+                    </mat-select>
+               </mat-form-field> -->
+            </td>
+          </tr>
+        </tbody>
+        <!--Table body-->
+        <tfoot>
+          <tr>
+            <th>Cover</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Avg Rate</th>
+            <th>Rating</th>
+            <th>shelve</th>
+          </tr>
+        </tfoot>
+      </table>
+      <!--Table-->
+    </div>
+  </div>
+</div>
