@@ -42,6 +42,17 @@ export class BooksService {
     )
   }
 
+  getallbookrate(state:any,userId:string): Observable<any>
+  {
+    return this.http.get<any>(
+      `http://localhost:5000/reviews?state=${state}&id=${userId}`
+    )
+  }
+
+
+
+
+
 
 
 

@@ -65,10 +65,15 @@ export class NavbarComponent {
           );
      }
 
-
+     getstate()
+     {
+      this._Router.navigate(
+        ['/mybooks'],
+        { queryParams: { state: "all"} }
+        );
+     }
+     
    
-
-
 
 
 

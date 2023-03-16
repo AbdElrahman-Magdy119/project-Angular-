@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { NgxStarsModule } from 'ngx-stars';
 import { SearchComponent } from './component/search/search.component';
+import { MybooksComponent } from './component/mybooks/mybooks.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { SearchComponent } from './component/search/search.component';
     OneCategoryComponent,
     MainComponentComponent,
     SearchComponent,
+    MybooksComponent,
   ],
 
   

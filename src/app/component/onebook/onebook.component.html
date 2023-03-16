@@ -2,7 +2,7 @@
      <div class="row">
           
           <div class="col-md-4">
-               <img class="w-100 image" [src]="book?.image">
+               <img class="w-100 image" [src]="book.image">
                <mat-form-field appearance="fill" style="width: 26vw;margin-top: 1rem;">
                     <mat-label style="color: #45171d ;"><b> {{getUserRate?.status}} </b></mat-label>
                     <mat-select class="selected" (selectionChange)="getStatus($event)">
@@ -20,12 +20,12 @@
           </div>
 
           <div class="col-md-8">
-               <h1 class="head1"><b>{{ book?.title | uppercase }}</b></h1>
+               <h1 class="head1"><b>{{ book.title | uppercase }}</b></h1>
                <a routerLink='/authors/{{ author?._id }}'>
                     <h3 class="head3">By {{author?.firstName}} {{author?.lastName}}</h3>
                </a>
                <a routerLink='/categories/{{ category?._id }}'>
-                    <h5 class="head5">{{category?.name}}</h5>
+                    <h5 class="head5">{{category.name}}</h5>
                </a>
                <div style="display: flex; align-items: center;margin-top: 1rem;margin-bottom: 1rem;">
                     <ngx-stars [readonly]="true" [size]="2" [maxStars]="5" [color]="'#ff9f43'"
