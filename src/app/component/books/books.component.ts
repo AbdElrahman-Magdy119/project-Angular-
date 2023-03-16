@@ -17,7 +17,7 @@ export class BooksComponent {
     authors!:any[];
     newbook!:book[];
    
-
+  // books.name.tolowercase()
 
      constructor(private _BooksService: BooksService,private _AuthorsService: AuthorsService)
      {
