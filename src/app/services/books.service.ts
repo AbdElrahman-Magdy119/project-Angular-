@@ -6,8 +6,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class BooksService {
-
-  constructor(private http: HttpClient) { }
+  httpHeaders = {}
+  constructor(private http: HttpClient) {
+    this.httpHeaders = {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-token': `${localStorage.getItem('token')}`,
+      },
+    };
+  }
 
   getAllbooks(): Observable<book[]> {
     return this.http.get<book[]>('http://localhost:5000/books')
