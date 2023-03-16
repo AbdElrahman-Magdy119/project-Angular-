@@ -1,0 +1,19 @@
+img{
+    width: 30vw;
+    height: 40vh;
+}
+
+
+.noresult{
+   display: flex;
+   justify-content: center;
+   background-color: #f7f6f6;
+   margin: auto;
+   width: 50vw;
+   height: 30vh;
+   color: #45171d;
+   border-radius: 10px;
+   border: 1px solid #f7f6f6;
+   margin-top: 12rem;
+   font-size: 3rem;
+}

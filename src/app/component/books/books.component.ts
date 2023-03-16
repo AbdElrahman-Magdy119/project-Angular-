@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { book} from '../../interface/book'
 import {BooksService} from '../../services/books.service';
 import {author} from '../../interface/authors';
@@ -11,9 +11,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BooksComponent {
       
+
+
     books!: book[] ;
     authors!:any[];
     newbook!:book[];
+   
+
+
      constructor(private _BooksService: BooksService,private _AuthorsService: AuthorsService)
      {
 
@@ -27,7 +32,7 @@ export class BooksComponent {
     }
 
 
-     inputttt = new BehaviorSubject(null);
+     
 
      
    OnInit() {

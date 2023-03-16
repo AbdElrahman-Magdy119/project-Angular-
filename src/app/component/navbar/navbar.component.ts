@@ -1,9 +1,10 @@
-import { Component , OnChanges } from '@angular/core';
+import { Component , EventEmitter, OnChanges, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { user } from '../../../app/interface/user';
 import { BehaviorSubject } from 'rxjs';
-
+import {Router} from '@angular/router'
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -16,9 +17,13 @@ export class NavbarComponent {
     islogin: boolean = false;
     oneuser!:any
     image!:any
-    inputInSearch!:string;
+    searchdata!:any
+  
 
-    constructor(private _AuthService:AuthService,private _UserService:UserService){
+
+
+
+    constructor(private _location: Location,private _AuthService:AuthService,private _UserService:UserService,private _Router:Router){
        
      _AuthService.currentuser.subscribe((user)=>{
         if(_AuthService.currentuser.getValue() != null){
@@ -53,9 +58,22 @@ export class NavbarComponent {
 
      getresult(e:any)
      {
-         
-         this.inputInSearch= e.value;
-         localStorage.setItem('search', this.inputInSearch);
+         this.searchdata = e.value;
+         this._Router.navigate(
+          ['/search'],
+          { queryParams: { search: this.searchdata,path:this._location.path()} }
+          );
      }
+
+
+   
+
+
+
+
+
+
+
+
 
 }

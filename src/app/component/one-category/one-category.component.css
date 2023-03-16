@@ -1,0 +1,10 @@
+.category{
+    color: #ebccb3d5;
+    -webkit-text-stroke: 3px #45171d;
+    font-size: 5rem;
+    margin-top: 2rem;
+}
+
+img{
+    height: 40vh;
+}

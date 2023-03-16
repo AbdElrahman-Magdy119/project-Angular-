@@ -14,7 +14,7 @@ export class CategoriesComponent {
      {
       _CatagoryService.getAllcategories().subscribe (catagories => {
              this.catagories = catagories.slice(0,12);
-             console.log(this.catagories)
+            
       })
          
      }

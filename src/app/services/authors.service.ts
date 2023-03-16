@@ -13,7 +13,7 @@ export class AuthorsService {
   constructor(private http:HttpClient) { }
 
   getAllauthors():Observable<author[]> {
-    return this.http.get<author[]>('http://localhost:5000/authors');
+    return this.http.get<author[]>('http://localhost:5000/authors/');
   }
   
   getauthor(id:any):Observable<author> {

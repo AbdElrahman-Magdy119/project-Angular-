@@ -22,7 +22,7 @@ top: 0; z-index: 1;background-color: #45171d; ">
           </li>
           <form *ngIf="islogin" class="d-flex " role="search">
             <input #searchinput class="form-control me-2" type="search" placeholder="Search" aria-label="Search"  style="margin-left:20rem;">
-            <a  (click)="getresult(searchinput)" class="btn btn-outline-success">Search</a>
+            <a  (click)="getresult(searchinput)" class="btn btn-outline-success"  routerLink="Search">Search</a>
           </form>
 
         </ul>
@@ -34,7 +34,7 @@ top: 0; z-index: 1;background-color: #45171d; ">
             <a *ngIf="!islogin" class="nav-link active " aria-current="page" routerLink="register">Register</a>
           </li>
           <li class="nav-item">
-            <img *ngIf="islogin" class="rounded-circle profile " src="../../../assets/{{ image }}">
+          <a *ngIf="islogin"  routerLink="mybooks" ><img class="rounded-circle profile " src="../../../assets/{{ image }}"></a>  
             </li>
           <li class="nav-item">
             <a *ngIf="islogin" class="nav-link active " aria-current="page" routerLink="logout" (click)="islogout()">Logout</a>
