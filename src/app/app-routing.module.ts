@@ -7,7 +7,7 @@ import { CategoriesComponent } from './component/categories/categories.component
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { MainComponentComponent } from './component/main-component/main-component.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
+import { MybooksComponent } from './component/mybooks/mybooks.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
 import { OneCategoryComponent } from './component/one-category/one-category.component';
 import { OneAuthorComponent } from './component/oneauthor/one-author.component';
@@ -25,6 +25,7 @@ const routes: Routes = [
     {path:'books'  , component: BooksComponent},
     {path:'search'  , component: SearchComponent},
     {path:'categories'  , component: CategoriesComponent},
+    {path:'mybooks'  , component: MybooksComponent},
     {path:'books/:id'  , component: OnebookComponent},
     {path:'authors/:id'  , component: OneAuthorComponent},
     {path:'categories/:id'  , component: OneCategoryComponent},

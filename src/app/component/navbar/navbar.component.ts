@@ -43,7 +43,9 @@ export class NavbarComponent {
 
     })
 
-
+    // <li class="nav-item">
+    // <a *ngIf="islogin" (click)="getstate()"  routerLink="mybooks?state=all" ><img class="rounded-circle profile " src="../../../assets/{{ image }}"></a>
+    // </li>
 
   }
 
@@ -66,6 +68,12 @@ export class NavbarComponent {
 
 
 
+  getstate() {
+    this._Router.navigate(
+      ['/mybooks'],
+      { queryParams: { state: "all" } }
+    );
+  }
 
 
 

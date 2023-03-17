@@ -24,6 +24,7 @@ export class BooksComponent {
 
       _BooksService.getAllbooks().subscribe (books => {
              this.books = books.slice(0,20);
+             console.log(this.books);
       })  
       
       

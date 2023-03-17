@@ -1,0 +1,104 @@
+
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+      <div
+        class="col-auto col-md-3 col-xl-2 px-sm-2 px-0"
+        style="background-color: #45171d"
+      >
+        <div
+          class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none"
+          >
+            <span class="d-none d-sm-inline mt-1" style="font-size: 2rem; "><b> Bookshelves</b></span>
+          </a>
+          <ul
+            class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+            id="menu"
+          >
+            <li>
+              <a    (click)="getAllstatus('all')"  class="nav-link px-0 align-middle">
+                <span class="ms-1 d-none d-sm-inline">All</span></a
+              >
+            </li>
+            <li>
+              <a   (click)="getAllstatus('Read')"  class="nav-link px-0 align-middle">
+                <span class="ms-1 d-none d-sm-inline">Read</span>
+              </a>
+            </li>
+            <li>
+              <a  (click)="getAllstatus('currently')"   class="nav-link px-0 align-middle">
+                <span class="ms-1 d-none d-sm-inline">Currently Reading</span>
+              </a>
+            </li>
+            <li>
+              <a   (click)="getAllstatus('want')"  class="nav-link px-0 align-middle">
+                <span class="ms-1 d-none d-sm-inline">Want to Read</span>
+              </a>
+            </li>
+          </ul>
+          <hr />
+        </div>
+      </div>
+      <div class="col py-3">
+          <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Cover</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Avg Rate</th>
+              <th>Rating</th>
+              <th>shelve</th>
+            </tr>
+          </thead>
+      
+           <tbody *ngFor="let userbook of userbooks">
+            <tr>
+              <td class="w-25"> <a> <img  routerLink="/books/{{userbook.book.bookId._id}}"  class="w-25 image unimation" [src]="userbook.book.bookId.image" /> </a> </td>
+              <td  > <a    routerLink="/books/{{userbook.book.bookId._id}}"  class="text-danger">{{ userbook.book.bookId.title }}</a></td>
+              <td>
+              <a  routerLink="/authors/{{userbook.authors._id}}" class="text-danger">   {{ userbook.authors.firstName }} {{ userbook.authors.lastName  }} </a>
+              </td>
+              <td>
+                <h1></h1>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  <ngx-stars
+                    [readonly]="true"
+                    [size]="1"
+                    [maxStars]="5"
+                    [color]="'#ff9f43'"
+                    [initialStars]=" 3.2"
+                  ></ngx-stars>
+                </div>
+              </td>
+              <td>
+                <div
+                  style="display: flex; align-items: center; margin-top: 1rem; margin-bottom: 1rem;"
+                >
+                <ngx-stars [readonly]="true" [size]="1" [maxStars]="5" [color]="'#ff9f43'"
+                [initialStars]="userbook.book.rating "></ngx-stars>
+                </div>
+              </td>
+              <td>
+                  <p>{{ userbook.book.status }}</p>
+              </td>
+            </tr>
+          </tbody> 
+
+        </table>  
+        
+      </div>
+  </div>
+  </div>
+  

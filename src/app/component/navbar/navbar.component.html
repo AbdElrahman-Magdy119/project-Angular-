@@ -46,7 +46,7 @@ top: 0; z-index: 1;background-color: #45171d; ">
               <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="islogout()">
+              <button mat-menu-item (click)="getstate()" routerLink="mybooks?state=all">
                 <mat-icon>arrow_right_alt</mat-icon>
                 My Books
               </button>
