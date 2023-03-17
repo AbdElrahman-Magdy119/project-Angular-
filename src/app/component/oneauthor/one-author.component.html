@@ -1,1 +1,51 @@
-<p>one-author works!</p>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="w-100 image" [src]="author.photo">
+        </div>
+        <div class="col-md-8">
+            <h1 class="head1"><b>{{ author.firstName }} {{ author.lastName }}</b></h1>
+            <h3 class="head3"> {{author.birthDate | date:'dd/MM/yyyy' }}</h3>
+            <p class="paragraph">{{ author.description }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col d-flex justify-content-center" style="color: #45171d;">
+            <h1><b>Authors Books</b></h1>
+        </div>
+    </div>
+</div>
+<section>
+    <div class="container"  style="border: 1px solid #f7f6f6;border-radius: 10px;padding: 1rem;">
+        <div class="row">
+            <div class="col-2">
+                <img class="  ps-2" style="width: 10vw;" [src]="author.photo">
+            </div>
+            <div class="col-2">
+                <h5><b> Books Name</b></h5>
+                <div class="flex-row" style="display: flex; align-items: center;margin-top: 1rem;margin-bottom: 1rem;">
+                    <ngx-stars [readonly]="true" [size]="2" [maxStars]="5" [color]="'#ff9f43'" [initialStars]="3.5"></ngx-stars>
+                    <pre class="pre">average number</pre>
+                </div>
+               
+            </div>
+            <div class="col-8" style="display: flex;justify-content: flex-end;">
+               <div> <div>
+                <mat-form-field appearance="fill" style="width: 26vw;height: 12vh;">
+                    <mat-label style="color: #45171d;"><b>Status</b></mat-label>
+                    <mat-select class="selected" style="display: block;" (selectionChange)="getStatus($event)">
+                        <mat-option class="select" *ngFor="let status of status" [value]="status.value">
+                            <b> {{status.viewValue}} </b>
+                        </mat-option>
+                    </mat-select> 
+                </mat-form-field></div>
+                <div style="display: flex; align-items: center;margin-left: 4rem;">
+                    <ngx-stars  [readonly]="false" [size]="2" [maxStars]="5" (ratingOutput)="getrate($event)"   [color]="'#ff9f43'" [initialStars]="3.5"  ></ngx-stars>
+               </div>
+            </div></div>
+        </div>
+    </div>
+</section><br><br><br><br><br><br>

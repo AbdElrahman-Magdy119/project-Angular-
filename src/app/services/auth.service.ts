@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
 import {Router} from '@angular/router'
+import { user } from '../interface/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,12 +13,16 @@ export class AuthService {
   constructor(private _HttpClient:HttpClient,private _Router:Router )
    {
          if(localStorage.getItem('userToken') != null) {
-              this.savecurrentuser(); 
+              this.savecurrentuser();
         }
-       
+
+
    }
-    
+
      currentuser = new BehaviorSubject(null);
+
+
+
 
    savecurrentuser()
    {
@@ -27,8 +32,14 @@ export class AuthService {
 
 
 
-  
-  register(formdata: any):Observable<any> {
+
+
+
+
+
+
+
+  register(formdata: FormData):Observable<any> {
     //                             path in back
     return this._HttpClient.post('http://localhost:5000/register',formdata);
   }

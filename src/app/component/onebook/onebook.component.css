@@ -1,0 +1,44 @@
+.head1{
+  color: #ebccb3d5; 
+  -webkit-text-stroke: 2px #45171d;
+}
+
+.head3{
+    color: #45171d; 
+  }
+
+
+.head5{
+    color: #45171d; 
+    font-family: Didot, serif;
+  }
+
+.image{
+    width: 70vw;
+    height: 35vw;
+  }
+
+  .paragraph{
+    color: #45171d;
+  }
+
+  .select{
+    background-color:#ebccb3d5 ; 
+    color: #45171d;
+  }
+  .selected{
+    color: #45171d;
+    font-size: 20px;
+  }
+
+button
+{
+  color: #45171d;
+  border: 0px;
+  background-color: white;
+}
+
+ngx-stars{
+  z-index: 0;
+}
+

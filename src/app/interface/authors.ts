@@ -4,4 +4,5 @@ export interface author {
   firstName: String,
   lastName: String,
   birthDate: Date,
+  description:String,
   }

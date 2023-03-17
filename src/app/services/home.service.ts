@@ -13,7 +13,7 @@ export class HomeService {
   constructor(private http:HttpClient) { }
 
   getAlldata(topic:string):Observable<any[]> {
-    return this.http.get<book[]>(`http://localhost:5000/${topic}`);
+    return this.http.get<book[]>(`http://localhost:5000/${topic}/`);
   }
 
  

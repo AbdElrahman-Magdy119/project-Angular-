@@ -13,8 +13,8 @@ export class CategoriesComponent {
   constructor(private _CatagoryService: CatagoryService)
      {
       _CatagoryService.getAllcategories().subscribe (catagories => {
-             this.catagories = catagories;
-             console.log(this.catagories)
+             this.catagories = catagories.slice(0,12);
+            
       })
          
      }
