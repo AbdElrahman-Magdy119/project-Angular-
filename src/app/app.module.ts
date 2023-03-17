@@ -12,7 +12,7 @@ import { AuthorsComponent } from './component/authors/authors.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeheaderComponent } from './component/homeheader/homeheader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -22,11 +22,15 @@ import { OneCategoryComponent } from './component/one-category/one-category.comp
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatOptionModule } from '@angular/material/core';
 import { MainComponentComponent } from './component/main-component/main-component.component';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 import { NgxStarsModule } from 'ngx-stars';
 import { SearchComponent } from './component/search/search.component';
 import { MybooksComponent } from './component/mybooks/mybooks.component';
+
+
+import { MatMenuModule } from "@angular/material/menu";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -48,7 +52,7 @@ import { MybooksComponent } from './component/mybooks/mybooks.component';
     MybooksComponent,
   ],
 
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -61,6 +65,8 @@ import { MybooksComponent } from './component/mybooks/mybooks.component';
     MatSelectModule,
     MatCardModule,
     NgxStarsModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

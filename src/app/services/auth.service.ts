@@ -13,15 +13,15 @@ export class AuthService {
   constructor(private _HttpClient:HttpClient,private _Router:Router )
    {
          if(localStorage.getItem('userToken') != null) {
-              this.savecurrentuser();  
+              this.savecurrentuser();
         }
-      
-       
+
+
    }
-    
+
      currentuser = new BehaviorSubject(null);
 
-     
+
 
 
    savecurrentuser()
@@ -30,16 +30,16 @@ export class AuthService {
      this.currentuser.next( jwtDecode(token)) ;
    }
 
-  
-      
-
-    
-    
-    
 
 
-  
-  register(formdata: any):Observable<any> {
+
+
+
+
+
+
+
+  register(formdata: FormData):Observable<any> {
     //                             path in back
     return this._HttpClient.post('http://localhost:5000/register',formdata);
   }
@@ -51,6 +51,8 @@ export class AuthService {
   logout()
   {
     localStorage.removeItem('userToken');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('image');
     this.currentuser.next(null);
     this._Router.navigate(['/login']);
   }

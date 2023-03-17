@@ -10,7 +10,7 @@ import { Rate } from '../interface/Rate';
 export class BooksService {
 
   constructor(private http: HttpClient) {
-         
+
    }
 
   getAllbooks(): Observable<book[]> {
@@ -23,7 +23,7 @@ export class BooksService {
     )
   }
 
-     
+
   getbookrate(id: any): Observable<Rate> {
     return this.http.get<Rate>(
       `http://localhost:5000/ratings/${id}`

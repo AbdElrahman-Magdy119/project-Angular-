@@ -20,7 +20,9 @@
           </div>
 
           <div class="col-md-8">
-               <h1 class="head1"><b>{{ book.title | uppercase }}</b></h1>
+               
+               <h1 class="head1"><b>{{ book.title | uppercase }}</b> <button (click)="addReviwe(newreviews)"
+                    class=" fw-bold small mb-0 me-1 " style="margin-left: 20rem;background-color:#ebccb3d5  ;"><i class="fa-solid fa-circle-plus"></i></button></h1>
                <a routerLink='/authors/{{ author?._id }}'>
                     <h3 class="head3">By {{author?.firstName}} {{author?.lastName}}</h3>
                </a>
@@ -30,8 +32,7 @@
                <div style="display: flex; align-items: center;margin-top: 1rem;margin-bottom: 1rem;">
                     <ngx-stars [readonly]="true" [size]="2" [maxStars]="5" [color]="'#ff9f43'"
                          [initialStars]="rate.avg"></ngx-stars>
-                    <p style="font-size: 2rem;margin-left: 1rem;color: #45171d;"><b>{{rate.avg}} - ratings
-                              {{rate.count}}</b></p>
+                    <p style="font-size: 2rem;margin-left: 1rem;color: #45171d;"><b>{{rate.avg}} - {{rate.count}} ratings</b></p>
                </div>
                <p class="paragraph">{{ book.description }}</p>
           </div>

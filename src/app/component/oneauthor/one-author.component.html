@@ -19,33 +19,21 @@
     </div>
 </div>
 <section>
-    <div class="container"  style="border: 1px solid #f7f6f6;border-radius: 10px;padding: 1rem;">
-        <div class="row">
+    <div *ngFor="let authorBook of authorBooks" class="container mb-2" style="border: 1px solid #f7f6f6;border-radius: 10px;padding: 0.5rem;">
+        <div class="row" >
             <div class="col-2">
-                <img class="  ps-2" style="width: 10vw;" [src]="author.photo">
+                <img class="ps-2 unimation" style="width: 10vw;" [src]="authorBook.book.image">
             </div>
-            <div class="col-2">
-                <h5><b> Books Name</b></h5>
-                <div class="flex-row" style="display: flex; align-items: center;margin-top: 1rem;margin-bottom: 1rem;">
-                    <ngx-stars [readonly]="true" [size]="2" [maxStars]="5" [color]="'#ff9f43'" [initialStars]="3.5"></ngx-stars>
-                    <pre class="pre">average number</pre>
+            <div class="col-2" style="width: 70vw;" >
+                <h3><b> {{authorBook.book.title}}</b></h3>
+                <div class="flex-row mt-4 me-1 h-50" style="display: flex; align-items: center;">
+                    <ngx-stars [readonly]="true" [size]="2" [maxStars]="5" [color]="'#ff9f43'"
+                        [initialStars]="authorBook.avg.avg"></ngx-stars>
+                    <h6 class="ms-2"><b>{{authorBook.avg.avg}} - {{authorBook.avg.count}} ratings</b></h6>
+                    <a  routerLink="/books/{{authorBook.book._id}}" class="btn btn-danger h-50 w-25" style="margin-left: 30rem;display: flex; justify-content: center;"><b>Go to Book</b></a>
                 </div>
-               
             </div>
-            <div class="col-8" style="display: flex;justify-content: flex-end;">
-               <div> <div>
-                <mat-form-field appearance="fill" style="width: 26vw;height: 12vh;">
-                    <mat-label style="color: #45171d;"><b>Status</b></mat-label>
-                    <mat-select class="selected" style="display: block;" (selectionChange)="getStatus($event)">
-                        <mat-option class="select" *ngFor="let status of status" [value]="status.value">
-                            <b> {{status.viewValue}} </b>
-                        </mat-option>
-                    </mat-select> 
-                </mat-form-field></div>
-                <div style="display: flex; align-items: center;margin-left: 4rem;">
-                    <ngx-stars  [readonly]="false" [size]="2" [maxStars]="5" (ratingOutput)="getrate($event)"   [color]="'#ff9f43'" [initialStars]="3.5"  ></ngx-stars>
-               </div>
-            </div></div>
+            
         </div>
     </div>
-</section><br><br><br><br><br><br>
+</section><br>

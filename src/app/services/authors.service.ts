@@ -24,6 +24,16 @@ export class AuthorsService {
   }
 
 
+  getbookOfAuthor(id:any):Observable<any> {
+    
+    return this.http.get<any>(
+      `http://localhost:5000/books/author/${id}`
+    );
+   
+  
+  }
+
+
 
 
 }
