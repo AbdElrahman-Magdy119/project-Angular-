@@ -30,7 +30,10 @@ export class LoginComponent {
            {
               localStorage.setItem('userToken', v.token)
               this._AuthService.savecurrentuser();
-              this._Router.navigate(['/mybooks']);
+              this._Router.navigate(
+                ['/mybooks'],
+                { queryParams: { state: "all"} }
+                );
            },
           error: (e) => 
           {

@@ -58,10 +58,10 @@
       
            <tbody *ngFor="let userbook of userbooks">
             <tr>
-              <td class="w-25"> <a> <img  routerLink="/books/{{userbook.book.bookId._id}}"  class="w-25 image unimation" [src]="userbook.book.bookId.image" /> </a> </td>
-              <td  > <a    routerLink="/books/{{userbook.book.bookId._id}}"  class="text-danger">{{ userbook.book.bookId.title }}</a></td>
+              <td class="w-25"> <a> <img  routerLink="/books/{{userbook.book.bookId._id}}"  class="w-25  unimation" [src]="userbook.book.bookId.image" /> </a> </td>
+              <td  > <a    routerLink="/books/{{userbook.book.bookId._id}}"  class="text-danger " ><b> {{ userbook.book.bookId.title }}</b></a></td>
               <td>
-              <a  routerLink="/authors/{{userbook.authors._id}}" class="text-danger">   {{ userbook.authors.firstName }} {{ userbook.authors.lastName  }} </a>
+              <a  routerLink="/authors/{{userbook.authors._id}}" class="text-danger" > <b>  {{ userbook.authors.firstName }} {{ userbook.authors.lastName  }} </b> </a>
               </td>
               <td>
                 <h1></h1>
@@ -78,7 +78,7 @@
                     [size]="1"
                     [maxStars]="5"
                     [color]="'#ff9f43'"
-                    [initialStars]=" 3.2"
+                    [initialStars]="userbook.avg_rating "
                   ></ngx-stars>
                 </div>
               </td>
@@ -91,7 +91,7 @@
                 </div>
               </td>
               <td>
-                  <p>{{ userbook.book.status }}</p>
+                 <h5 class="text-danger pt-3"><b> {{ userbook.book.status }} </b></h5>
               </td>
             </tr>
           </tbody> 

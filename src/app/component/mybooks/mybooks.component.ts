@@ -14,6 +14,11 @@ export class MybooksComponent {
   userbooks!:any
   oneuser!:any
   userId!:any
+  status = [
+    { value: 'reading', viewValue: 'reading' },
+    { value: 'want to read', viewValue: 'want to read' },
+    { value: 'readed', viewValue: 'readed' },
+  ];
 
     constructor(private router: Router,private _ActivatedRoute:ActivatedRoute,private _BooksService: BooksService,private _AuthService:AuthService)
     {
@@ -41,6 +46,13 @@ export class MybooksComponent {
         { queryParams: { state: status} }
         );
      }
+
+     getStatus(e:any)
+     {
+        console.log(e.value)
+     }
+
+
 
 
 }

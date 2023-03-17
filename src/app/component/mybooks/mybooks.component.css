@@ -5,3 +5,11 @@ ngx-stars{
 a{
   color:#45171d;
 }
+.select{
+  background-color:#ebccb3d5 ; 
+  color: #45171d;
+}
+.selected{
+  color: #45171d;
+  font-size: 15px;
+}

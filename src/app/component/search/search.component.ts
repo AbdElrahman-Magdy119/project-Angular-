@@ -41,7 +41,7 @@ export class SearchComponent {
         this.newsearch = params.get('search');
            if( this.currentURL == '/authors')
            {
-               this.newauthors =   this.authors.filter((elm) => elm.firstName ==  this.newsearch)
+               this.newauthors =   this.authors.filter((elm) => elm.firstName.toLowerCase() ==  this.newsearch.toLowerCase())
            }
            if(this.newauthors.length > 0)
            {
@@ -60,7 +60,7 @@ export class SearchComponent {
         this.newsearch = params.get('search');
            if( this.currentURL == '/books')
            {
-             this.newbooks =   this.books.filter((elm) => elm.title ==  this.newsearch);
+             this.newbooks =   this.books.filter((elm) => elm.title.toLowerCase() ==  this.newsearch.toLowerCase());
            }
            if(this.newbooks.length > 0)
            {
@@ -82,7 +82,7 @@ export class SearchComponent {
        
            if( this.currentURL == '/categories')
            {
-               this.newcatagories =   this.catagories.filter((elm) => elm.name ==  this.newsearch)
+               this.newcatagories =   this.catagories.filter((elm) => elm.name.toLowerCase() ==  this.newsearch.toLowerCase())
            }
            if(this.newcatagories.length > 0)
            {
