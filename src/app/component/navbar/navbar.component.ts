@@ -35,14 +35,14 @@ export class NavbarComponent {
       }
 
       this.oneuser = user;
-      _UserService.getuser(this.oneuser.email).subscribe(I => {
-        this.image = I.image;
-        
+      _UserService.getuser(this.oneuser?.email).subscribe(I => {
+        this.image = I?.image;
+
       })
 
     })
 
-    
+
 
 
 
@@ -51,9 +51,9 @@ export class NavbarComponent {
 
 
   currentuserlogin = new BehaviorSubject({})
- 
 
- 
+
+
 
   islogout() {
     this._AuthService.logout();
@@ -76,9 +76,9 @@ export class NavbarComponent {
     );
   }
 
-  
 
-  
+
+
 
 
 

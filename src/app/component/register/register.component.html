@@ -50,7 +50,7 @@
       <div class="form-group">
         <label class="my-2" for="confirmPassword">confirmPassword:</label>
         <input #asd formControlName="confirmPassword" class="form-control w-75" type="password"
-          placeholder="confirmPassword" id="password">
+          placeholder="confirmPassword" id="cpassword">
         <div
           *ngIf="registerform.get('confirmPassword')?.errors != null && registerform.get('confirmPassword')?.touched && registerform.value.password == registerform.value.confirmPassword"
           class="alert my-2 alert-light w-75" style="height: 8vh;">
