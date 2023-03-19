@@ -35,7 +35,7 @@ export class OnebookComponent {
 
   bookId!: any;
   getRate!: number;
-  getUserRate!:any;
+  getUserRate?:any;
   status = [
     { value: 'reading', viewValue: 'reading' },
     { value: 'want to read', viewValue: 'want to read' },
@@ -78,7 +78,7 @@ export class OnebookComponent {
      
       this._BooksService.getUserrateFromBook( this.userId,this.bookId).subscribe(getUserRate => {
         this.getUserRate = getUserRate;
-          console.log(this.getUserRate);
+          console.log(getUserRate);
       })
 
 
