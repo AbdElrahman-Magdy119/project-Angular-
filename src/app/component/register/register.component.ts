@@ -37,11 +37,11 @@ export class RegisterComponent {
 
   constructor(private _AuthService: AuthService, private _Router: Router, public fb: FormBuilder, private http: HttpClient) {
     this.registerform = this.fb.group({
-      firstname: ['', Validators.required, Validators.minLength(3), Validators.maxLength(15)],
-      lastname: ['', Validators.required, Validators.minLength(3), Validators.maxLength(15)],
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      firstname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
       image: ['']
     });
   }
@@ -55,13 +55,16 @@ export class RegisterComponent {
 
   submitRegister() {
     var form: any = new FormData();
+    const userImage = this.selectedImage;
+    if (userImage) {
+      form.append('image', userImage, userImage?.name);
+    } else {
+      form.append('image', '');
+    }
     form.append('firstname', this.registerform.get('firstname')?.value);
     form.append('lastname', this.registerform.get('lastname')?.value);
     form.append('email', this.registerform.get('email')?.value);
     form.append('password', this.registerform.get('password')?.value)
-    form.append('image', this.selectedImage, this.selectedImage.name)
-    // registerform.value.image = formData.get('avatar').name;
-    // delete registerform.value.confirmPassword;
 
 
 
