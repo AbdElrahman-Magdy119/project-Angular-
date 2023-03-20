@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { book} from '../../interface/book';
-
+import {BooksService} from '../../../app/services/books.service';
 
 
 
@@ -14,8 +14,16 @@ export class HomeheaderComponent {
 
   
 
-    @Input() books!: book[] 
+     
+    books!:book[]
    
+      constructor(private _BookService:BooksService)
+      {
+         this._BookService.getAllbooks().subscribe((books)=> {
+           this.books = books;
+         })
+
+      }
 
         customOptions: OwlOptions = {
           loop: true,

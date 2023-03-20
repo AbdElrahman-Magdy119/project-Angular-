@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { book} from '../../interface/book'
 import { author} from '../../interface/authors'
 import { catagory} from '../../interface/category'
+import {popular} from '../../interface/popular'
 import {HomeService} from '../../services/home.service';
 
 @Component({
@@ -11,36 +12,31 @@ import {HomeService} from '../../services/home.service';
 })
 export class HomeComponent {
 
-  books!: book[] ;
-  authors!: author[];
-  categories!: catagory[];
-
+  populardata!:any[]
+  books: any[]=[] ;
+  authors: any[]=[];
+  categories: any[]=[];
+  uniquecategories: any[]=[];
   constructor(private _HomeService: HomeService)
-  {
-    _HomeService.getAlldata("books").subscribe (books => {
-          this.books = books;
-          
-   })
-    
-   _HomeService.getAlldata("authors").subscribe (categories => {
-         this.authors = categories;
-       
+     {
+   
+         this._HomeService.getAlldata().subscribe((populardata) => {
+              populardata.map((elm:any)=>{
+                this.books.push(elm.book); 
+                this.authors.push(elm.author);
+                this.categories.push(elm.category);
+              })
+              this.uniquecategories =   this.categories.filter(
+                (obj, index) =>
+                this.categories.findIndex((item) => item._id === obj._id) === index
+              );
+            })
 
-    _HomeService.getAlldata("categories").subscribe (categories => {
-        this.categories = categories.slice(0,10);
-    
-})
-
-
-})
-
-
-
-
+  
 
 
       
-  }
+     }
 
 
 

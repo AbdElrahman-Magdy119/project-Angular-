@@ -28,7 +28,7 @@ export class ReviewService {
 
 
 
-   senddata(data: any): void {
+   addreviewToBook(data: any): void {
         this.http.post('http://localhost:5000/reviews/',data,
         {
           headers: new HttpHeaders().set('x-token',`${this.usertoken.value}`),
@@ -36,8 +36,6 @@ export class ReviewService {
 
         
         .subscribe( res =>{
-          console.log(res);
-          console.log("seckfun")
         })
   }
 
@@ -50,10 +48,25 @@ export class ReviewService {
 
     
     .subscribe( res =>{
-      console.log(res);
-      console.log("seckfun")
     })
 }
+
+
+   updatereview(data:any,id:any)
+   {
+    this.http.patch(`http://localhost:5000/reviews/${id}`,data,
+    {
+      headers: new HttpHeaders().set('x-token',`${this.usertoken.value}`),
+    })
+
+    
+    .subscribe( res =>{
+    })
+
+   }
+
+
+
 
 
 

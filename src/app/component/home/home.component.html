@@ -1,11 +1,11 @@
-<app-homeheader [books]="books"></app-homeheader>
+<app-homeheader></app-homeheader>
 <div class="container">
     <div class="row py-5">
         <div class="col-md-4 d-flex align-items-center unimation">
             <div>
                 <div class="brdr w-25 mb-4"></div>
                 <a routerLink='/books'>
-                    <h2 style="font-size: 5vw;color: #45171d;"><b>Books</b></h2>
+                    <h2 style="font-size: 5vw;color: #45171d;"><b>Popular <br> Books</b></h2>
                 </a>
                 <div class="brdr w-75 mt-4"></div>
             </div>
@@ -13,12 +13,12 @@
         <div *ngFor="let book of books" class="col-md-2 unimation">
             <div class="movie my-2 position-relative">
                 <div class=" h-75">
-                    <a routerLink='/books/{{ book._id }}'> <img class="w-100 image" [src]="book.image"> </a>
+                    <a routerLink='/books/{{ book.bookId._id }}'> <img class="w-100 image" [src]="book.bookId.image"> </a>
                 </div>
-                <a routerLink='/books/{{ book._id }}'>
-                    <h3 class="my-2 h6" style="color:  #45171d;">{{book.title | titlecase }}</h3>
+                <a routerLink='/books/{{ book.bookId._id }}'>
+                    <h3 class="my-2 h6" style="color:  #45171d;">{{book.bookId.title | titlecase }}</h3>
                 </a>
-                <div class="vote">{{7.8}}</div>
+                <div class="vote">{{book.rating}}</div>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <div>
                 <div class="brdr w-25 mb-4"></div>
                 <a routerLink='/authors'>
-                    <h2 style="font-size: 5vw;color: #45171d;"><b>Authors</b></h2>
+                    <h2 style="font-size: 5vw;color: #45171d;"><b>Popular <br> Authors</b></h2>
                 </a>
                 <div class="brdr w-75 mt-4"></div>
             </div>
@@ -49,12 +49,12 @@
             <div>
                 <div class="brdr w-25 mb-4"></div>
                 <a routerLink='/categories'>
-                    <h2 style="font-size: 5vw;color: #45171d;"><b>Categories</b></h2>
+                    <h2 style="font-size: 5vw;color: #45171d;"><b>Popular <br> Categories</b></h2>
                 </a>
                 <div class="brdr w-75 mt-4"></div>
             </div>
         </div>
-        <div *ngFor="let category of categories" class="col-md-2 unimation">
+        <div *ngFor="let category of uniquecategories" class="col-md-2 unimation">
             <div class="movie my-2 position-relative">
                 <div class=" h-75">
                     <a routerLink='/categories/{{ category._id }}'> <img class="w-100 image" src="{{category.image}}"></a>

@@ -19,7 +19,8 @@ export class OnebookComponent {
   book!: book;
   author!: any;
   category!: any;
-  reviews!:any;
+  reviews!: any;
+  newreviws: any = [];
   rate!: Rate;
   userlogin!: any;
   state!: string;
@@ -29,13 +30,16 @@ export class OnebookComponent {
   star: boolean = false;
   oneuser!: any
   userId!: string;
-  userimage!:any;
+  userimage!: any;
   userfirstname!: any;
   userlastname!: any;
-
   bookId!: any;
   getRate!: number;
-  getUserRate?:any;
+  getUserRate?: any;
+  checkreview = true;
+  checkEdit = false;
+  editvalue!:string;
+  newEditvalue!: string;
   status = [
     { value: 'reading', viewValue: 'reading' },
     { value: 'want to read', viewValue: 'want to read' },
@@ -43,7 +47,7 @@ export class OnebookComponent {
   ];
 
 
-  constructor(private _ReviewService:ReviewService,private _Router: Router, private _BooksService: BooksService, private route: ActivatedRoute, private _AuthorsService: AuthorsService, private _AuthService: AuthService, private _UserService: UserService) {
+  constructor(private _ReviewService: ReviewService, private _Router: Router, private _BooksService: BooksService, private route: ActivatedRoute, private _AuthorsService: AuthorsService, private _AuthService: AuthService, private _UserService: UserService) {
     this.route.paramMap.subscribe((paramMap) => {
       this._BooksService.getbook(paramMap.get('id')).subscribe(book => {
         this.book = book;
@@ -51,9 +55,9 @@ export class OnebookComponent {
         this.category = this.book?.categoryId;
       })
     })
- 
+
     this.route.paramMap.subscribe((paramMap) => {
-       this.bookId = paramMap.get('id');
+      this.bookId = paramMap.get('id');
     })
 
 
@@ -61,7 +65,7 @@ export class OnebookComponent {
     this.route.paramMap.subscribe((paramMap) => {
       this._BooksService.getbookrate(paramMap.get('id')).subscribe(rate => {
         this.rate = rate;
-        console.log(this.rate);
+        
       })
     })
 
@@ -75,27 +79,38 @@ export class OnebookComponent {
 
       this.oneuser = user;
       this.userId = this.oneuser.user_id;
-     
-      this._BooksService.getUserrateFromBook( this.userId,this.bookId).subscribe(getUserRate => {
+
+      this._BooksService.getUserrateFromBook(this.userId, this.bookId).subscribe(getUserRate => {
         this.getUserRate = getUserRate;
-          console.log(getUserRate);
+       
       })
 
 
-       
-        _UserService.getuser(this.oneuser.email).subscribe( I => {
-            this.userimage = I.image;
-            this.userfirstname = I.firstname;
-            this.userlastname = I.lastname;
-            
-        })
-     
+
+      _UserService.getuser(this.oneuser.email).subscribe(I => {
+        this.userimage = I.image;
+        this.userfirstname = I.firstname;
+        this.userlastname = I.lastname;
+
+      })
+
     })
+
 
     this.route.paramMap.subscribe((paramMap) => {
       this._BooksService.getbookreviews(paramMap.get('id')).subscribe(reviews => {
         this.reviews = reviews;
-        console.log(this.reviews);
+        this.reviews.map((elm: any) => {
+          if (elm.review != "") {
+            this.newreviws.push(elm)
+          }
+        })
+          this.newreviws.filter((elm: any) => {
+             if( this.userId == elm.userId._id)
+             {
+               this.checkreview=false;
+             }
+          })
       })
     })
 
@@ -118,23 +133,85 @@ export class OnebookComponent {
     else {
       this._Router.navigate(['/login']);
     }
-   
+
+
+  }
+
+  addtotalReviwe() {
+    if (this.islogin == true) {
+      let flag = false;
+      let bookId;
+      let reviewId;
+      this.route.paramMap.subscribe((paramMap) => {
+        bookId = paramMap.get('id')
+      });
+      this.reviews.filter((elm: any) => {
+        if (this.userId == elm.userId._id) {
+          flag = true;
+          reviewId = elm._id;
+        }
+      })
+
+      if (flag) {
+        let data = {
+          userId: this.userId,
+          bookId: bookId,
+          rating: this.getRate,
+          status: this.state,
+        }
+
+        this._ReviewService.updatereview(data, reviewId);
+
+        console.log(reviewId, data);
+
+      }
+      else {
+        let data = {
+          userId: this.userId,
+          bookId: bookId,
+          rating: this.getRate,
+          status: this.state,
+        }
+        this._ReviewService.addreviewToBook(data);
+
+        console.log(data);
+
+      }
+    }
+    else {
+      this._Router.navigate(['/login']);
+    }
 
   }
 
   addReviwe(e: any) {
-     
-      if(this.islogin == true)
-      {
-            let  bookId;
-            this.route.paramMap.subscribe((paramMap) => {
-              bookId =  paramMap.get('id')
-          });
-    
+    if (this.islogin == true) {
+      let flag = false;
+      let bookId;
+      let reviewId;
+      this.route.paramMap.subscribe((paramMap) => {
+        bookId = paramMap.get('id')
+      });
+      this.reviews.filter((elm: any) => {
+        if (this.userId == elm.userId._id) {
+          flag = true;
+          reviewId = elm._id;
 
+        }
+      })
 
-          this.new_review = e.value,
-        this.reviews.push(
+      if (flag) {
+
+        let data = {
+          userId: this.userId,
+          bookId: bookId,
+          review: e.value
+        }
+
+        this._ReviewService.updatereview(data, reviewId);
+
+        console.log(reviewId, data);
+        this.newreviws.push(
           {
             userId:{
               firstname:this.userfirstname,
@@ -142,77 +219,120 @@ export class OnebookComponent {
               image:this.userimage,
             },
             bookId:bookId,
-            rating:this.getRate,
-            review: this.new_review,
-            status:this.state,
-          })
-          console.log(this.reviews);
-        this.senddata();
-      }
-      else
-      {
-        this._Router.navigate(['/login']);
-      }
-     
-  }
+            review: e.value,
+          }) 
 
+         this.checkreview=false;
 
-  remove(e:any) {
-    if (this.islogin == true) {
-      this.reviews.splice(e, 1);
+      }
+      else {
+
+           
+        let data = {
+          userId: this.userId,
+          bookId: bookId,
+          review: e.value
+        }
+        this._ReviewService.addreviewToBook(data);
+
+        console.log(data);
+
+        this.newreviws.push(
+                  {
+                    userId:{
+                      firstname:this.userfirstname,
+                      lastname:this.userlastname,
+                      image:this.userimage,
+                    },
+                    bookId:bookId,
+                    review: e.value,
+                  }) 
+      
+        this.checkreview=false;
+
+      }
     }
     else {
       this._Router.navigate(['/login']);
     }
-  
-    this.deleteReview(e);
-    
+
+
   }
 
-    senddata()
-    {
-        let  bookId;
-        this.route.paramMap.subscribe((paramMap) => {
-           bookId =  paramMap.get('id')
-       });
-      let data = {
-        userId:this.userId,
-        bookId:bookId,
-        rating:this.getRate,
-        review:this.new_review,
-        status:this.state,
-      }
-      
-       console.log(data);
-       this._ReviewService.senddata(data);
-       
-    }
-
-     deleteReview(id:any)
-     {
-        this._ReviewService.deleteReview(id)
-     }
 
 
-     
-    edit(e:any)
-    {
-      if(this.islogin == true)
-      {
 
+  remove(e: any) {
+    if (this.islogin == true) {
+    
          if(this.userId == e.userId._id)
          {
-                    
+              let bookId;
+              let reviewId = e._id;
+              this.route.paramMap.subscribe((paramMap) => {
+                bookId = paramMap.get('id')
+              });
+            let data = {
+            userId: this.userId,
+            bookId: bookId,
+            review: ""
+          }
+  
+          this._ReviewService.updatereview(data, reviewId);
+          this.newreviws.splice(e, 1);
+          this.checkreview = true;
+
+
          }
+      
+        
+          
+    }
+    else {
+      this._Router.navigate(['/login']);
+    }
+
+
+  }
+
+
+
+
+
+  edit(e: any) 
+  {
+    if (this.islogin == true) {
+         console.log("asdfvddvd")
+          // if(this.userId == e.userId._id)
+          // {
+          //      this.checkreview=true
+          //     this.checkEdit = true 
+          //     this.editvalue=e.review
+              
+          //     let bookId;
+          //     let reviewId = e._id;
+          //   this.route.paramMap.subscribe((paramMap) => {
+          //       bookId = paramMap.get('id')
+          //     });
+          // let data = {
+          //    userId: this.userId,
+          //   bookId: bookId,
+          //   review: this.newEditvalue
+          //  }
+
+          //  this._ReviewService.updatereview(data, reviewId);
          
 
 
-      }
-      else
-      {
-        this._Router.navigate(['/login']);
-      }
+          // }
+
+
+
     }
+    else {
+      this._Router.navigate(['/login']);
+    }
+  }
 
 
 
@@ -225,6 +345,7 @@ export class OnebookComponent {
 
   ngOnInit() {
   }
+
 }
 
 
