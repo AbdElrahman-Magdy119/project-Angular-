@@ -1,7 +1,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-md-4">
-            <img class="w-100 image" [src]="author.photo">
+            <img class="w-100 image" [src]="imageAuthor + '/' + author.photo" >
         </div>
         <div class="col-md-8">
             <h1 class="head1"><b>{{ author.firstName }} {{ author.lastName }}</b></h1>
@@ -18,11 +18,12 @@
         </div>
     </div>
 </div>
+
 <section>
     <div *ngFor="let authorBook of authorBooks" class="container mb-2" style="border: 1px solid #f7f6f6;border-radius: 10px;padding: 0.5rem;">
         <div class="row" >
             <div class="col-2">
-                <img class="ps-2 unimation" style="width: 10vw;" [src]="authorBook.book.image">
+                <img class="ps-2 unimation" style="width: 10vw;" [src]="imageBook + '/' + authorBook.book.image" >
             </div>
             <div class="col-2" style="width: 70vw;" >
                 <h3><b> {{authorBook.book.title}}</b></h3>

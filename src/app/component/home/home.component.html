@@ -13,7 +13,7 @@
         <div *ngFor="let book of books" class="col-md-2 unimation">
             <div class="movie my-2 position-relative">
                 <div class=" h-75">
-                    <a routerLink='/books/{{ book.bookId._id }}'> <img class="w-100 image" [src]="book.bookId.image"> </a>
+                    <a routerLink='/books/{{ book.bookId._id }}'> <img class="w-100 image" [src]="imageBook + '/' + book.bookId.image"> </a>
                 </div>
                 <a routerLink='/books/{{ book.bookId._id }}'>
                     <h3 class="my-2 h6" style="color:  #45171d;">{{book.bookId.title | titlecase }}</h3>
@@ -36,7 +36,7 @@
         <div *ngFor="let author of authors" class="col-md-2 unimation">
             <div class="movie my-2 position-relative">
                 <div class=" h-75">
-                    <a routerLink='/authors/{{ author._id }}'> <img class="w-100 image" src="{{author.photo}}"></a>
+                    <a routerLink='/authors/{{ author._id }}'> <img class="w-100 image" [src]="imageAuthor + '/' + author.photo"></a>
                 </div>
                 <a routerLink='/authors/{{ author._id }}'>
                     <h3 class="my-2 h6" style="color:  #45171d;">{{author.firstName }} {{ author.lastName }}</h3>
@@ -57,7 +57,7 @@
         <div *ngFor="let category of uniquecategories" class="col-md-2 unimation">
             <div class="movie my-2 position-relative">
                 <div class=" h-75">
-                    <a routerLink='/categories/{{ category._id }}'> <img class="w-100 image" src="{{category.image}}"></a>
+                    <a routerLink='/categories/{{ category._id }}'> <img class="w-100 image" [src]="imageCategory + '/' + category.image"></a>
                 </div>
                 <a routerLink='/categories/{{ category._id }}'>
                     <h3 class="my-2 h6" style="color:  #45171d;">{{category.name}}</h3>

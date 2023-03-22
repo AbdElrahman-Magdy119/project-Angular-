@@ -1,36 +1,37 @@
 import { Component } from '@angular/core';
 import { author} from '../../interface/authors'
 import {AuthorsService} from '../../services/authors.service';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-authors',
   templateUrl: './authors.component.html',
-  styleUrls: ['./authors.component.css']
+  styleUrls: ['./authors.component.css'],
 })
 export class AuthorsComponent {
+  image = `${environment.APIBaseURL}/assets/uploads/author`;
 
-  authors!:author[]
+  authors!: author[];
   paginated!: any[];
   currentPage!: number;
   pageSize!: number;
   totalPages!: number;
   pages: number[] = [];
   count: number = 0;
-  constructor(private _AuthorsService: AuthorsService)
-  {
-       _AuthorsService.getAllauthors().subscribe (authors => {
-           this.authors = authors.slice(0,20);
-           this.calculatePages();
-           this.paginated = this.authors.slice(this.count, this.pageSize);
-           console.log(this.authors);
-      })
+  constructor(private _AuthorsService: AuthorsService) {
+    _AuthorsService.getAllauthors().subscribe((authors) => {
+      this.authors = authors.slice(0, 20);
+      this.calculatePages();
+      this.paginated = this.authors.slice(this.count, this.pageSize);
+      console.log(this.authors);
+    });
 
-      this.currentPage = 1;
-      this.pageSize = 2;
-      this.totalPages = 5;
-      this.pages = [];
-      this.paginated = [];
+    this.currentPage = 1;
+    this.pageSize = 2;
+    this.totalPages = 5;
+    this.pages = [];
+    this.paginated = [];
   }
-
 
   calculatePages() {
     this.totalPages = Math.ceil(this.authors.length / this.pageSize);
@@ -45,7 +46,7 @@ export class AuthorsComponent {
   setPage(page: number) {
     this.currentPage = page;
     // this.paginated = this.books.slice(this.count,this.pageSize);
-    console.log(page)
+    console.log(page);
   }
 
   nextPage() {
@@ -56,7 +57,7 @@ export class AuthorsComponent {
 
     this.count += 2;
     this.pageSize += 2;
-    this.paginated=this.authors.slice(this.count,this.pageSize)
+    this.paginated = this.authors.slice(this.count, this.pageSize);
   }
 
   prevPage() {
@@ -66,6 +67,6 @@ export class AuthorsComponent {
     console.log('prev');
     this.count -= 2;
     this.pageSize -= 2;
-    this.paginated = this.authors.slice(this.count,this.pageSize);
+    this.paginated = this.authors.slice(this.count, this.pageSize);
   }
 }
