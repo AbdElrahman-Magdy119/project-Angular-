@@ -28,9 +28,12 @@ import { NgxStarsModule } from 'ngx-stars';
 import { SearchComponent } from './component/search/search.component';
 import { MybooksComponent } from './component/mybooks/mybooks.component';
 
+import { FormsModule } from '@angular/forms';
 
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
+import { BookDetailsComponent } from './component/book-details/book-details.component';
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { MatIconModule } from "@angular/material/icon";
     MainComponentComponent,
     SearchComponent,
     MybooksComponent,
+    BookDetailsComponent,
+    
+
   ],
 
 
@@ -67,6 +73,8 @@ import { MatIconModule } from "@angular/material/icon";
     NgxStarsModule,
     MatMenuModule,
     MatIconModule,
+    RatingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

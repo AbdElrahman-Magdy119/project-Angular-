@@ -10,19 +10,21 @@ import { author } from 'src/app/interface/authors';
 import { AuthService } from '../../services/auth.service'
 import { ReviewService } from '../../services/review.service'
 import { Router } from '@angular/router'
+import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-onebook',
   templateUrl: './onebook.component.html',
   styleUrls: ['./onebook.component.css']
 })
 export class OnebookComponent {
+  imageFromBackEnd=`${environment.APIBaseURL}/assets/uploads/user/`
   book!: book;
-  author!: any;
-  category!: any;
-  reviews!: any;
-  newreviws: any = [];
+  author!: any; //type any
+  category!: any; //type any
+  reviews!: any; //type any
+  newreviws: any = []; //type any
   rate!: Rate;
-  userlogin!: any;
   state!: string;
   islogin!: boolean;
   add!: number[];
@@ -47,304 +49,346 @@ export class OnebookComponent {
   ];
 
 
-  constructor(private _ReviewService: ReviewService, private _Router: Router, private _BooksService: BooksService, private route: ActivatedRoute, private _AuthorsService: AuthorsService, private _AuthService: AuthService, private _UserService: UserService) {
-    this.route.paramMap.subscribe((paramMap) => {
-      this._BooksService.getbook(paramMap.get('id')).subscribe(book => {
-        this.book = book;
-        this.author = this.book?.authorId;
-        this.category = this.book?.categoryId;
-      })
-    })
+  // constructor(private _ReviewService: ReviewService, private _Router: Router, private _BooksService: BooksService, private route: ActivatedRoute, private _AuthorsService: AuthorsService, private _AuthService: AuthService, private _UserService: UserService) {
+  //   this.route.paramMap.subscribe((paramMap) => {
+  //     this._BooksService.getbook(paramMap.get('id')).subscribe(book => {
+  //       this.book = book;
+  //       this.author = this.book?.authorId;
+  //       this.category = this.book?.categoryId;
+  //     })
+  //   })
 
-    this.route.paramMap.subscribe((paramMap) => {
-      this.bookId = paramMap.get('id');
-    })
+  //   this.route.paramMap.subscribe((paramMap) => {
+  //     this.bookId = paramMap.get('id');
+  //   })
 
 
 
-    this.route.paramMap.subscribe((paramMap) => {
-      this._BooksService.getbookrate(paramMap.get('id')).subscribe(rate => {
-        this.rate = rate;
+  //   this.route.paramMap.subscribe((paramMap) => {
+  //     this._BooksService.getbookrate(paramMap.get('id')).subscribe(rate => {
+  //       this.rate = rate;
         
-      })
-    })
+  //     })
+  //   })
 
-    _AuthService.currentuser.subscribe((user) => {
-      if (_AuthService.currentuser.getValue() != null) {
-        this.islogin = true;
-      }
-      else {
-        this.islogin = false;
-      }
+  //   _AuthService.currentuser.subscribe((user) => {
+  //     if (_AuthService.currentuser.getValue() != null) {
+  //       this.islogin = true;
+  //     }
+  //     else {
+  //       this.islogin = false;
+  //     }
 
-      this.oneuser = user;
-      this.userId = this.oneuser.user_id;
+  //     this.oneuser = user;
+  //     this.userId = this.oneuser.user_id;
 
-      this._BooksService.getUserrateFromBook(this.userId, this.bookId).subscribe(getUserRate => {
-        this.getUserRate = getUserRate;
+  //     this._BooksService.getUserrateFromBook(this.userId, this.bookId).subscribe(getUserRate => {
+  //       this.getUserRate = getUserRate;
        
-      })
+  //     })
 
 
 
-      _UserService.getuser(this.oneuser.email).subscribe(I => {
-        this.userimage = I.image;
-        this.userfirstname = I.firstname;
-        this.userlastname = I.lastname;
+  //     _UserService.getuser(this.oneuser.email).subscribe(I => {
+  //       this.userimage = I.image;
+  //       this.userfirstname = I.firstname;
+  //       this.userlastname = I.lastname;
 
-      })
+  //     })
 
-    })
-
-
-    this.route.paramMap.subscribe((paramMap) => {
-      this._BooksService.getbookreviews(paramMap.get('id')).subscribe(reviews => {
-        this.reviews = reviews;
-        this.reviews.map((elm: any) => {
-          if (elm.review != "") {
-            this.newreviws.push(elm)
-          }
-        })
-          this.newreviws.filter((elm: any) => {
-             if( this.userId == elm.userId._id)
-             {
-               this.checkreview=false;
-             }
-          })
-      })
-    })
-
-  }
-
-  getStatus(e: any) {
-    if (this.islogin == true) {
-      this.state = e.value;
-    }
-    else {
-      this._Router.navigate(['/login']);
-    }
-
-  }
-
-  getrate(e: any) {
-    if (this.islogin == true) {
-      this.getRate = e;
-    }
-    else {
-      this._Router.navigate(['/login']);
-    }
+  //   })
 
 
-  }
+  //   this.route.paramMap.subscribe((paramMap) => {
+  //     this._BooksService.getbookreviews(paramMap.get('id')).subscribe(reviews => {
+  //       this.reviews = reviews;
+  //       this.reviews.map((elm: any) => {
+  //         if (elm.review != "") {
+  //           this.newreviws.push(elm)
+  //         }
+  //       })
+  //         this.newreviws.filter((elm: any) => {
+  //            if( this.userId == elm.userId._id)
+  //            {
+  //              this.checkreview=false;
+  //            }
+  //         })
+  //     })
+  //   })
 
-  addtotalReviwe() {
-    if (this.islogin == true) {
-      let flag = false;
-      let bookId;
-      let reviewId;
-      this.route.paramMap.subscribe((paramMap) => {
-        bookId = paramMap.get('id')
-      });
-      this.reviews.filter((elm: any) => {
-        if (this.userId == elm.userId._id) {
-          flag = true;
-          reviewId = elm._id;
-        }
-      })
+  // }
 
-      if (flag) {
-        let data = {
-          userId: this.userId,
-          bookId: bookId,
-          rating: this.getRate,
-          status: this.state,
-        }
+  // getStatus(e: any) {
+  //   if (this.islogin == true) {
+  //     this.state = e.value;
+  //   }
+  //   else {
+  //     this._Router.navigate(['/login']);
+  //   }
 
-        this._ReviewService.updatereview(data, reviewId);
+  // }
 
-        console.log(reviewId, data);
+  // getrate(e: any) {
+  //   if (this.islogin == true) {
+  //     this.getRate = e;
+  //   }
+  //   else {
+  //     this._Router.navigate(['/login']);
+  //   }
 
-      }
-      else {
-        let data = {
-          userId: this.userId,
-          bookId: bookId,
-          rating: this.getRate,
-          status: this.state,
-        }
-        this._ReviewService.addreviewToBook(data);
 
-        console.log(data);
+  // }
 
-      }
-    }
-    else {
-      this._Router.navigate(['/login']);
-    }
+  // addtotalReviwe() {
+  //   if (this.islogin == true) {
+  //     let flag = false;
+  //     let bookId;
+  //     let reviewId;
+  //     this.route.paramMap.subscribe((paramMap) => {
+  //       bookId = paramMap.get('id')
+  //     });
+  //     this.reviews.filter((elm: any) => {
+  //       if (this.userId == elm.userId._id) {
+  //         flag = true;
+  //         reviewId = elm._id;
+  //       }
+  //     })
 
-  }
+  //     if (flag) {
+  //       let data = {
+  //         userId: this.userId,
+  //         bookId: bookId,
+  //         rating: this.getRate,
+  //         status: this.state,
+  //       }
 
-  addReviwe(e: any) {
-    if (this.islogin == true) {
-      let flag = false;
-      let bookId;
-      let reviewId;
-      this.route.paramMap.subscribe((paramMap) => {
-        bookId = paramMap.get('id')
-      });
-      this.reviews.filter((elm: any) => {
-        if (this.userId == elm.userId._id) {
-          flag = true;
-          reviewId = elm._id;
+  //       this._ReviewService.updatereview(data, reviewId).subscribe({
+  //         next:(data)=>{
+  //           Swal.fire("review added successfully!",'',"success")
+  //           this.newreviws=this.newreviws.map((reviews:any)=>reviews);
+  //         },
+  //         error:(err)=>{
+  //           Swal.fire({
+  //             icon: "error",
+  //             title:'Oops...',
+  //             text:"Something went wrong",
+  //           })
+  //         }
+  //       });
 
-        }
-      })
+  //       console.log(reviewId, data);
 
-      if (flag) {
+  //     }
+  //     else {
+  //       let data = {
+  //         userId: this.userId,
+  //         bookId: bookId,
+  //         rating: this.getRate,
+  //         status: this.state,
+  //       }
+  //       this._ReviewService.addreviewToBook(data).subscribe({
+  //         next:(data)=>{
+  //           Swal.fire("review added successfully!",'',"success")
+  //           this._BooksService.getbookreviews(this.bookId).subscribe(data=>{
+  //             this.reviews=data;
+  //             console.log("data now is :",data,"the reviews array:",this.reviews)
+  //           });
+  //         },
+  //         error:(err)=>{
+  //           Swal.fire({
+  //             icon: "error",
+  //             title:'Oops...',
+  //             text:"Something went wrong",
+  //           })
+  //         }
+  //       });
 
-        let data = {
-          userId: this.userId,
-          bookId: bookId,
-          review: e.value
-        }
+  //       console.log(data);
 
-        this._ReviewService.updatereview(data, reviewId);
+  //     }
+  //   }
+  //   else {
+  //     this._Router.navigate(['/login']);
+  //   }
 
-        console.log(reviewId, data);
-        this.newreviws.push(
-          {
-            userId:{
-              firstname:this.userfirstname,
-              lastname:this.userlastname,
-              image:this.userimage,
-            },
-            bookId:bookId,
-            review: e.value,
-          }) 
+  // }
 
-         this.checkreview=false;
+  // addReviwe(e: any) {
+  //   if (this.islogin == true) {
+  //     let flag = false;
+  //     let bookId;
+  //     let reviewId;
+  //     this.route.paramMap.subscribe((paramMap) => {
+  //       bookId = paramMap.get('id')
+  //     });
+  //     this.reviews.filter((elm: any) => {
+  //       if (this.userId == elm.userId._id) {
+  //         flag = true;
+  //         reviewId = elm._id;
 
-      }
-      else {
+  //       }
+  //     })
+
+  //     if (flag) {
+
+  //       let data = {
+  //         userId: this.userId,
+  //         bookId: bookId,
+  //         review: e.value
+  //       }
+
+  //       this._ReviewService.updatereview(data, reviewId).subscribe({
+  //         next:(v)=>{
+  //           Swal.fire("review added successfully!",'',"success")
+  //           this._BooksService.getbookreviews(this.bookId).subscribe(data=>{
+  //             this.reviews=data;
+  //             console.log("data now is :",data,"the reviews array:",this.reviews)
+  //           });
+  //         },
+  //         error:(err)=>{
+  //           Swal.fire({
+  //             icon: "error",
+  //             title:'Oops...',
+  //             text:"Something went wrong",
+  //           })
+  //         }
+  //       });
+
+  //       console.log(reviewId, data);
+  //       this.newreviws.push(
+  //         {
+  //           userId:{
+  //             firstname:this.userfirstname,
+  //             lastname:this.userlastname,
+  //             image:this.userimage,
+  //           },
+  //           bookId:bookId,
+  //           review: e.value,
+  //         }) 
+
+  //        this.checkreview=false;
+
+  //     }
+  //     else {
 
            
-        let data = {
-          userId: this.userId,
-          bookId: bookId,
-          review: e.value
-        }
-        this._ReviewService.addreviewToBook(data);
+  //       let data = {
+  //         userId: this.userId,
+  //         bookId: bookId,
+  //         review: e.value
+  //       }
+  //       this._ReviewService.addreviewToBook(data);
 
-        console.log(data);
+  //       console.log(data);
 
-        this.newreviws.push(
-                  {
-                    userId:{
-                      firstname:this.userfirstname,
-                      lastname:this.userlastname,
-                      image:this.userimage,
-                    },
-                    bookId:bookId,
-                    review: e.value,
-                  }) 
+  //       this.newreviws.push(
+  //                 {
+  //                   userId:{
+  //                     firstname:this.userfirstname,
+  //                     lastname:this.userlastname,
+  //                     image:this.userimage,
+  //                   },
+  //                   bookId:bookId,
+  //                   review: e.value,
+  //                 }) 
       
-        this.checkreview=false;
+  //       this.checkreview=false;
 
-      }
-    }
-    else {
-      this._Router.navigate(['/login']);
-    }
-
-
-  }
+  //     }
+  //   }
+  //   else {
+  //     this._Router.navigate(['/login']);
+  //   }
 
 
+  // }
 
 
-  remove(e: any) {
-    if (this.islogin == true) {
+
+
+  // remove(e: any) {
+  //   if (this.islogin == true) {
     
-         if(this.userId == e.userId._id)
-         {
-              let bookId;
-              let reviewId = e._id;
-              this.route.paramMap.subscribe((paramMap) => {
-                bookId = paramMap.get('id')
-              });
-            let data = {
-            userId: this.userId,
-            bookId: bookId,
-            review: ""
-          }
+  //        if(this.userId == e.userId._id)
+  //        {
+  //             let bookId;
+  //             let reviewId = e._id;
+  //             this.route.paramMap.subscribe((paramMap) => {
+  //               bookId = paramMap.get('id')
+  //             });
+  //           let data = {
+  //           userId: this.userId,
+  //           bookId: bookId,
+  //           review: ""
+  //         }
   
-          this._ReviewService.updatereview(data, reviewId);
-          this.newreviws.splice(e, 1);
-          this.checkreview = true;
+  //         this._ReviewService.updatereview(data, reviewId);
+  //         this.newreviws.splice(e, 1);
+  //         this.checkreview = true;
 
 
-         }
+  //        }
       
         
           
-    }
-    else {
-      this._Router.navigate(['/login']);
-    }
+  //   }
+  //   else {
+  //     this._Router.navigate(['/login']);
+  //   }
 
 
-  }
+  // }
 
 
 
 
 
-  edit(e: any) 
-  {
-    if (this.islogin == true) {
-         console.log("asdfvddvd")
-          // if(this.userId == e.userId._id)
-          // {
-          //      this.checkreview=true
-          //     this.checkEdit = true 
-          //     this.editvalue=e.review
+  // edit(e: any) 
+  // {
+  //   if (this.islogin == true) {
+  //        console.log("asdfvddvd")
+  //         // if(this.userId == e.userId._id)
+  //         // {
+  //         //      this.checkreview=true
+  //         //     this.checkEdit = true 
+  //         //     this.editvalue=e.review
               
-          //     let bookId;
-          //     let reviewId = e._id;
-          //   this.route.paramMap.subscribe((paramMap) => {
-          //       bookId = paramMap.get('id')
-          //     });
-          // let data = {
-          //    userId: this.userId,
-          //   bookId: bookId,
-          //   review: this.newEditvalue
-          //  }
+  //         //     let bookId;
+  //         //     let reviewId = e._id;
+  //         //   this.route.paramMap.subscribe((paramMap) => {
+  //         //       bookId = paramMap.get('id')
+  //         //     });
+  //         // let data = {
+  //         //    userId: this.userId,
+  //         //   bookId: bookId,
+  //         //   review: this.newEditvalue
+  //         //  }
 
-          //  this._ReviewService.updatereview(data, reviewId);
+  //         //  this._ReviewService.updatereview(data, reviewId);
          
 
 
-          // }
+  //         // }
 
 
 
-    }
-    else {
-      this._Router.navigate(['/login']);
-    }
-  }
-
-
-
-
+  //   }
+  //   else {
+  //     this._Router.navigate(['/login']);
+  //   }
+  // }
 
 
 
 
 
 
-  ngOnInit() {
-  }
+
+
+
+
+  // ngOnInit() {
+  // }
 
 }
 

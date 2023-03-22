@@ -5,8 +5,9 @@
                    <div class=" h-50 ">
                     <a routerLink='/books/{{ book._id }}' ><img class="unimation" [src]="book.image" >  </a> 
                    </div>          
-                   <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h1" style="color:  #45171d;"><b>{{book.title | titlecase }}</b></h1> </a> 
-                   <a routerLink='/authors/{{ book?.authorId._id }}' ><h6 class="my-2 h3" style="color:  #45171d;font-size: 1vw;opacity: 0.9;">{{book?.authorId.firstName}} {{book?.authorId.lastName}}</h6> </a>       
+                   <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h1" style="color:  #45171d;"><b>{{book.title | titlecase }}</b></h1> </a> +
+                   {{book.authorId._id}}
+                   <a routerLink='/authors/{{ book.authorId }}' ><h6 class="my-2 h3" style="color:  #45171d;font-size: 1vw;opacity: 0.9;">{{book.authorId.firstName}} {{book.authorId.lastName}}</h6> </a>       
                </div>
        </div>
     </div>

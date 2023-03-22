@@ -1,0 +1,97 @@
+<div class="container py-5">
+    <div class="row">
+         <div class="col-md-4">
+              <img class="w-100 image" [src]="bookImage+book?.image">
+              <mat-form-field appearance="fill" style="width: 26vw;margin-top: 1rem;">
+                   <mat-label style="color: #45171d ;"><b> {{userReview?.status}} </b></mat-label>
+                   <mat-select class="selected" (selectionChange)="getStatus($event)">
+                        <mat-option class="select" *ngFor="let status of status" [value]="status?.value">
+                             <b> {{status?.viewValue}} </b>
+                        </mat-option>
+                   </mat-select>
+              </mat-form-field>
+
+              
+              <div style="display: flex; align-items: center;margin-left: 2rem;">
+               <p-rating [ngModel]="userReview?.rating" (onRate)="getrate($event)"  [cancel]="false"></p-rating>
+              </div>
+
+         </div>
+
+         <div class="col-md-8">
+
+              <h1 class="head1"><b>{{book?.title}}</b> <button (click)="addReview()"
+                        class=" fw-bold small mb-0 me-1 " style="margin-left: 20rem;background-color:#ebccb3d5  ;"><i
+                             class="fa-solid fa-circle-plus"></i></button></h1>
+              <a routerLink='/authors/{{authorObj?._id}}'>
+                   <h3 class="head3">{{authorObj?.firstName}} {{authorObj?.lastName}}</h3>
+              </a>
+              <a routerLink='/categories/{{ categoryObj?._id }}'>
+                   <h5 class="head5">{{categoryObj?.name}}</h5>
+              </a>
+              <div style="display: flex; align-items: center;margin-top: 1rem;margin-bottom: 1rem;">
+               <p-rating [ngModel]="bookRate.avg" [readonly]="true" [cancel]="false"></p-rating>
+                   <p style="font-size: 2rem;margin-left: 1rem;color: #45171d;"><b>{{bookRate.avg}} - {{bookRate.count}}
+                             ratings</b></p>
+              </div>
+              <p class="paragraph">{{book?.description}}/p>
+         </div>
+
+    </div>
+</div>
+<section class="container" style="  background-color: #f7f6f6;">
+    <div class=" my-5 py-5 text-dark">
+         <div class="row d-flex justify-content-center">
+              <h4 style="color: #45171d;margin-bottom: 30rem;font-size: 3vw;text-align: center;" class=" mb-0 mt-3">
+                   <b>Reviwes</b>
+              </h4>
+              <div class="col-md-12 col-lg-10 col-xl-8">
+                   <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-floating">
+                             <textarea #newreviews class="form-control"
+                                  style="color:#45171d;border: 0px;width: 45vw;height: 12vh;margin-top: 3rem;"
+                                  id="comment" name="text" placeholder="Comment goes here"></textarea>
+                             <label for="comment" class="wt-5"><b>Comments</b></label>
+                        </div>
+                        <div class="card mt-3">
+                             <div class="card-body p-2 d-flex align-items-center">
+                                  <!-- <button (click)="addReviwe(newreviews)"
+                                  
+                                       class="text-primary fw-bold small mb-0 me-1 ">Add</button> -->
+                                  
+                             </div>
+                        </div>
+                   </div>
+                   <!-- ********************************************************************
+                          ******************************************************************** -->
+
+                   <!-- <div *ngFor="let review of newreviws" class="card mb-3">
+                        <div class="card-body">
+                             <div class="d-flex flex-start">
+                                  <img class="rounded-circle shadow-1-strong me-3"
+                                       [src]="imageFromBackEnd+review.userId?.image" alt="avatar" width="40"
+                                       height="40" />
+                                  <div class="w-100">
+                                       <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h6 class="text-primary fw-bold mb-0">
+                                                 {{review?.userId?.firstname}} {{review?.userId?.lastname}}
+                                            </h6>
+                                       </div>
+                                       <div class="d-flex justify-content-between align-items-center">
+                                            <p class="fw-bold mb-0 w-100" style="color:#45171d;border: 0px;"
+                                                 placeholder="comments">{{review?.review}}</p>
+                                       </div><br>
+                                       <p class="small mb-0">
+                                            <button (click)="remove(review)"
+                                                 class="text text-primary"><b>remove</b></button>
+                                            <button (click)="edit(review)"
+                                                 class="ms-3 text-primary"><b>edit</b></button>
+                                       </p>
+                                  </div>
+                             </div>
+                        </div>
+                   </div> -->
+              </div>
+         </div>
+    </div>
+</section>

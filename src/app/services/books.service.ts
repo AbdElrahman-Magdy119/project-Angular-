@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Rate } from '../interface/Rate';
+import { Review } from '../interface/review';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,8 +37,8 @@ export class BooksService {
     )
   }
 
-  getUserrateFromBook(id_user: any,id_book:any): Observable<Rate> {
-    return this.http.get<Rate>(
+  getUserrateFromBook(id_user: any,id_book:any): Observable<Review> {
+    return this.http.get<Review>(
       `http://localhost:5000/reviews/${id_user}/${id_book}`
     )
   }

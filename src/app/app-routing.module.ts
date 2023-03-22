@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { AuthorsComponent } from './component/authors/authors.component';
+import { BookDetailsComponent } from './component/book-details/book-details.component';
 import { BooksComponent } from './component/books/books.component';
 import { CategoriesComponent } from './component/categories/categories.component';
 import { HomeComponent } from './component/home/home.component';
@@ -26,7 +27,7 @@ const routes: Routes = [
     {path:'search'  , component: SearchComponent},
     {path:'categories'  , component: CategoriesComponent},
     {path:'mybooks'  , component: MybooksComponent},
-    {path:'books/:id'  , component: OnebookComponent},
+    {path:'books/:id'  , component: BookDetailsComponent},
     {path:'authors/:id'  , component: OneAuthorComponent},
     {path:'categories/:id'  , component: OneCategoryComponent},
   ]},

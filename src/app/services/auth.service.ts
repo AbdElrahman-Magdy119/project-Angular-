@@ -34,7 +34,10 @@ export class AuthService {
 
 
 
-
+   getuser():Observable<user | null>
+   {
+     return this.currentuser.asObservable();
+   }
 
 
 

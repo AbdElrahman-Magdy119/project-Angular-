@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { Review } from '../interface/review';
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +29,10 @@ export class ReviewService {
 
 
 
-   addreviewToBook(data: any): void {
-        this.http.post('http://localhost:5000/reviews/',data,
+   addreviewToBook(data: any): Observable<any> {
+        return this.http.post('http://localhost:5000/reviews/',data,
         {
           headers: new HttpHeaders().set('x-token',`${this.usertoken.value}`),
-        })
-
-        
-        .subscribe( res =>{
         })
   }
 
@@ -52,15 +49,11 @@ export class ReviewService {
 }
 
 
-   updatereview(data:any,id:any)
+   updatereview(data:any,id:any):Observable<any>
    {
-    this.http.patch(`http://localhost:5000/reviews/${id}`,data,
+    return this.http.patch(`http://localhost:5000/reviews/${id}`,data,
     {
       headers: new HttpHeaders().set('x-token',`${this.usertoken.value}`),
-    })
-
-    
-    .subscribe( res =>{
     })
 
    }

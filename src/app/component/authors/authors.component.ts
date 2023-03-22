@@ -44,8 +44,11 @@ export class AuthorsComponent {
 
   setPage(page: number) {
     this.currentPage = page;
-    // this.paginated = this.books.slice(this.count,this.pageSize);
-    console.log(page)
+    let start = this.currentPage *2-2
+    let end = this.currentPage *2
+     this.paginated = this.authors.slice(this.currentPage *2-2,this.currentPage *2);
+    this.count = this.currentPage *2-2;
+    this.pageSize = this.currentPage *2;
   }
 
   nextPage() {
