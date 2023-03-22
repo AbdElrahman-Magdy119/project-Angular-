@@ -1,5 +1,4 @@
 
-
 <div class="container-fluid">
     <div class="row flex-nowrap">
       <div
@@ -58,7 +57,7 @@
       
            <tbody *ngFor="let userbook of userbooks">
             <tr>
-              <td class="w-25"> <a> <img  routerLink="/books/{{userbook.book.bookId._id}}"  class="w-25  unimation" [src]="userbook.book.bookId.image" /> </a> </td>
+              <td class="w-25"> <a> <img  routerLink="/books/{{userbook.book.bookId._id}}"  class="w-25  unimation" [src]="image + '/' + userbook.book.bookId.image" [src]="userbook.book.bookId.image" /> </a> </td>
               <td  > <a    routerLink="/books/{{userbook.book.bookId._id}}"  class="text-danger " ><b> {{ userbook.book.bookId.title }}</b></a></td>
               <td>
               <a  routerLink="/authors/{{userbook.authors._id}}" class="text-danger" > <b>  {{ userbook.authors.firstName }} {{ userbook.authors.lastName  }} </b> </a>

@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-onebook',
   templateUrl: './onebook.component.html',
-  styleUrls: ['./onebook.component.css']
+  styleUrls: ['./onebook.component.css'],
 })
 export class OnebookComponent {
   imageFromBackEnd=`${environment.APIBaseURL}/assets/uploads/user/`
@@ -30,7 +30,7 @@ export class OnebookComponent {
   add!: number[];
   new_review!: string;
   star: boolean = false;
-  oneuser!: any
+  oneuser!: any;
   userId!: string;
   userimage!: any;
   userfirstname!: any;
@@ -40,7 +40,7 @@ export class OnebookComponent {
   getUserRate?: any;
   checkreview = true;
   checkEdit = false;
-  editvalue!:string;
+  editvalue!: string;
   newEditvalue!: string;
   status = [
     { value: 'reading', viewValue: 'reading' },
@@ -367,6 +367,7 @@ export class OnebookComponent {
   //         //  this._ReviewService.updatereview(data, reviewId);
          
 
+      //  this._ReviewService.updatereview(data, reviewId);
 
   //         // }
 

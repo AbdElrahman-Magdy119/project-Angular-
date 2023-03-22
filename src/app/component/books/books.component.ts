@@ -4,24 +4,25 @@ import {BooksService} from '../../services/books.service';
 import {author} from '../../interface/authors';
 import {AuthorsService} from '../../services/authors.service';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
 })
 export class BooksComponent {
+  image = `${environment.APIBaseURL}/assets/uploads/book`;
 
-
-
-    books!: book[] ;
-    authors!:any[];
-    newbook!:book[];
-    paginated!: any[];
-    currentPage!: number;
-    pageSize!: number;
-    totalPages!: number;
-    pages: number[] = [];
-    count: number = 0;
+  books!: book[];
+  authors!: any[];
+  newbook!: book[];
+  paginated!: any[];
+  currentPage!: number;
+  pageSize!: number;
+  totalPages!: number;
+  pages: number[] = [];
+  count: number = 0;
   // books.name.tolowercase()
 
      constructor(private _BooksService: BooksService,private _AuthorsService: AuthorsService)
@@ -90,4 +91,5 @@ export class BooksComponent {
 
   }
 
+  
 }
