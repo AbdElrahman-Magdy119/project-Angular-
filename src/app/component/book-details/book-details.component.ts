@@ -49,10 +49,10 @@ export class BookDetailsComponent implements OnInit{
       count:0
     }
     this.userId=''
-    
+
   }
   ngOnInit() {
-    
+
     this.activatedRoute.paramMap.subscribe(params => {
       this.bookId=params.get('id');
       this.bookService.getbook(this.bookId).subscribe(book=>{
@@ -105,58 +105,55 @@ export class BookDetailsComponent implements OnInit{
     }
   }
 
-  addReview()
-  { 
-    let data={
-      userId:this.userId,
-      bookId:this.bookId, 
-      rating:this.userRate,
-      review:"", 
-      status:this.userStatus 
-    }
-
-     if(this.userReview.rating)
-     {
-      
-        // console.log('data before send',this.userReview._id);
-        this.ReviewService.updatereview(data,this.userReview._id).subscribe({
-                  next:(d)=>{
-                    console.log('data after',d);
-                    Swal.fire("review added successfully!",'',"success")
-                    this.bookService.getbookrate(this.bookId).subscribe(bookRate=>{
-                      this.bookRate=bookRate
-                    });
-                  },
-                  error:(err)=>{
-                    Swal.fire({
-                      icon: "error",
-                      title:'Oops...',
-                      text:"Something went wrong",
-                    })
-                  }
-                })
-     }
-     else
-     {
-          this.ReviewService.addreviewToBook(data).subscribe({
-            next:(d)=>{
-              console.log('data after',d);
-              Swal.fire("review added successfully!",'',"success")
-              this.bookService.getbookrate(this.bookId).subscribe(bookRate=>{
-                this.bookRate=bookRate
-              });
-            },
-            error:(err)=>{
-              Swal.fire({
-                icon: "error",
-                title:'Oops...',
-                text:"Something went wrong",
-              })
-            }
-          })
-        
-     }
-
+addReview() {
+  if (!this.userId) {
+    this.router.navigate(['/login']);
+    return;
   }
-  
+
+  const data = {
+    userId: this.userId,
+    bookId: this.bookId,
+    rating: this.userRate,
+    review: "",
+    status: this.userStatus,
+  };
+
+  if (this.userReview && this.userReview._id) {
+    this.ReviewService.updatereview(data, this.userReview._id).subscribe({
+      next: (d) => {
+        console.log('data after', d);
+        Swal.fire("review added successfully!", "", "success");
+        this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
+          this.bookRate = bookRate;
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: "error",
+          title: 'Oops...',
+          text: "Something went wrong",
+        });
+      },
+    });
+  } else {
+    this.ReviewService.addreviewToBook(data).subscribe({
+      next: (d) => {
+        console.log('data after', d);
+        Swal.fire("review added successfully!", "", "success");
+        this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
+          this.bookRate = bookRate;
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: "error",
+          title: 'Oops...',
+          text: "Something went wrong",
+        });
+      },
+    });
+  }
+}
+
 }
