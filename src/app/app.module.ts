@@ -27,13 +27,18 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxStarsModule } from 'ngx-stars';
 import { SearchComponent } from './component/search/search.component';
 import { MybooksComponent } from './component/mybooks/mybooks.component';
-
+import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule } from '@angular/forms';
-
+import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import {RatingModule} from 'primeng/rating';
+import { MatTable, MatTableDataSource, MatTableModule, _MatTableDataSource } from '@angular/material/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +59,8 @@ import {RatingModule} from 'primeng/rating';
     SearchComponent,
     MybooksComponent,
     BookDetailsComponent,
-    
+    SidebarComponent,
+
 
   ],
 
@@ -74,7 +80,12 @@ import {RatingModule} from 'primeng/rating';
     MatMenuModule,
     MatIconModule,
     RatingModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatDividerModule,
+    MatSidenavModule,
+    MatListModule,
+    DropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

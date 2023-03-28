@@ -28,7 +28,7 @@ export class CategoriesComponent {
       console.log(this.catagories);
     });
     this.currentPage = 1;
-    this.pageSize = 2;
+    this.pageSize = 2 ;
     this.totalPages = 5;
     this.pages = [];
     this.paginated = [];

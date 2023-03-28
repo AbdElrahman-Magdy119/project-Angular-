@@ -3,15 +3,15 @@ html{
 }
 
 a{
-    color: #ebccb3d5  !important;
-    font-size: 20px !important  ;
+    color: #ebccb3d5  ;
+    font-size: 20px   ;
     text-decoration: none ;
-   
+
 }
 
 a:hover{
-    font-size: 22px !important ;
-    color: #ebccb3d5  !important;
+    font-size: 22px ;
+    color: #ebccb3d5  ;
    text-decoration: none;
 }
 label{
