@@ -21,6 +21,8 @@ export class HomeComponent {
   authors: any[] = [];
   categories: any[] = [];
   uniquecategories: any[] = [];
+  uniqueauthors:any[]=[];
+
   constructor(private _HomeService: HomeService) {
     this._HomeService.getAlldata().subscribe((populardata) => {
       populardata.map((elm: any) => {
@@ -32,6 +34,12 @@ export class HomeComponent {
         (obj, index) =>
           this.categories.findIndex((item) => item._id === obj._id) === index
       );
+
+      this.uniqueauthors = this.authors.filter(
+        (obj, index) =>
+          this.authors.findIndex((item) => item._id === obj._id) === index
+      );
+
     });
   }
 }

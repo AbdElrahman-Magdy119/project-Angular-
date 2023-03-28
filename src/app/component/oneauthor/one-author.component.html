@@ -28,8 +28,7 @@
             <div class="col-2" style="width: 70vw;" >
                 <h3><b> {{authorBook.book.title}}</b></h3>
                 <div class="flex-row mt-4 me-1 h-50" style="display: flex; align-items: center;">
-                    <ngx-stars [readonly]="true" [size]="2" [maxStars]="5" [color]="'#ff9f43'"
-                        [initialStars]="authorBook.avg.avg"></ngx-stars>
+                   <p-rating [ngModel]="authorBook.avg.avg" [readonly]="true" [cancel]="false"></p-rating>
                     <h6 class="ms-2"><b>{{authorBook.avg.avg}} - {{authorBook.avg.count}} ratings</b></h6>
                     <a  routerLink="/books/{{authorBook.book._id}}" class="btn btn-danger h-50 w-25" style="margin-left: 30rem;display: flex; justify-content: center;"><b>Go to Book</b></a>
                 </div>

@@ -57,7 +57,7 @@
       
            <tbody *ngFor="let userbook of userbooks">
             <tr>
-              <td class="w-25"> <a> <img  routerLink="/books/{{userbook.book.bookId._id}}"  class="w-25  unimation" [src]="image + '/' + userbook.book.bookId.image" [src]="userbook.book.bookId.image" /> </a> </td>
+              <td  style="width: 5rem;"> <a> <img style="width:4rem;" routerLink="/books/{{userbook.book.bookId._id}}"  class="unimation" [src]="image + '/' + userbook.book.bookId.image" /> </a> </td>
               <td  > <a    routerLink="/books/{{userbook.book.bookId._id}}"  class="text-danger " ><b> {{ userbook.book.bookId.title }}</b></a></td>
               <td>
               <a  routerLink="/authors/{{userbook.authors._id}}" class="text-danger" > <b>  {{ userbook.authors.firstName }} {{ userbook.authors.lastName  }} </b> </a>
@@ -72,21 +72,16 @@
                     margin-bottom: 1rem;
                   "
                 >
-                  <ngx-stars
-                    [readonly]="true"
-                    [size]="1"
-                    [maxStars]="5"
-                    [color]="'#ff9f43'"
-                    [initialStars]="userbook.avg_rating "
-                  ></ngx-stars>
+                <p-rating [ngModel]="userbook.avg_rating" 
+                [readonly]="true" [cancel]="false"></p-rating>
                 </div>
               </td>
               <td>
                 <div
                   style="display: flex; align-items: center; margin-top: 1rem; margin-bottom: 1rem;"
                 >
-                <ngx-stars [readonly]="true" [size]="1" [maxStars]="5" [color]="'#ff9f43'"
-                [initialStars]="userbook.book.rating "></ngx-stars>
+                <p-rating [ngModel]="userbook.book.rating" 
+                [readonly]="true" [cancel]="false"></p-rating>
                 </div>
               </td>
               <td>
