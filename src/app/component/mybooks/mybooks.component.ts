@@ -46,7 +46,7 @@ export class MybooksComponent {
     private _AuthService: AuthService
   ) {
     this.currentPage = 1;
-    this.pageSize = 2;
+    this.pageSize = 5;
     this.totalPages = 5;
     this.pages = [];
     this.paginated = [];
@@ -87,11 +87,11 @@ export class MybooksComponent {
 
   setPage(page: number) {
     this.currentPage = page;
-    let start = this.currentPage *2-2
-    let end = this.currentPage *2
-    this.paginated = this.userbooks.slice(this.currentPage *2-2,this.currentPage *2);
-    this.count = this.currentPage *2-2;
-    this.pageSize = this.currentPage *2;
+    let start = this.currentPage *5-5
+    let end = this.currentPage *5
+    this.paginated = this.userbooks.slice(this.currentPage *5-5,this.currentPage *5);
+    this.count = this.currentPage *5-5;
+    this.pageSize = this.currentPage *5;
   }
 
   nextPage() {
@@ -100,8 +100,8 @@ export class MybooksComponent {
     }
     // console.log('next');
 
-    this.count += 2;
-    this.pageSize += 2;
+    this.count += 5;
+    this.pageSize += 5;
     this.paginated=this.userbooks.slice(this.count,this.pageSize)
   }
 
@@ -110,8 +110,8 @@ export class MybooksComponent {
       this.currentPage--;
     }
     console.log('prev');
-    this.count -= 2;
-    this.pageSize -= 2;
+    this.count -= 5;
+    this.pageSize -= 5;
     this.paginated = this.userbooks.slice(this.count,this.pageSize);
   }
 }
