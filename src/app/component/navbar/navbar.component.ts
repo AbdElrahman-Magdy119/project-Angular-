@@ -21,8 +21,8 @@ export class NavbarComponent {
   searchdata!: any
 
 
-  myImage = `${environment.APIBaseURL}/assets/uploads/user/${localStorage.getItem('image')}`
-  userName = localStorage.getItem('userName')
+  myImage = `${environment.APIBaseURL}/assets/uploads/user/`
+  userName!:string
 
   constructor(private _location: Location, private _AuthService: AuthService, private _UserService: UserService, private _Router: Router) {
 
@@ -36,8 +36,10 @@ export class NavbarComponent {
 
       this.oneuser = user;
       _UserService.getuser(this.oneuser?.email).subscribe(I => {
+  
+        
         this.image = I?.image;
-
+        this.userName = I?.firstname +" "+ I?.lastname;
       })
 
     })

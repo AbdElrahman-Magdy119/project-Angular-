@@ -15,6 +15,7 @@ import { OneAuthorComponent } from './component/oneauthor/one-author.component';
 import { OnebookComponent } from './component/onebook/onebook.component';
 import { RegisterComponent } from './component/register/register.component';
 import { SearchComponent } from './component/search/search.component';
+import { UserprofileComponent } from './component/userprofile/userprofile.component';
 
 const routes: Routes = [
   {path:'',component:MainComponentComponent,children:[
@@ -27,6 +28,7 @@ const routes: Routes = [
     {path:'search'  , component: SearchComponent},
     {path:'categories'  , component: CategoriesComponent},
     {path:'mybooks'  , component: MybooksComponent},
+    {path:'userprofile'  , component: UserprofileComponent},
     {path:'books/:id'  , component: BookDetailsComponent},
     {path:'authors/:id'  , component: OneAuthorComponent},
     {path:'categories/:id'  , component: OneCategoryComponent},

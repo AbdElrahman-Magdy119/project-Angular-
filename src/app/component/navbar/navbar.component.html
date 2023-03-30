@@ -41,7 +41,7 @@ top: 0; z-index: 1;background-color: #45171d; ">
           <ng-container *ngIf="islogin">
             <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center "
               style="background-color:#45171d;">
-              <img [src]="myImage" alt="" class="rounded-circle profile p-2">
+              <img [src]="myImage+image" alt="" class="rounded-circle profile p-2">
               {{userName}}
               <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
             </button>

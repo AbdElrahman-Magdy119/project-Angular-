@@ -27,14 +27,19 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxStarsModule } from 'ngx-stars';
 import { SearchComponent } from './component/search/search.component';
 import { MybooksComponent } from './component/mybooks/mybooks.component';
-
 import { FormsModule } from '@angular/forms';
 
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import {RatingModule} from 'primeng/rating';
-
+import { UserprofileComponent } from './component/userprofile/userprofile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+import { MatConfirmDialogComponent } from './component/mat-confirm-dialog/mat-confirm-dialog.component';
+// import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +59,8 @@ import {RatingModule} from 'primeng/rating';
     SearchComponent,
     MybooksComponent,
     BookDetailsComponent,
+    UserprofileComponent,
+    MatConfirmDialogComponent,
     
 
   ],
@@ -74,9 +81,16 @@ import {RatingModule} from 'primeng/rating';
     MatMenuModule,
     MatIconModule,
     RatingModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatToolbarModule
+   // NgxUsefulSwiperModule,
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[UserprofileComponent,MatConfirmDialogComponent]
 })
 export class AppModule { }
