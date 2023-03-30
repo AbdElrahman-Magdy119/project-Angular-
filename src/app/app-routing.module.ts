@@ -17,21 +17,23 @@ import { RegisterComponent } from './component/register/register.component';
 import { SearchComponent } from './component/search/search.component';
 
 const routes: Routes = [
-  {path:'',component:MainComponentComponent,children:[
-    {path:'',redirectTo:'home',pathMatch:'full'},
-    {path:'home'  , component: HomeComponent},
-    {path:'login', component:LoginComponent},
-    {path:'register', component: RegisterComponent},
-    {path:'authors' , component: AuthorsComponent},
-    {path:'books'  , component: BooksComponent},
-    {path:'search'  , component: SearchComponent},
-    {path:'categories'  , component: CategoriesComponent},
-    {path:'mybooks'  , component: MybooksComponent},
-    {path:'books/:id'  , component: BookDetailsComponent},
-    {path:'authors/:id'  , component: OneAuthorComponent},
-    {path:'categories/:id'  , component: OneCategoryComponent},
-  ]},
-  {path:'**', component:NotfoundComponent },
+  {
+    path: '', component: MainComponentComponent, children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'authors', component: AuthorsComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'books', component: BooksComponent },
+      { path: 'search', component: SearchComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'mybooks', component: MybooksComponent },
+      { path: 'books/:id', component: BookDetailsComponent },
+      { path: 'authors/:id', component: OneAuthorComponent },
+      { path: 'categories/:id', component: OneCategoryComponent },
+    ]
+  },
+  { path: 'register', component: RegisterComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({

@@ -22,8 +22,8 @@ top: 0; z-index: 1;background-color: #45171d; ">
         <li class="nav-item">
           <a class="nav-link active " aria-current="page" routerLink="authors">Authors</a>
         </li>
-        <form *ngIf="islogin"  class="d-flex " role="search">
-          <input  #searchinput class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+        <form *ngIf="islogin" class="d-flex " role="search">
+          <input #searchinput class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
             style="margin-left:20rem;">
           <a (click)="getresult(searchinput)" class="btn btn-outline-success" routerLink="Search">Search</a>
         </form>
@@ -49,6 +49,10 @@ top: 0; z-index: 1;background-color: #45171d; ">
               <button mat-menu-item (click)="getstate()" routerLink="mybooks?state=all">
                 <mat-icon>arrow_right_alt</mat-icon>
                 My Books
+              </button>
+              <button mat-menu-item routerLink="/userprofile">
+                <mat-icon>arrow_right_alt</mat-icon>
+                My Profile
               </button>
               <button mat-menu-item (click)="islogout()">
                 <mat-icon>exit_to_app</mat-icon>

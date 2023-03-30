@@ -33,7 +33,7 @@ import { FormsModule } from '@angular/forms';
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { BookDetailsComponent } from './component/book-details/book-details.component';
-import {RatingModule} from 'primeng/rating';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,7 @@ import {RatingModule} from 'primeng/rating';
     SearchComponent,
     MybooksComponent,
     BookDetailsComponent,
-    
+
 
   ],
 
