@@ -1,9 +1,11 @@
-<div>
-    <div class="content-container">
+<div class="container ">
+    <div class="d-flex justify-content-between h-50">
+      <span class="content-span full-width mt-5 mx-auto fs-5"><b>{{data.message}}</b></span>
       <mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon>
-      <span class="content-span full-width">{{data.message}}</span>
     </div>
-    <button mat-flat-button id="no-button" [mat-dialog-close]="false">NO</button>
-    <button mat-flat-button id="yes-button" [mat-dialog-close]="true">YES</button>
+    <div class="d-flex justify-content-around mt-4">
+    <button class="btn btn-danger w-25" mat-flat-button id="no-button" [mat-dialog-close]="false">NO</button>
+    <button class="btn btn-info  w-25" mat-flat-button id="yes-button" [mat-dialog-close]="true">YES</button>
+   </div>
   </div>
   
