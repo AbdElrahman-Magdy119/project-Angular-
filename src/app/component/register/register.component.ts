@@ -48,7 +48,6 @@ export class RegisterComponent {
 
   uploadFile(event: any) {
     this.selectedImage = <File>event.target.files[0];
-    console.log(this.selectedImage);
   }
 
 

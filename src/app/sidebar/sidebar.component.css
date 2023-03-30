@@ -1,0 +1,40 @@
+.headerText {
+  color: #b3b3bb;
+  text-align: center;
+}
+
+.logo {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+img {
+  width: 200px;
+}
+.mat-icon {
+  vertical-align: center;
+  margin-right: 1rem;
+  position: relative;
+  top: 5px;
+}
+.mat-divider {
+  border-top: 2px solid white;
+}
+.content {
+  margin: auto;
+  padding: 15px;
+}
+.content-anhor {
+  display: block;
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #b3b3bb;
+  margin: 5px 5px;
+  padding: 10px;
+}
+.content-anhor:hover{
+  background-color: #fdedf0;
+  color: #ff7774;
+  border-left: 4px solid #f24452;
+}
+
+

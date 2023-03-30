@@ -15,6 +15,7 @@ import { OneAuthorComponent } from './component/oneauthor/one-author.component';
 import { OnebookComponent } from './component/onebook/onebook.component';
 import { RegisterComponent } from './component/register/register.component';
 import { SearchComponent } from './component/search/search.component';
+import { UserprofileComponent } from './component/userprofile/userprofile.component';
 
 const routes: Routes = [
   {

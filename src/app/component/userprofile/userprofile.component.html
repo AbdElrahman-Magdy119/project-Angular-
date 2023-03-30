@@ -1,0 +1,168 @@
+<div class="container mt-5">
+    <div class="main-body" >
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card" style="background-color:#f1f5f9;">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img [src]="userImage+user?.image" alt="Admin" class="rounded-circle p-1 bg-primary"
+                                width="110">
+                            <div class="mt-3">
+                                <h4 style="color:#ff6f6b;">{{user?.firstname}} {{user?.lastname}}</h4>
+                                <p style="color:#ff6f6b;" class="mb-1">{{user?.email}}</p><br>
+                                <p-rating [ngModel]="userrate?.rate" [readonly]="true" [cancel]="false"></p-rating><br>
+
+                                <button (click)="deleteaccount()" class="btn btn-danger">Delete Account</button><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8" >
+                <form [formGroup]="newUserForm" (ngSubmit)="submitRegister()" >
+                    <div class="card" style="background-color:#f1f5f9;">
+                        <div class="card-body">
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">FirstName</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input formControlName="firstname" type="text" class="form-control">
+                                    <div *ngIf="newUserForm.get('firstname')?.errors != null && newUserForm.get('firstname')?.touched"
+                                    class="alert alert-light my-2  w-75" style="height: 8vh;">
+                                    <p style="color: red;" *ngIf="newUserForm.get('firstname')?.errors?.['required']">firstname is required</p>
+                                    <p style="color: red;" *ngIf="newUserForm.get('firstname')?.errors?.['minlength']">firstname is minlength 3
+                                    </p>
+                                    <p style="color: red;" *ngIf="newUserForm.get('firstname')?.errors?.['maxlength']">firstname is maxlength 10
+                                    </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">LastName</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input formControlName="lastname" type="text" class="form-control" >
+                                    <div *ngIf="newUserForm.get('lastname')?.errors != null && newUserForm.get('lastname')?.touched"
+                                    class="alert alert-light my-2  w-75" style="height: 8vh;">
+                                    <p style="color: red;" *ngIf="newUserForm.get('lastname')?.errors?.['required']">lastname is required</p>
+                                    <p style="color: red;" *ngIf="newUserForm.get('lastname')?.errors?.['minlength']">lastname is minlength 3
+                                    </p>
+                                    <p style="color: red;" *ngIf="newUserForm.get('lastname')?.errors?.['maxlength']">lastname is maxlength 10
+                                    </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input formControlName="email" type="email" class="form-control" >
+                                    <div *ngIf="newUserForm.get('email')?.errors != null && newUserForm.get('email')?.touched"
+                                    class="alert my-2 alert-light w-75" style="height: 8vh;">
+                                    <p style="color: red;" *ngIf="newUserForm.get('email')?.errors?.['required']">email is required</p>
+                                    <p style="color: red;" *ngIf="newUserForm.get('email')?.errors?.['email']">email is invalid</p>
+                                    </div>
+                                </div>
+                                <div *ngIf="error" class="d-flex justify-content-center">
+                                    <p style="color: red;">{{ error }}</p>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">OldPassword</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <div class="input-group" id="show_hide_password">
+                                        <input formControlName="oldpassword" #oldpass (focusout)="checkOldPass(oldpass)" class="form-control"
+                                            type="password">
+                                        <div class="input-group-addon">
+                                            <a (click)="changeoldpass(oldpass)" class="toggle_password"><i
+                                                    [class.fa-eye-slash]="iconcheckoldpass"
+                                                    class="fa fa-eye text-black"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="newUserForm.get('oldpassword')?.errors != null && newUserForm.get('oldpassword')?.touched"
+                            class="d-flex justify-content-center">
+                            <p style="color: red;" *ngIf="newUserForm.get('oldpassword')?.errors?.['required']">oldpassword is required</p>
+                            </div>
+                            <div *ngIf="check_old_pass" class="d-flex justify-content-center">
+                                <p style="color: red;">Old Password is incorrect</p>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Password</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <div class="input-group" id="show_hide_password">
+                                        <input #newpassword formControlName="password" class="form-control" type="password">
+                                        <div class="input-group-addon">
+                                            <a (click)="changepass(newpassword)" class="toggle_password"><i
+                                                    [class.fa-eye-slash]="iconcheckpass"
+                                                    class="fa fa-eye text-black"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="newUserForm.get('password')?.errors != null && newUserForm.get('password')?.touched"
+                            class="d-flex justify-content-center">
+                            <p style="color: red;" *ngIf="newUserForm.get('password')?.errors?.['required']">password is required</p>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Confirm</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <div class="input-group" id="show_hide_password">
+                                        <input #confirmpass formControlName="confirmPassword" (focusout)="checkconfirmPass(newpassword,confirmpass)"
+                                            class="form-control" type="password">
+                                        <div class="input-group-addon">
+                                            <a (click)="changeconfirm(confirmpass)" class="toggle_password"><i
+                                                    [class.fa-eye-slash]="iconcheckconfirm"
+                                                    class="fa fa-eye text-black"></i></a>
+                                        </div>
+                                    </div>
+                                </div><br><br>
+                            </div>
+                            <div *ngIf="newUserForm.get('confirmPassword')?.errors != null && newUserForm.get('confirmPassword')?.touched"
+                            class="d-flex justify-content-center">
+                            <p style="color: red;" *ngIf="newUserForm.get('confirmPassword')?.errors?.['required']">confirmPassword is required</p>
+                            </div>
+                            <div *ngIf="check_confirm_pass" class="d-flex justify-content-center">
+                                <p style="color: red;">Password not Matched</p>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Image</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input formControlName="image" type="file" class="form-control"  (change)="uploadFile($event)" >
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9 text-secondary">
+                                    <button [disabled]="newUserForm.invalid" class="btn btn-primary px-4 submit-button">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
