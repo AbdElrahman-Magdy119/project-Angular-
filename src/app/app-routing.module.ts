@@ -28,6 +28,7 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'mybooks', component: MybooksComponent },
+      { path: 'userprofile', component: UserprofileComponent },
       { path: 'books/:id', component: BookDetailsComponent },
       { path: 'authors/:id', component: OneAuthorComponent },
       { path: 'categories/:id', component: OneCategoryComponent },
