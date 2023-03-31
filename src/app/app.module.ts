@@ -42,7 +42,6 @@ import {MatInputModule} from '@angular/material/input';
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatConfirmDialogComponent } from './component/mat-confirm-dialog/mat-confirm-dialog.component';
-// import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { MatTable, MatTableDataSource, MatTableModule, _MatTableDataSource } from '@angular/material/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarComponent } from './sidebar/sidebar.component';
