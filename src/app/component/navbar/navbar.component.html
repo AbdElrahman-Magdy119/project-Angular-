@@ -33,7 +33,9 @@
       
         <mat-menu  #menu="matMenu">
           <ng-container *ngIf="islogin==true ;else registerMenu ">
-          <button mat-menu-item (click)="islogout()">
+          <button mat-menu-item
+            routerLink="/userprofile"
+            >
             <img src="../../../assets/Abdo111.jpg" style="width: 2rem;" class="me-4">
             Your profile
           </button>
