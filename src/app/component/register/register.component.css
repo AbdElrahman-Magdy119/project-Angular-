@@ -1,10 +1,5 @@
-.submit-button{
-    background-color:  #45171d;
-    padding: 10px;
-    color: #ebccb3d5;
-    margin-left: 14rem;
-    max-width: 15rem;
-    font-size: 25px;
-    border: 0;
+a {
+  padding: 0px 5px;
+  color: red;
+  text-decoration: none;
 }
-

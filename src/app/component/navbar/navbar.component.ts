@@ -36,8 +36,6 @@ export class NavbarComponent implements OnInit {
     private _UserService: UserService,
     private _Router: Router
   ) {
-    
-  
 
     _AuthService.currentuser.subscribe((user) => {
       if (_AuthService.currentuser.getValue() != null) {

@@ -1,0 +1,46 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="../../../assets/newLogo.jpg" alt="bookstore logo" />
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-4" style="color: #5c5c5c;; text-align: center">
+    Book Shelves
+  </h2>
+  <div class="content">
+
+      <a (click)="getAllstatus('all')"
+      class="content-anhor"
+      >
+        <span
+
+          >All</span
+        ></a
+      >
+      <a
+        (click)="getAllstatus('Read')"
+        class="content-anhor"
+        >
+          <span
+          >Read</span
+        >
+      </a>
+      <a
+        (click)="getAllstatus('currently')"
+        class="content-anhor"
+        >
+          <span
+          >Currently Reading</span
+        >
+      </a>
+      <a
+        (click)="getAllstatus('want')"
+      class="content-anhor"
+      routerLinkActive="list-item-active">
+        <span
+          >Want to Read</span
+        >
+      </a>
+
+  </div>
+</mat-nav-list>
+

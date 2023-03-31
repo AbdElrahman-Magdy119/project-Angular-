@@ -27,16 +27,28 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxStarsModule } from 'ngx-stars';
 import { SearchComponent } from './component/search/search.component';
 import { MybooksComponent } from './component/mybooks/mybooks.component';
-
+import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule } from '@angular/forms';
-
+import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import {RatingModule} from 'primeng/rating';
 import { UserReviewComponent } from './component/user-review/user-review.component';
-import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
+import { UserprofileComponent } from './component/userprofile/userprofile.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatConfirmDialogComponent } from './component/mat-confirm-dialog/mat-confirm-dialog.component';
+// import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { MatTable, MatTableDataSource, MatTableModule, _MatTableDataSource } from '@angular/material/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {MatListModule} from '@angular/material/list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +69,9 @@ import { CardModule } from 'primeng/card';
     MybooksComponent,
     BookDetailsComponent,
     UserReviewComponent,
+    UserprofileComponent,
+    MatConfirmDialogComponent,
+    SidebarComponent,
   ],
 
   imports: [
@@ -75,10 +90,20 @@ import { CardModule } from 'primeng/card';
     MatIconModule,
     RatingModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatToolbarModule,
+   // NgxUsefulSwiperModule,
+    MatTableModule,
+    MatDividerModule,
+    MatSidenavModule,
+    MatListModule,
     DropdownModule,
     CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents:[UserprofileComponent,MatConfirmDialogComponent]
 })
 export class AppModule {}

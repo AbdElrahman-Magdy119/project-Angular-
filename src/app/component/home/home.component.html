@@ -130,7 +130,7 @@
             </div>
 
         </div>
-        <div *ngFor="let author of authors" class="col-md-2 unimation">
+        <div *ngFor="let author of uniqueauthors" class="col-md-2 unimation">
             <div class="movie my-2 position-relative">
                 <div class=" h-75">
                     <a routerLink='/authors/{{ author._id }}'> <img class="w-100 image" [src]="imageAuthor + '/' + author.photo"></a>

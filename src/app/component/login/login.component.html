@@ -1,7 +1,7 @@
-<div class="w-75 m-auto py-5">
+<!-- <div class="w-75 m-auto py-5">
     <div *ngIf="error" class="alert alert-light w-50">
         <p style="color: red;" >{{ error }}</p>
-    </div> 
+    </div>
   <form [formGroup]="loginform" (ngSubmit)="submitlogin(loginform)" class="mx-5">
     <div class="form-group">
         <label class="my-2"  for="email">email:</label>
@@ -10,7 +10,7 @@
               <p style="color: red;" *ngIf="loginform.get('email')?.errors?.['required']">email is required</p>
               <p style="color: red;" *ngIf="loginform.get('email')?.errors?.['email']">email is invalid</p>
         </div>
-    </div> 
+    </div>
           <div class="form-group">
               <label class="my-2"  for="password">password:</label>
               <input formControlName="password" class="form-control w-75" type="password" placeholder="enter password" id="password">
@@ -18,7 +18,77 @@
                     <p style="color: red;" *ngIf="loginform.get('password')?.errors?.['required']">password is required</p>
                     <p style="color: red;" *ngIf="loginform.get('password')?.errors?.['pattern']">password must star with captail and contain with lower character and numbers</p>
               </div>
-          </div> 
+          </div>
           <button [disabled]="loginform.invalid" class=" my-2 btn btn-info login-button mt-5 w-25" >Login</button>
      </form>
+</div> -->
+
+
+<div class="login-page mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <h3 class="mb-3">Login Now</h3>
+        <div class="bg-white shadow rounded">
+          <div class="row">
+            <div class="col-md-7 pe-0">
+              <div class="form-left py-5 px-5">
+                <form [formGroup]="loginform" (ngSubmit)="submitlogin(loginform)" class="row g-4">
+                  <div class="col-12">
+
+                    <label>Email<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      </div>
+                      <input formControlName="email" type="text" class="form-control" placeholder="Enter Username">
+                    </div>
+                    <div class="mt-3" *ngIf="loginform.get('email')?.errors != null && loginform.get('email')?.touched">
+                      <p style="color: red;" *ngIf="loginform.get('email')?.errors?.['required']">Email is required
+                      </p>
+                      <p style="color: red;" *ngIf="loginform.get('email')?.errors?.['email']">Email is invalid should
+                        look like example@example.com</p>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <label>Password<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <div class="input-group-text">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      </div>
+                      <input formControlName="password" type="password" class="form-control"
+                        placeholder="Enter Password">
+                    </div>
+                    <div *ngIf="loginform.get('password')?.errors != null && loginform.get('password')?.touched"
+                      class="mt-3">
+                      <p style="color: red;" *ngIf="loginform.get('password')?.errors?.['required']">Password is
+                        required</p>
+                      <p style="color: red;" *ngIf="loginform.get('password')?.errors?.['pattern']">password must star
+                        with captail and contain with lower character and numbers</p>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <button type="submit" [disabled]="loginform.invalid"
+                      class="btn btn-primary px-4 float-end mt-4">login</button>
+                  </div>
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <p>Don't have an account? </p><a routerLink="/register">Sign Up</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="col-md-5 ps-0 d-none d-md-block">
+              <div class="form-right  text-white text-center pt-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-end text-secondary mt-3">Copyright @team</p>
+      </div>
+    </div>
+  </div>
 </div>

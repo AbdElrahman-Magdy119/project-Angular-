@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   authors: any[] = [];
   categories: any[] = [];
   uniquecategories: any[] = [];
+  uniqueauthors:any[]=[];
   constructor(
     private _HomeService: HomeService,
     private _BookService: BooksService
@@ -42,6 +43,12 @@ export class HomeComponent implements OnInit {
         (obj, index) =>
           this.categories.findIndex((item) => item._id === obj._id) === index
       );
+
+      this.uniqueauthors = this.authors.filter(
+        (obj, index) =>
+          this.authors.findIndex((item) => item._id === obj._id) === index
+      );
+
     });
   }
 
