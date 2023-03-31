@@ -1,3 +1,9 @@
 img{
-    height: 40vh;
+    height: 30rem;
+}
+
+:host ::ng-deep .p-rating-icon:not(.p-rating-cancel),
+:host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
+  color: var(--dark-color) !important;
+  font-size: 2rem;
 }

@@ -34,7 +34,9 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { BookDetailsComponent } from './component/book-details/book-details.component';
 import {RatingModule} from 'primeng/rating';
-
+import { UserReviewComponent } from './component/user-review/user-review.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { CardModule } from 'primeng/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,10 +56,8 @@ import {RatingModule} from 'primeng/rating';
     SearchComponent,
     MybooksComponent,
     BookDetailsComponent,
-    
-
+    UserReviewComponent,
   ],
-
 
   imports: [
     BrowserModule,
@@ -74,9 +74,11 @@ import {RatingModule} from 'primeng/rating';
     MatMenuModule,
     MatIconModule,
     RatingModule,
-    FormsModule
+    FormsModule,
+    DropdownModule,
+    CardModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

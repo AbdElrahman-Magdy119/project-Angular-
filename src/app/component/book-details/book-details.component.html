@@ -1,4 +1,112 @@
-<div class="container py-5">
+<section class="deal">
+  <div class="content">
+    <div class="row">
+      <h3 class="col-12 col-md-6">{{ book?.title }}</h3>
+      <a class="castmBtn btn col-12 col-md-1 ms-auto" (click)="addReview()"> + </a>
+    </div>
+    <a routerLink="/authors/{{ authorObj?._id }}"
+      ><h1>{{ authorObj?.firstName }} {{ authorObj?.lastName }}</h1></a
+    >
+    <a routerLink="/categories/{{ categoryObj?._id }}"
+      ><h5>{{ categoryObj?.name }}</h5></a
+    >
+    <div class="rating">
+      <p-rating
+        iconCancelClass="pi pi-times"
+        [ngModel]="bookRate.avg"
+        [readonly]="true"
+        [cancel]="false"
+      ></p-rating>
+      <p>
+        <b>{{ bookRate.avg }} - {{ bookRate.count }} ratings</b>
+      </p>
+    </div>
+
+    <p>
+      {{ book?.description }}
+    </p>
+  </div>
+  <div class="image">
+    <img [src]="bookImage + book?.image" alt="" />
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <p-dropdown
+          (onChange)="asd($event)"
+          class="dropdownStyle"
+          [options]="status"
+          [(ngModel)]="selectedStatus"
+          optionLabel="value"
+          placeholder="choose status"
+        ></p-dropdown>
+      </div>
+      <div class="col-12 col-lg-6">
+        <p-rating
+          class="stars"
+          iconCancelClass="pi pi-times"
+          [ngModel]="userReview?.rating"
+          (onRate)="getrate($event)"
+          [cancel]="false"
+        ></p-rating>
+      </div>
+    </div>
+    <!-- <mat-form-field
+      appearance="fill"
+      style="width: 26vw; margin-top: 1rem; margin-left: 25rem"
+    >
+      <mat-label style="color: #45171d"
+        ><b> {{ userReview?.status }} </b></mat-label
+      >
+      <mat-select class="selected" (selectionChange)="getStatus($event)">
+        <mat-option
+          class="select"
+          *ngFor="let status of status"
+          [value]="status?.value"
+        >
+          <b> {{ status?.viewValue }} </b>
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <!-- <div style="display: flex; align-items: center; margin-left: 2rem">
+      <p-rating
+        [ngModel]="userReview?.rating"
+        (onRate)="getrate($event)"
+        [cancel]="false"
+      ></p-rating>
+    </div> -->
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="d-flex pt-3 pb-2">
+      <input
+        type="text"
+        name="text"
+        placeholder="+ Add a note"
+        class="w-75 addtxt"
+      />
+    </div>
+    <div class="row">
+      <div class="col-12 py-2 px-2">
+        <div class="row py-3 pt-3">
+          <div class="col-6">
+            <img src="https://i.imgur.com/AgAC1Is.jpg" width="50" /><span
+              class="text2"
+              >Martha</span>
+            <p class="text1 mt-3">Type your note, and hit enter to add it</p>
+            <button class="btn btn-warning me-3 fs-4 p-2 mt-3">edit</button>
+            <button class="btn btn-danger me-3 fs-4 p-2 mt-3">remove</button>
+          </div>
+          <div class="col-6">
+            <span class="text3">time?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <div class="container py-5">
     <div class="row">
          <div class="col-md-4">
               <img class="w-100 image" [src]="bookImage+book?.image">
@@ -54,18 +162,18 @@
                              <label for="comment" class="wt-5"><b>Comments</b></label>
                         </div>
                         <div class="card mt-3">
-                             <div class="card-body p-2 d-flex align-items-center">
-                                  <!-- <button (click)="addReviwe(newreviews)"
+                             <div class="card-body p-2 d-flex align-items-center"> -->
+<!-- <button (click)="addReviwe(newreviews)"
                                   
                                        class="text-primary fw-bold small mb-0 me-1 ">Add</button> -->
-                                  
-                             </div>
+
+<!-- </div>
                         </div>
-                   </div>
-                   <!-- ********************************************************************
+                   </div> -->
+<!-- ********************************************************************
                           ******************************************************************** -->
 
-                   <!-- <div *ngFor="let review of newreviws" class="card mb-3">
+<!-- <div *ngFor="let review of newreviws" class="card mb-3">
                         <div class="card-body">
                              <div class="d-flex flex-start">
                                   <img class="rounded-circle shadow-1-strong me-3"
@@ -91,7 +199,7 @@
                              </div>
                         </div>
                    </div> -->
-              </div>
+<!-- </div>
          </div>
     </div>
-</section>
+</section> -->

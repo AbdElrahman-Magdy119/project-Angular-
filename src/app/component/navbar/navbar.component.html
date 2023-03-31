@@ -1,4 +1,93 @@
-<nav class="navbar navbar-expand-lg   p-4" style=" box-shadow: rgb(239 234 234 / 24%) 0px 1px 3px; position: sticky;   position: -webkit-sticky;
+<header class="header">
+  <div class="header-1">
+    <a href="#" class="logo"><i class="fas fa-book"></i> bookly </a>
+    <form  action="" class="search-form">
+      <input
+        #searchinput
+        type="search"
+        name=""
+        placeholder="search here..."
+        id="search-box"
+      />
+      <label
+        for="search-box"
+        class="fas fa-search"
+        (click)="getresult(searchinput)"
+        routerLink="Search"
+      ></label>
+    </form>
+    <ng-container>
+      <div class="icons">
+        <div class="d-flex">
+        <div id="search-btn" class="fas fa-search me-3 mt-2" (click)="search()"></div>
+        <button
+          style="background: #fff"
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="user mt-2 d-flex align-items-center"
+        >
+          <div id="login-btn" class="fas fa-user"></div>
+          <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+        </button>
+        </div>
+      
+        <mat-menu  #menu="matMenu">
+          <ng-container *ngIf="islogin==true ;else registerMenu ">
+          <button mat-menu-item (click)="islogout()">
+            <img src="../../../assets/Abdo111.jpg" style="width: 2rem;" class="me-4">
+            Your profile
+          </button>
+          <button
+            mat-menu-item
+            (click)="getstate()"
+            routerLink="mybooks?state=all"
+          >
+          <mat-icon>book</mat-icon>
+            Your books
+          </button>
+          <button mat-menu-item (click)="islogout()">
+            <mat-icon>exit_to_app</mat-icon>
+            Logout
+          </button>
+          </ng-container>
+        </mat-menu>
+        
+         <ng-template #registerMenu>
+          <button
+            mat-menu-item
+            routerLink="/register"
+          >
+          <mat-icon>chrome_reader_mode</mat-icon>
+               register
+          </button>
+          <button mat-menu-item 
+            routerLink="/login"
+>
+            <mat-icon>exit_to_app</mat-icon>
+            Login
+          </button>
+         </ng-template>
+      </div>
+    </ng-container>
+  </div>
+  <div class="header-2">
+    <nav class="navbar">
+      <a routerLink="home">Home</a>
+      <a routerLink="books">Books</a>
+      <a routerLink="categories">Categories</a>
+      <a routerLink="authors">Authors</a>
+    </nav>
+  </div>
+
+</header>
+<nav class="bottom-navbar">
+  <a routerLink="home" class="fas fa-home"></a>
+  <a routerLink="books" class="fas fa-book"></a>
+  <a routerLink="categories" class="fas fa-list-alt"></a>
+  <a routerLink="authors" class="fas fa-pen-to-square"></a>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg   p-4" style=" box-shadow: rgb(239 234 234 / 24%) 0px 1px 3px; position: sticky;   position: -webkit-sticky;
 position: sticky;
 top: 0; z-index: 1;background-color: #45171d; ">
   <div class="container-fluid ms-4">
@@ -37,7 +126,7 @@ top: 0; z-index: 1;background-color: #45171d; ">
           <a *ngIf="!islogin" class="nav-link active " aria-current="page" routerLink="register">Register</a>
         </li>
         <li class="nav-item">
-          <!-- <a *ngIf="islogin" routerLink="mybooks"><img class="rounded-circle profile " [src]="myImage"></a> -->
+           <a *ngIf="islogin" routerLink="mybooks"><img class="rounded-circle profile " [src]="myImage"></a> 
           <ng-container *ngIf="islogin">
             <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center "
               style="background-color:#45171d;">
@@ -57,12 +146,12 @@ top: 0; z-index: 1;background-color: #45171d; ">
             </mat-menu>
           </ng-container>
         </li>
-        <!-- <li class="nav-item">
+         <li class="nav-item">
           <a *ngIf="islogin" class="nav-link active " aria-current="page" routerLink="logout"
             (click)="islogout()">Logout</a>
-        </li> -->
+        </li> 
 
       </ul>
     </div>
   </div>
-</nav>
+</nav> -->

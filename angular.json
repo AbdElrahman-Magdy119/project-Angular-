@@ -36,7 +36,8 @@
               "node_modules/primeicons/primeicons.css"
               
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js",
+                        "../project-Angular-/src/app/component/navbar/nav.js"]
           },
           "configurations": {
             "production": {

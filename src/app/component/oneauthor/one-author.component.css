@@ -1,29 +1,257 @@
-ngx-stars{
-    z-index: 0;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,600&display=swap');
+
+:root {
+  --green: #27ae60;
+  --dark-color: #219150;
+  --black: #444;
+  --gray: gray;
+  --light-color: #666 --border:1rem solid rgba(0, 0, 0, .1);
+  --border--hover: .1rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+  --border: .05rem solid var(--gray);
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+  transition: width none;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+section {
+  padding: 5rem 9%;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.heading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: .01rem;
+  background: rgba(0, 0, 0, .1);
+  z-index: -1;
+}
+
+.heading span {
+  font-size: 3rem;
+  padding: .5rem 2rem;
+  color: var(--black);
+  background: #fff;
+  border: var(--border);
+
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: .9rem 3rem;
+  border-radius: .5rem;
+  color: #fff;
+  background: var(--green);
+  font-size: 1.7rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.deal {
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.deal .content {
+  flex: 1 1 42rem;
+}
+
+.deal .image {
+  flex: 1 1 42rem;
+}
+
+.deal .image img {
+  width: 90%;
+  height: 60rem;
+}
+
+.deal .content h3 {
+  color: var(--green);
+  font-size: 4rem;
+  padding-bottom: .5rem;
+}
+
+.deal .content h1 {
+  color: var(--black);
+  font-size: 3rem;
+}
+
+.deal .content h5 {
+  color: var(--black);
+  font-size: 2rem;
+}
+
+.deal .content p {
+  margin-top: 5rem;
+  padding: 1rem 0;
+  color: var(--light-color);
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+
+
+
+
+
+
+
+
+
+.featured .featured-slider .box {
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  border: var(--border);
+  text-align: center;
+}
+
+.featured .featured-slider .box:hover {
+  border: var(--border--hover);
+}
+
+.featured .featured-slider .box .image {
+  padding: .1rem;
+  background: linear-gradient(15deg, #eee 30%, #fff 30.1%);
+}
+
+.featured .featured-slider .box:hover .image {
+  transform: translateY(2rem);
+
+}
+
+.featured .featured-slider .box .image img {
+  height: 25rem;
+}
+
+.featured .featured-slider .box .icons a {
+  color: var(--black);
+  font-size: 2.2rem;
+  padding: 1.3rem 1.5rem;
+}
+
+.featured .featured-slider .box .icons a:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.featured .featured-slider .box .content {
+  background: #eee;
+  padding: 1.5rem;
   
-  .selected{
-    color: #45171d;
-    font-size: 20px;
-  }
-  .select{
-    background-color:#ebccb3d5 ; 
-    color: #45171d;
+}
+.featured .featured-slider .box .content h3 {
+  font-size: 2rem;
+  color: var(--black);
+
+}
+
+.featured .featured-slider .box .content .price {
+  font-size: 2.2rem;
+  color: var(--black);
+  padding-top: 1rem;
+}
+
+
+:host ::ng-deep 
+    .p-rating-icon:not(.p-rating-cancel),
+:host ::ng-deep 
+    .p-rating-icon:not(.p-rating-cancel):hover {
+    color: var(--dark-color) !important;
+    font-size: 2rem;
+}
+
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  border: var(--border--hover);
+  height: 4rem;
+  width: 4rem;
+  color: var(--black);
+  background: #fff;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 2rem;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: var(--black);
+  color: #fff;
+}
+
+
+
+
+@media (max-width:991px) {
+  html {
+    font-size: 55%;
   }
 
-  .paragraph{
-    color: #45171d;
+  section {
+    padding: 3rem 2rem;
+
   }
-  .head1{
-    color: #ebccb3d5; 
-    -webkit-text-stroke: 2px #45171d;
+
+}
+
+@media (max-width:768px) {
+  html {
+    scroll-padding-top: 0;
   }
-  
-  .head3{
-      color: #45171d; 
-    }
-    .image{
-        width: 70vw;
-        height: 35vw;
-      }
-   
+
+  body {
+    padding-bottom: 6rem;
+  }
+}
+
+@media (max-width:450px) {
+  html {
+    font-size: 50%;
+  }
+}

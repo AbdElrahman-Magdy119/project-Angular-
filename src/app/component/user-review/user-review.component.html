@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+  <body>
+    <div class="slide-container swiper">
+      <div class="slide-content">
+        <div class="card-wrapper swiper-wrapper">
+
+          <div *ngFor="let user of users" class="card swiper-slide">
+            <div class="image-content">
+              <span class="overlay"></span>
+
+              <div class="card-image">
+                <img
+                  [src]="imageUser +'/' + user.image"
+                  alt=""
+                  class="card-img"
+                />
+              </div>
+            </div>
+
+            <div class="card-content">
+              <h2 class="name p-4">{{ user.firstname}} {{ user.lastname}}</h2>
+              <p class="description">
+                 {{ user.email}}
+              </p>
+
+              <p-rating
+                iconCancelClass="pi pi-times"
+                [ngModel]="3"
+                [readonly]="true"
+                [cancel]="false"
+              ></p-rating>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="swiper-button-next swiper-navBtn"></div>
+      <div class="swiper-button-prev swiper-navBtn"></div>
+      <div class="swiper-pagination" ></div>
+    </div>
+  </body>
+</html>

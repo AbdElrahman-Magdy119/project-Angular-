@@ -1,4 +1,299 @@
-.head1{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;1,600&display=swap');
+
+:root {
+  --green: #27ae60;
+  --dark-color: #219150;
+  --black: #444;
+  --gray: gray;
+  --light-color: #666 --border:1rem solid rgba(0, 0, 0, .1);
+  --border--hover: .1rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+  --border: .05rem solid var(--gray);
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+  transition: width none;
+
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: auto;
+  scroll-padding-top: 5rem;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+section {
+  padding: 5rem 9%;
+}
+
+.castmBtn {
+  /* margin-top: 1rem; */
+  /* display:inline-block ; */
+  /* padding: .9rem 3rem; */
+  height: 3.5rem;
+  border-radius: .5rem;
+  color: #fff;
+  background: var(--green);
+  font-size: 2.4rem;
+  cursor: pointer;
+  font-weight: 500;
+  /* margin-left: 50rem ;
+    transform: translateY(-5.5rem);   */
+}
+
+.deal {
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.deal .content {
+  flex: 1 1 42rem;
+}
+
+.deal .image {
+  flex: 1 1 42rem;
+}
+
+.deal .image img {
+  width: 100%;
+  height: 70rem;
+}
+
+.deal .content h3 {
+  color: var(--green);
+  font-size: 4rem;
+  padding-bottom: .5rem;
+}
+
+.deal .content h1 {
+  color: var(--black);
+  font-size: 3rem;
+}
+
+.deal .content h5 {
+  color: var(--black);
+  font-size: 2rem;
+}
+
+.deal .content p {
+  padding: 1rem 0;
+  color: var(--light-color);
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+.deal .content .rating {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.deal .content .rating p {
+  font-size: 2rem;
+  margin-left: 1rem;
+  color: var(--black);
+}
+
+.select {
+  background-color: #ebccb3d5;
+  color: #45171d;
+}
+
+.selected {
+  color: #45171d;
+  font-size: 20px;
+}
+
+
+
+:host ::ng-deep .p-rating-icon:not(.p-rating-cancel),
+:host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
+  color: var(--dark-color) !important;
+  font-size: 2rem;
+}
+
+:host ::ng-deep .stars .p-rating {
+  margin: 1rem 9rem;
+
+}
+
+
+:host ::ng-deep .dropdownStyle .p-dropdown {
+  width: 80% !important;
+  margin-top: 1rem;
+  height: 4rem;
+}
+
+:host ::ng-deep .dropdownStyle .p-dropdown-items {
+  font-size: 2rem;
+}
+
+:host ::ng-deep .dropdownStyle .p-dropdown-label {
+  font-size: 2rem;
+}
+
+
+
+.addtxt {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 13px;
+  width: 350px;
+  background-color: #e5e8ed;
+  font-weight: 500;
+}
+
+.form-control:focus {
+  color: #000;
+}
+
+.second {
+  width: 350px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.text1 {
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: #56575b;
+}
+
+.text2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-left: 6px;
+  color: #56575b;
+}
+
+.text3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-right: 4px;
+  color: #828386;
+}
+
+.text3o {
+  color: #00a5f4;
+
+}
+
+.text4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #828386;
+}
+
+.text4i {
+  color: #00a5f4;
+}
+
+.text4o {
+  color: white;
+}
+
+.thumbup {
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.thumbupo {
+  color: #17a2b8;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px) {
+  html {
+    font-size: 55%;
+  }
+
+  section {
+    padding: 3rem 2rem;
+
+  }
+
+}
+
+@media (max-width:768px) {
+  html {
+    scroll-padding-top: 0;
+  }
+
+  body {
+    padding-bottom: 6rem;
+  }
+}
+
+@media (max-width:450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .head1{
     color: #ebccb3d5; 
     -webkit-text-stroke: 2px #45171d;
   }
@@ -42,4 +337,4 @@
     z-index: 0;
   }
   
-  
+   */

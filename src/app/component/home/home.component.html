@@ -1,5 +1,102 @@
-<app-homeheader></app-homeheader>
-<div class="container">
+<section class="home" id="home">
+  <div class="row">
+    <div class="content">
+      <h3>up to 75% off</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.Saepe nemo
+        dolores illo laudantium ab molestiae nobis facilis laborum,
+        necessitatibus quia exercitationem distinctio doloribus quo ratione
+        facere consequuntur blanditiis tempora esse?
+      </p>
+    </div>
+    <div class="swiper books-slider">
+      <div class="swiper-wrapper">
+        <a *ngFor="let book of books" class="swiper-slide"
+         routerLink='/books/{{ book._id }}' ><img [src]="imageBook + '/' + book.image" alt=""
+        /></a>
+      </div>
+      <img
+        src="../../../assets/stand-removebg-preview.png"
+        class="stand"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<section class="featured" id="featured">
+  <h1 class="heading">
+    <span>Popular Books</span>
+  </h1>
+  <div class="swiper featured-slider">
+    <div class="swiper-wrapper">
+      <div *ngFor="let book of books" class="swiper-slide box">
+        <div class="image pt-3">
+          <a routerLink="/books/{{ book._id }}">
+            <img [src]="imageBook + '/' + book.image" alt=""
+          /></a>
+        </div>
+        <div class="content">
+          <h3>{{ book.title | titlecase }}</h3>
+          <div class="price">
+            {{ book.authorId.firstName }} {{ book.authorId.firstName }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <form action="">
+    <br /><br /><br /><br />
+    <br /><br /><br /><br />
+  </form>
+</section>
+<section class="reviews" id="reviews">
+  <h1 class="heading"><span>Popular Authors</span></h1>
+  <div class="swiper reviews-slider">
+    <div class="swiper-wrapper">
+      <div *ngFor="let book of books" class="swiper-slide box">
+        <img [src]="imageBook + '/' + book.image" alt="" />
+        <h3>{{ book.authorId.firstName }} {{ book.authorId.firstName }}</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blogs" id="blogs" >
+  <h1 class="heading"><span>Popular Categories</span></h1>
+  <div class="swiper blogs-slider" >
+    <div class="swiper-wrapper" >
+      <div *ngFor="let book of books" class="swiper-slide box">
+        <div class="image">
+          <img [src]="imageBook + '/' + book.image" alt="" />
+        </div>
+        <div class="content">
+          <h3>{{ book.title | titlecase }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+    <h1 class="heading"><span>Rate User Reviews</span></h1>
+
+<app-user-review></app-user-review>
+</section>
+
+
+
+
+
+
+<!-- <app-homeheader></app-homeheader> -->
+
+<!-- <div class="container">
     <div class="row py-5">
         <div class="col-md-4 d-flex align-items-center unimation">
             <div>
@@ -65,70 +162,189 @@
             </div>
         </div>
     </div>
-</div>
-<section id="team" class="team section-padding " style="background-color:#45171d ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-header text-center pb-5">
-                    <h2 style="color: #ebccb3d5 " class="mt-5">ABOUT  US</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card text-center unimation" style="background-color: white;border: 0px;" >
-                    <div class="card-body">
-                        <img src="../../../assets/Abdo111.jpg" class="w-75 " style="border-radius: 100px; height: 26vh;" width="133vw">
-                        <h5 class="card-title py-2" style="color: #45171d;"><b>Abdelrahman Magdy</b></h5>
-                        <div class="socials  d-flex justify-content-around">
-                         <a href="https://www.facebook.com/profile.php?id=100005089182388" target="_blank" ><i class="fa fa-brands fa-facebook text-dark mx-1 " style="font-size: 30px;"></i></a>  
-                         <a href="https://www.linkedin.com/in/abdelrahman-magdy-b3606a263/"target="_blank"><i class="fa fa-brands fa-linkedin text-dark mx-1"  style="font-size: 30px;"></i></a>  
-                         <a href="https://github.com/AbdElrahman-Magdy119" target="_blank"><i class="fa fa-brands fa-github text-dark mx-1"    style="font-size: 30px;"></i></a>  
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card text-center unimation " style="background-color: white;border: 0px;" >
-                    <div class="card-body ">
-                        <img src="../../../assets/mo2.jpeg" class="w-75 " style="border-radius: 100px;  height: 26vh" width="133vw">
-                        <h5 class="card-title py-2" style="color: #45171d;"><b>Mohamed Adel</b></h5>
-                        <div class="socials  d-flex justify-content-around">
-                            <a href="https://www.facebook.com/profile.php?id=100051024155106" target="_blank" ><i class="fa fa-brands fa-facebook text-dark mx-1 " style="font-size: 30px;"></i></a>  
-                            <a href="https://www.linkedin.com/in/mohammed-adel-278b05232/" target="_blank"><i class="fa fa-brands fa-linkedin text-dark mx-1"  style="font-size: 30px;"></i></a>  
-                            <a href="https://github.com/Mohamed5956" target="_blank"><i class="fa fa-brands fa-github text-dark mx-1 "style="font-size: 30px;"></i></a>  
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card text-center unimation" style="background-color: white;border: 0px;" >
-                    <div class="card-body">
-                        <img src="../../../assets/samer.jpeg" class="w-75" style="border-radius: 100px; height: 26vh;" width="133VW">
-                        <h5 class="card-title py-2" style="color: #45171d;"><b>Samer Hassan</b></h5>
-                        <div class="socials  d-flex justify-content-around">
-                            <a href="https://www.facebook.com/arshavin.uwk" target="_blank"><i class="fa fa-brands fa-facebook text-dark mx-1 " style="font-size: 30px;"></i></a>  
-                            <a href="https://www.linkedin.com/in/samer1995/" target="_blank"><i class="fa fa-brands fa-linkedin text-dark mx-1"  style="font-size: 30px;"></i></a>  
-                            <a href="https://github.com/samerhassan95" target="_blank"><i class="fa fa-brands fa-github text-dark mx-1"    style="font-size: 30px;"></i></a> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="card text-center unimation " style="background-color: white;border: 0px;" >
-                    <div class="card-body">
-                        <img src="../../../assets/nadaa.jpeg"  style="border-radius: 100px; height: 26vh; width: 25vh;" width="133vw">
-                        <h5 class="card-title py-2"  style="color: #45171d;"><b>Nada Hamed</b></h5>
-                        <div class="socials d-flex justify-content-around">
-                            <a href="https://www.facebook.com/hamed.nada.79/" target="_blank"><i class="fa fa-brands fa-facebook text-dark mx-1  " style="font-size: 30px;"></i></a>  
-                            <a href="https://www.linkedin.com/in/nada-hamed-748b271b4/" target="_blank"><i class="fa fa-brands fa-linkedin text-dark mx-1 "  style="font-size: 30px;"></i></a>  
-                            <a href="https://github.com/nadahamed225" target="_blank"><i class="fa fa-brands fa-github text-dark mx-1"    style="font-size: 30px;"></i></a> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+</div> -->
 
+
+
+<!-- <section
+  id="team"
+  class="team section-padding"
+  style="background-color: #45171d"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-header text-center pb-5">
+          <h2 style="color: #ebccb3d5" class="mt-5">ABOUT US</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div
+          class="card text-center unimation"
+          style="background-color: white; border: 0px"
+        >
+          <div class="card-body">
+            <img
+              src="../../../assets/Abdo111.jpg"
+              class="w-75"
+              style="border-radius: 100px; height: 26vh"
+              width="133vw"
+            />
+            <h5 class="card-title py-2" style="color: #45171d">
+              <b>Abdelrahman Magdy</b>
+            </h5>
+            <div class="socials d-flex justify-content-around">
+              <a
+                href="https://www.facebook.com/profile.php?id=100005089182388"
+                target="_blank"
+                ><i
+                  class="fa fa-brands fa-facebook text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/abdelrahman-magdy-b3606a263/"
+                target="_blank"
+                ><i
+                  class="fa fa-brands fa-linkedin text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a href="https://github.com/AbdElrahman-Magdy119" target="_blank"
+                ><i
+                  class="fa fa-brands fa-github text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div
+          class="card text-center unimation"
+          style="background-color: white; border: 0px"
+        >
+          <div class="card-body">
+            <img
+              src="../../../assets/mo2.jpeg"
+              class="w-75"
+              style="border-radius: 100px; height: 26vh"
+              width="133vw"
+            />
+            <h5 class="card-title py-2" style="color: #45171d">
+              <b>Mohamed Adel</b>
+            </h5>
+            <div class="socials d-flex justify-content-around">
+              <a
+                href="https://www.facebook.com/profile.php?id=100051024155106"
+                target="_blank"
+                ><i
+                  class="fa fa-brands fa-facebook text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/mohammed-adel-278b05232/"
+                target="_blank"
+                ><i
+                  class="fa fa-brands fa-linkedin text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a href="https://github.com/Mohamed5956" target="_blank"
+                ><i
+                  class="fa fa-brands fa-github text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div
+          class="card text-center unimation"
+          style="background-color: white; border: 0px"
+        >
+          <div class="card-body">
+            <img
+              src="../../../assets/samer.jpeg"
+              class="w-75"
+              style="border-radius: 100px; height: 26vh"
+              width="133VW"
+            />
+            <h5 class="card-title py-2" style="color: #45171d">
+              <b>Samer Hassan</b>
+            </h5>
+            <div class="socials d-flex justify-content-around">
+              <a href="https://www.facebook.com/arshavin.uwk" target="_blank"
+                ><i
+                  class="fa fa-brands fa-facebook text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a href="https://www.linkedin.com/in/samer1995/" target="_blank"
+                ><i
+                  class="fa fa-brands fa-linkedin text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a href="https://github.com/samerhassan95" target="_blank"
+                ><i
+                  class="fa fa-brands fa-github text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div
+          class="card text-center unimation"
+          style="background-color: white; border: 0px"
+        >
+          <div class="card-body">
+            <img
+              src="../../../assets/nadaa.jpeg"
+              style="border-radius: 100px; height: 26vh; width: 25vh"
+              width="133vw"
+            />
+            <h5 class="card-title py-2" style="color: #45171d">
+              <b>Nada Hamed</b>
+            </h5>
+            <div class="socials d-flex justify-content-around">
+              <a href="https://www.facebook.com/hamed.nada.79/" target="_blank"
+                ><i
+                  class="fa fa-brands fa-facebook text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/nada-hamed-748b271b4/"
+                target="_blank"
+                ><i
+                  class="fa fa-brands fa-linkedin text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+              <a href="https://github.com/nadahamed225" target="_blank"
+                ><i
+                  class="fa fa-brands fa-github text-dark mx-1"
+                  style="font-size: 30px"
+                ></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <div class="">
+  <img src="../../../assets/authors/Edith.jpg" alt="" />
+</div> -->

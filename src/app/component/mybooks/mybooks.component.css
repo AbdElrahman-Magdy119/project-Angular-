@@ -1,4 +1,9 @@
-ngx-stars{
+a{
+    text-decoration: none;
+}
+
+
+/* ngx-stars{
     z-index: 0;
 }
 
@@ -12,4 +17,4 @@ a{
 .selected{
   color: #45171d;
   font-size: 15px;
-}
+} */
