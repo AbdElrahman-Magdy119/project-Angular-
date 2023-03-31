@@ -35,8 +35,6 @@
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeicons/primeicons.css",
               "./node_modules/swiper/swiper-bundle.css"
-              
-              
             ],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js",
                         "../project-Angular-/src/app/component/navbar/nav.js"]
