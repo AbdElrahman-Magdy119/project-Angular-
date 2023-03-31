@@ -1,7 +1,15 @@
 img{
     height: 30rem;
 }
-
+a{
+  text-decoration: none;
+  color: #444;
+  
+}
+.example-card{
+  width: 90%;
+  height: 50rem;
+}
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel),
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
   color: var(--dark-color) !important;
