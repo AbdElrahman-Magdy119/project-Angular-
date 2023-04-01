@@ -7,9 +7,16 @@ img{
 a{
   text-decoration: none;
   color: #444;
-  
+
 }
 .example-card{
   width: 90%;
   min-height: 35rem;
+}
+.sr-only{
+  cursor:pointer;
+}
+.page-link{
+  cursor:pointer;
+
 }

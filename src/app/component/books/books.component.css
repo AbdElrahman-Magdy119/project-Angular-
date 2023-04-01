@@ -4,7 +4,7 @@ img{
 a{
   text-decoration: none;
   color: #444;
-  
+
 }
 .example-card{
   width: 90%;
@@ -14,4 +14,11 @@ a{
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {
   color: var(--dark-color) !important;
   font-size: 2rem;
+}
+.sr-only{
+  cursor:pointer;
+}
+.page-link{
+  cursor:pointer;
+
 }

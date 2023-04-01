@@ -7,7 +7,7 @@ img{
 a{
   text-decoration: none;
   color: #444;
-  
+
 }
 .example-card{
   width: 90%;
@@ -20,4 +20,11 @@ a{
   box-shadow: 0 3px 6px rgba(0,0,0,0.16),
   0 3px 6px rgba(0,0,0,0.23);
   transform: translate(0px, -15px);
+}
+.sr-only{
+  cursor:pointer;
+}
+.page-link{
+  cursor:pointer;
+
 }
