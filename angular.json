@@ -36,8 +36,7 @@
               "node_modules/primeicons/primeicons.css",
               "./node_modules/swiper/swiper-bundle.css"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js",
-                        "../project-Angular-/src/app/component/navbar/nav.js"]
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -53,6 +52,7 @@
                   "maximumError": "4kb"
                 }
               ],
+              
               "outputHashing": "all"
             },
             "development": {

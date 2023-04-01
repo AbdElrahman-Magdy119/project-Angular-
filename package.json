@@ -22,21 +22,20 @@
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
     "@syncfusion/ej2-angular-dropdowns": "^21.1.35",
-    "angular-font-awesome": "^3.1.2",
     "angular-star-rating": "^6.0.0",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
+    "crypto-browserify": "^3.12.0",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^3.1.2",
     "ngx-owl-carousel-o": "^15.0.0",
     "ngx-stars": "^1.6.4",
-    "ngx-useful-swiper": "^10.0.1",
     "primeicons": "^6.0.1",
     "primeng": "^15.2.0",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.7.3",
+    "sweetalert2": "^11.4.8",
     "swiper": "^9.1.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -53,6 +52,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~4.9.4"
+    "typescript": "~4.9.4",
+    "webpack": "^5.77.0"
   }
 }
