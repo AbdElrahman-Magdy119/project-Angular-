@@ -6,5 +6,6 @@ export interface Review {
     bookId?:String;
     rating:number;
     review?:String;
+    Data?:string;
     status?:String;
 }

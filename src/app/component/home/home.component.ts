@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   categories: any[] = [];
   uniquecategories: any[] = [];
   uniqueauthors:any[]=[];
+  uniquebook:any[]=[];
   constructor(
     private _HomeService: HomeService,
     private _BookService: BooksService
@@ -35,10 +36,13 @@ export class HomeComponent implements OnInit {
 
     this._HomeService.getAlldata().subscribe((populardata) => {
       populardata.map((elm: any) => {
-        this.popularBooks.push(elm.book);
+        this.popularBooks.push(elm.book.bookId);
         this.authors.push(elm.author);
         this.categories.push(elm.category);
+        
       });
+      
+
       this.uniquecategories = this.categories.filter(
         (obj, index) =>
           this.categories.findIndex((item) => item._id === obj._id) === index
@@ -49,17 +53,22 @@ export class HomeComponent implements OnInit {
           this.authors.findIndex((item) => item._id === obj._id) === index
       );
 
+      this.uniquebook = this.popularBooks.filter(
+        (obj, index) =>
+          this.popularBooks.findIndex((item) => item._id === obj._id) === index
+      );
+      console.log("book",this.uniquebook )
+      console.log("authors",this.uniqueauthors )
+      console.log("categories", this.uniquecategories)
+
     });
   }
 
   loader() {
-    console.log('loader');
     document.querySelector('.loader-container')?.classList.add('active');
   }
   fadeOut() {
-    console.log('fadeOut');
     setTimeout(this.loader, 1000);
-    console.log('fadeOuttttttttttttttttttttttt');
   }
 
   ngOnInit() {

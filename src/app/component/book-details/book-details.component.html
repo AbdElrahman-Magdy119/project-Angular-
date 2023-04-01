@@ -5,11 +5,9 @@
       <a class="castmBtn btn col-12 col-md-1 ms-auto" (click)="addReview()"> + </a>
     </div>
     <a routerLink="/authors/{{ authorObj?._id }}"
-      ><h1>{{ authorObj?.firstName }} {{ authorObj?.lastName }}</h1></a
-    >
+      ><h1>{{ authorObj?.firstName }} {{ authorObj?.lastName }}</h1></a>
     <a routerLink="/categories/{{ categoryObj?._id }}"
-      ><h5>{{ categoryObj?.name }}</h5></a
-    >
+      ><h5>{{ categoryObj?.name }}</h5></a>
     <div class="rating">
       <p-rating
         iconCancelClass="pi pi-times"
@@ -36,7 +34,7 @@
           [options]="status"
           [(ngModel)]="selectedStatus"
           optionLabel="value"
-          placeholder="choose status"
+          placeholder="{{userReview?.status}}"
         ></p-dropdown>
       </div>
       <div class="col-12 col-lg-6">
@@ -81,27 +79,43 @@
   <div class="container">
     <div class="d-flex pt-3 pb-2">
       <input
+        #comment
         type="text"
         name="text"
         placeholder="+ Add a note"
         class="w-75 addtxt"
+        (keyup.enter)="addComment(comment)"
+        [disabled]="userReview?.review && !isEdit"  
       />
     </div>
     <div class="row">
       <div class="col-12 py-2 px-2">
+        <ng-container *ngFor="let review of allReviews">
+          <ng-container *ngIf="review.review != '' ">
         <div class="row py-3 pt-3">
           <div class="col-6">
-            <img src="https://i.imgur.com/AgAC1Is.jpg" width="50" /><span
+            <img [src]="userImage+review.userId?.image" width="50" /><span
               class="text2"
-              >Martha</span>
-            <p class="text1 mt-3">Type your note, and hit enter to add it</p>
-            <button class="btn btn-warning me-3 fs-4 p-2 mt-3">edit</button>
-            <button class="btn btn-danger me-3 fs-4 p-2 mt-3">remove</button>
+              >{{review?.userId?.firstname}} {{review?.userId?.lastname}}</span>
+            <p class="text1 mt-3">{{review?.review}}</p>
+            <button #btn2 (click)="remove(btn2,review,comment)" *ngIf="userId == review.userId._id "  class="btn btn-warning me-3 fs-4 p-2 mt-3">edit</button>
+            <button #btn (click)="remove(btn ,review,comment)" *ngIf="userId == review.userId._id" class="btn btn-danger me-3 fs-4 p-2 mt-3">remove</button>
+            <!-- <input *ngIf="isEdit"
+            #newcomment
+            type="text"
+            name="text"
+            placeholder="+ Add a Update"
+            class="w-75 addtxt"
+            (keyup.enter)="edit(review,newcomment)"
+             /> -->
           </div>
+
           <div class="col-6">
-            <span class="text3">time?</span>
+            <span class="text3">{{review?.Date}}</span>
           </div>
         </div>
+      </ng-container>
+      </ng-container>
       </div>
     </div>
   </div>
@@ -193,7 +207,8 @@
                                                   <p class="small mb-0">
                                                        <button #btn (click)="remove(btn ,review,newreviews)"
                                         *ngIf="userId == review.userId._id" class="text text-primary"><b>remove</b></button>
-                                                <button #btn2 (click)="remove(btn2,review,newreviews)"
+                                              
+                                        <button #btn2 (click)="remove(btn2,review,newreviews)"
                                         *ngIf="userId == review.userId._id " class="ms-3 text-primary"><b>edit</b></button>
                                                   </p>
                                              </div>
