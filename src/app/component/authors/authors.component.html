@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row mt-5 justify-content-center">
+  <div class="row mt-5 justify-content-center ">
     <ng-container *ngFor="let author of paginated">
-      <div class="col-12 col-md-3 mt-4 catagory">
+      <div class="col-12 col-md-3 mt-4 catagory unimation">
         <mat-card class="example-card">
           <img mat-card-image [src]="image + '/' + author.photo" />
           <mat-card-title class="fs-2 text-center"> <a routerLink='/authors/{{ author._id }}'><b> {{author.firstName}} {{author.lastName}}</b>

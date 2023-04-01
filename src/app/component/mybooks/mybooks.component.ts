@@ -65,7 +65,6 @@ export class MybooksComponent {
             this.userbooks = userbook;
             this.calculatePages()
             this.paginated = this.userbooks.slice(this.count, this.pageSize);
-            console.log(this.userbooks);
           });
       });
     });
@@ -81,7 +80,6 @@ export class MybooksComponent {
   calculatePages() {
     this.totalPages = Math.ceil(this.userbooks.length / this.pageSize);
 
-    console.log(this.totalPages);
     this.pages = [];
     for (let i = 1; i <= this.totalPages; i++) {
       this.pages.push(i);
@@ -101,7 +99,6 @@ export class MybooksComponent {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
-    // console.log('next');
 
     this.count += 5;
     this.pageSize += 5;

@@ -13,7 +13,6 @@ import { NotfoundComponent } from './component/notfound/notfound.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeheaderComponent } from './component/homeheader/homeheader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OneAuthorComponent } from './component/oneauthor/one-author.component';
@@ -58,7 +57,6 @@ import {MatListModule} from '@angular/material/list';
     AuthorsComponent,
     NotfoundComponent,
     NavbarComponent,
-    HomeheaderComponent,
     OneAuthorComponent,
     OneCategoryComponent,
     MainComponentComponent,

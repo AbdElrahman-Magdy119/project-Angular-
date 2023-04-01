@@ -23,7 +23,6 @@ export class AuthorsComponent {
       this.authors = authors.slice(0, 20);
       this.calculatePages();
       this.paginated = this.authors.slice(this.count, this.pageSize);
-      console.log(this.authors);
     });
 
     this.currentPage = 1;
@@ -36,7 +35,6 @@ export class AuthorsComponent {
   calculatePages() {
     this.totalPages = Math.ceil(this.authors.length / this.pageSize);
 
-    console.log(this.totalPages);
     this.pages = [];
     for (let i = 1; i <= this.totalPages; i++) {
       this.pages.push(i);
@@ -56,7 +54,6 @@ export class AuthorsComponent {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
-    // console.log('next');
 
     this.count += 10;
     this.pageSize += 10;
@@ -67,7 +64,6 @@ export class AuthorsComponent {
     if (this.currentPage > 1) {
       this.currentPage--;
     }
-    console.log('prev');
     this.count -= 10;
     this.pageSize -= 10;
     this.paginated = this.authors.slice(this.count, this.pageSize);

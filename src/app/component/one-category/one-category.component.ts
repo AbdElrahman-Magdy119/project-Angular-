@@ -33,7 +33,6 @@ export class OneCategoryComponent {
         .getcategorybooks(paramMap.get('id'))
         .subscribe((books) => {
           this.books = books;
-          console.log(this.books);
         });
     });
   }

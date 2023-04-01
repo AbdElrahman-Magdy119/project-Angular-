@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5 justify-content-center">
     <ng-container *ngFor="let catagory of paginated">
-      <div class="col-12 col-md-3 mt-4 catagory">
+      <div class="col-12 col-md-3 mt-4 catagory unimation">
         <mat-card class="example-card">
           <img mat-card-image [src]="image + '/' + catagory.image" />
           <mat-card-title class="fs-2 text-center"><a routerLink="/categories/{{ catagory._id }}"><b> {{catagory.name | titlecase}}</b>

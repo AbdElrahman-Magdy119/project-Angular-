@@ -2,7 +2,7 @@
 
     <div class="row mt-5 justify-content-center">
         <ng-container *ngFor="let book of newbooks">
-          <div class="col-12 col-md-3 mt-4 book">
+          <div class="col-12 col-md-3 mt-4 book unimation">
             <mat-card class="card">
               <img mat-card-image [src]="imageBook + '/' + book.image" />
               <mat-card-title class="fs-2 text-center"><a routerLink="/books/{{ book._id }}"> <b>{{book.title | titlecase}}</b>
@@ -16,31 +16,13 @@
         </ng-container>
       </div>
 
-
-
-
-
-
-
-
-    <!-- <div class="row py-5">
-       <div *ngFor="let book of newbooks"  class="col-12">
-               <div class="movie my-2 position-relative ">
-                   <div class=" h-50 ">
-                    <a routerLink='/books/{{ book._id }}' ><img class="unimation" [src]="imageBook + '/' + book.image"  >  </a> 
-                   </div>          
-                   <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h1" style="color:  #45171d;"><b>{{book.title | titlecase }}</b></h1></a> 
-                   <a routerLink='/authors/{{ book.authorId._id }}' ><h6 class="my-2 h3" style="color:  #45171d;font-size: 1vw;opacity: 0.9;">{{book.authorId.firstName}} {{book.authorId.lastName}}</h6> </a>       
-               </div>
-       </div>
-    </div> -->
 </div>
 
 
 <div *ngIf="checkcategory" class="container">
     <div class="row mt-5 justify-content-center">
         <ng-container *ngFor="let catagory of newcatagories">
-          <div class="col-12 col-md-3 mt-4 catagory">
+          <div class="col-12 col-md-3 mt-4 catagory unimation">
             <mat-card class="example-card">
               <img mat-card-image [src]="imageCategory + '/' + catagory.image" />
               <mat-card-title class="fs-2 text-center"><a routerLink="/categories/{{ catagory._id }}"><b> {{ catagory.name  }}</b>
@@ -55,7 +37,7 @@
 <div *ngIf=" checkauthor"  class="container">
     <div class="row mt-5 justify-content-center">
         <ng-container *ngFor="let author of newauthors">
-          <div class="col-12 col-md-3 mt-4 catagory">
+          <div class="col-12 col-md-3 mt-4 catagory unimation">
             <mat-card class="example-card">
               <img mat-card-image [src]="imageAuthor + '/' + author.photo" />
               <mat-card-title class="fs-2 text-center"> <a routerLink='/authors/{{ author._id }}'><b> {{author.firstName}} {{author.lastName}}</b>
@@ -67,5 +49,5 @@
 </div>
 
 <div *ngIf="checkall" class="alert  noresult " >
-  <p style="margin-top: 2rem;"><b> Not Result Can Search Again </b></p>
+  <h1 class="text-center m-5" style="color:#5c5c5c"> <b>Not Result Can Search Again</b> </h1>
 </div>
