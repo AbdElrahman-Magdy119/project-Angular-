@@ -35,6 +35,7 @@ export class BookDetailsComponent implements OnInit {
   userStatus!: string
   userRate!: number
   allReviews!: any
+  isEdit:boolean = false;
   constructor(
     private bookService: BooksService,
     private activatedRoute: ActivatedRoute,
@@ -95,13 +96,16 @@ export class BookDetailsComponent implements OnInit {
     });
   }
 )}
+
   getStatus(e: any) {
     if (localStorage.getItem('userName')) {
-      this.userStatus = e.value;
+      this.userStatus = e.value.value;
     } else {
       this.router.navigate(['/login']);
     }
   }
+
+
 
   getrate(e: any) {
     if (localStorage.getItem('userName')) {
@@ -117,6 +121,7 @@ addReview() {
     this.router.navigate(['/login']);
       return;
     }
+      
     const data = {
       userId: this.userId,
       bookId: this.bookId,
@@ -164,22 +169,27 @@ addReview() {
     }
   }
 
-  addComment(e:HTMLTextAreaElement)
+   
+
+  addComment(e:HTMLInputElement)
   {
       if (!this.userId) {
       this.router.navigate(['/login']);
       return;
     }
+    let d = new Date();
     const data = {
       userId: this.userId,
       bookId: this.bookId,
       rating: this.userRate,
       review: e.value,
+      Date:d.toLocaleDateString(),
       status: this.userStatus,
     };
     if (this.userReview ) {
       this.ReviewService.updatereview(data, this.userReview._id).subscribe({
         next: (d) => {
+          this.isEdit=false;
           Swal.fire("Comment Added Successfully!", "", "success");
           this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
             this.bookRate = bookRate;
@@ -202,6 +212,7 @@ addReview() {
     } else {
       this.ReviewService.addreviewToBook(data).subscribe({
         next: (d) => {
+          this.isEdit=false;
           Swal.fire("Comment Added Successfully!", "", "success");
           this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
             this.bookRate = bookRate;
@@ -224,7 +235,7 @@ addReview() {
     }
   }
 
-  remove(e:HTMLButtonElement,review:Review,t:HTMLTextAreaElement)
+  remove(e:HTMLButtonElement,review:Review,t:HTMLInputElement)
   {
     if (!this.userId) {
       this.router.navigate(['/login']);
@@ -233,11 +244,13 @@ addReview() {
       let data={}
       if(e.innerText == 'remove')
        {
+        let d = new Date();
          data = {
             userId: this.userId,
             bookId: this.bookId,
             rating: this.userRate,
             review: "",
+            Date:d.toLocaleDateString(),
             status: this.userStatus,
           };
           this.ReviewService.updatereview(data, this.userReview._id).subscribe({
@@ -264,40 +277,46 @@ addReview() {
        }
        else
        {
-         data = {
-          userId: this.userId,
-          bookId: this.bookId,
-          rating: this.userRate,
-          review: t.value,
-          status: this.userStatus,
-        };
-        this.ReviewService.updatereview(data, this.userReview._id).subscribe({
-          next: (d) => {
-            Swal.fire("Comment Updated Successfully!", "", "success");
-            this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
-              this.bookRate = bookRate;
-            });
-            this.bookService.getbookreviews(this.bookId).subscribe(bookReviews => {
-              this.allReviews = bookReviews
-            })
-            this.bookService.getUserrateFromBook(this.userId, this.bookId).subscribe(userRate => {
-              this.userReview = userRate
-            })
-          },
-          error: (err) => {
-            Swal.fire({
-              icon: "error",
-              title: 'Oops...',
-              text: "Something went wrong",
-            });
-          },
-        });
+          this.isEdit=true;
        }
-
-
-
   }
 
-
+  // edit(review:Review,t:HTMLInputElement)
+  // {
+  //   this.isEdit=false;
+  //   if (!this.userId) {
+  //     this.router.navigate(['/login']);
+  //     return;
+  //   }
+  //     let data={}
+  //     data = {
+  //       userId: this.userId,
+  //       bookId: this.bookId,
+  //       rating: this.userRate,
+  //       review: t.value,
+  //       status: this.userStatus,
+  //     };
+  //     this.ReviewService.updatereview(data, this.userReview._id).subscribe({
+  //       next: (d) => {
+  //         Swal.fire("Comment Updated Successfully!", "", "success");
+  //         this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
+  //           this.bookRate = bookRate;
+  //         });
+  //         this.bookService.getbookreviews(this.bookId).subscribe(bookReviews => {
+  //           this.allReviews = bookReviews
+  //         })
+  //         this.bookService.getUserrateFromBook(this.userId, this.bookId).subscribe(userRate => {
+  //           this.userReview = userRate
+  //         })
+  //       },
+  //       error: (err) => {
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: 'Oops...',
+  //           text: "Something went wrong",
+  //         });
+  //       },
+  //     });
+  // }
 
 }

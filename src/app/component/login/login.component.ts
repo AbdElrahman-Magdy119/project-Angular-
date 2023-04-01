@@ -39,7 +39,10 @@ export class LoginComponent {
         error: (e) => {
           this.error = e.error;
         }
-      })
+        
+      }
+      )
+      
   }
 
 

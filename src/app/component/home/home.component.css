@@ -265,7 +265,7 @@ margin-top: 2rem;
     background: linear-gradient(15deg,#eee 30% ,#fff 30.1%);
 }
 .featured .featured-slider .box:hover .image{
-    transform: translateY(4rem);
+    transform: translateY(2rem);
 
 }
 .featured .featured-slider .box .image img{

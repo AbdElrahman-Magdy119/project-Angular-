@@ -30,17 +30,14 @@
   </h1>
   <div class="swiper featured-slider">
     <div class="swiper-wrapper">
-      <div *ngFor="let book of books" class="swiper-slide box">
+      <div *ngFor="let book of uniquebook" class="swiper-slide box">
         <div class="image pt-3">
           <a routerLink="/books/{{ book._id }}">
             <img [src]="imageBook + '/' + book.image" alt=""
           /></a>
         </div>
         <div class="content">
-          <h3>{{ book.title | titlecase }}</h3>
-          <div class="price">
-            {{ book.authorId.firstName }} {{ book.authorId.firstName }}
-          </div>
+          <a routerLink="/books/{{ book._id }}"><h3>{{ book.title | titlecase }}</h3></a>
         </div>
       </div>
     </div>
@@ -55,13 +52,14 @@
     <br /><br /><br /><br />
   </form>
 </section>
+
 <section class="reviews" id="reviews">
   <h1 class="heading"><span>Popular Authors</span></h1>
   <div class="swiper reviews-slider">
     <div class="swiper-wrapper">
-      <div *ngFor="let book of books" class="swiper-slide box">
-        <img [src]="imageBook + '/' + book.image" alt="" />
-        <h3>{{ book.authorId.firstName }} {{ book.authorId.firstName }}</h3>
+      <div *ngFor="let author of uniqueauthors" class="swiper-slide box">
+        <a routerLink='/authors/{{ author._id }}'> <img [src]="imageAuthor + '/' + author.photo" alt="" /></a>
+        <a routerLink='/authors/{{ author._id }}'>   <h3>{{author.firstName }} {{ author.firstName }}</h3></a>
       </div>
     </div>
   </div>
@@ -71,12 +69,12 @@
   <h1 class="heading"><span>Popular Categories</span></h1>
   <div class="swiper blogs-slider" >
     <div class="swiper-wrapper" >
-      <div *ngFor="let book of books" class="swiper-slide box">
+      <div *ngFor="let category of uniquecategories" class="swiper-slide box">
         <div class="image">
-          <img [src]="imageBook + '/' + book.image" alt="" />
+          <a routerLink='/categories/{{ category._id }}'>    <img [src]="imageCategory + '/' + category.image" alt="" /></a>
         </div>
         <div class="content">
-          <h3>{{ book.title | titlecase }}</h3>
+          <a routerLink='/categories/{{ category._id }}'>   <h3>{{ category.name | titlecase }}</h3></a>
         </div>
       </div>
     </div>
