@@ -27,14 +27,13 @@ img {
   display: block;
   text-decoration: none;
   font-size: 1.4rem;
-  color: #b3b3bb;
+  color: #8f8f98;
   margin: 5px 5px;
   padding: 10px;
 }
-.content-anhor:hover{
-  background-color: #fdedf0;
-  color: #ff7774;
-  border-left: 4px solid #f24452;
+.content-anhor:hover {
+  cursor: pointer;
+  background-color: #65bf8b;
+  color: white;
+  border-left: 4px solid #27ae60;
 }
-
-
