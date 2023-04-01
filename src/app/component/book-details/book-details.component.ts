@@ -52,10 +52,11 @@ export class BookDetailsComponent implements OnInit {
   }
   ngOnInit() {
       this.status = [
-      { value: 'reading', viewValue: 'reading' },
-      { value: 'want to read', viewValue: 'want to read' },
-      { value: 'readed', viewValue: 'readed' },
-    ];
+        { value: '', viewValue: '' },
+        { value: 'reading', viewValue: 'reading' },
+        { value: 'want to read', viewValue: 'want to read' },
+        { value: 'readed', viewValue: 'readed' },
+      ];
     this.activatedRoute.paramMap.subscribe(params => {
       this.bookId = params.get('id');
       this.bookService.getbook(this.bookId).subscribe(book => {
