@@ -23,3 +23,10 @@ a {
   font-size: 1.4rem;
   text-transform: bold;
 }
+.sr-only{
+  cursor:pointer;
+}
+.page-link{
+  cursor:pointer;
+
+}
