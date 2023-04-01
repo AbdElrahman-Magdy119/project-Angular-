@@ -8,8 +8,8 @@
                             <img [src]="userImage+user?.image" alt="Admin" class="rounded-circle p-1 bg-primary"
                                 width="110">
                             <div class="mt-3">
-                                <h4 style="color:#5c5c5c;">{{user?.firstname}} {{user?.lastname}}</h4>
-                                <p style="color:#5c5c5c" class="mb-1">{{user?.email}}</p><br>
+                                <h4 style="color:#ff6f6b;">{{user?.firstname}} {{user?.lastname}}</h4>
+                                <p style="color:#ff6f6b;" class="mb-1">{{user?.email}}</p><br>
                                 <p-rating [ngModel]="userrate?.rate" [readonly]="true" [cancel]="false"></p-rating><br>
 
                                 <button (click)="deleteaccount()" class="btn btn-danger">Delete Account</button><br>

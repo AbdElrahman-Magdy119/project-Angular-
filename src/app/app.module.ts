@@ -45,6 +45,7 @@ import { MatTable, MatTableDataSource, MatTableModule, _MatTableDataSource } fro
 import { DropdownModule } from 'primeng/dropdown';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatListModule} from '@angular/material/list';
+import { FooterComponent } from './component/footer/footer.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import {MatListModule} from '@angular/material/list';
     UserprofileComponent,
     MatConfirmDialogComponent,
     SidebarComponent,
+    FooterComponent,
   ],
 
   imports: [
