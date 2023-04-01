@@ -1,3 +1,15 @@
 a{
     text-decoration: none;
 }
+img{
+    height: 30rem;
+}
+a{
+  text-decoration: none;
+  color: #444;
+  
+}
+.example-card{
+  width: 90%;
+  height: 35rem;
+}

@@ -57,10 +57,7 @@ export class HomeComponent implements OnInit {
         (obj, index) =>
           this.popularBooks.findIndex((item) => item._id === obj._id) === index
       );
-      console.log("book",this.uniquebook )
-      console.log("authors",this.uniqueauthors )
-      console.log("categories", this.uniquecategories)
-
+      
     });
   }
 

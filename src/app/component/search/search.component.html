@@ -1,5 +1,36 @@
 <div *ngIf="checkbook" class="container">
-    <div class="row py-5">
+
+    <div class="row mt-5 justify-content-center">
+        <ng-container *ngFor="let book of newbooks">
+          <div class="col-12 col-md-3 mt-4 book">
+            <mat-card class="card">
+              <img mat-card-image [src]="imageBook + '/' + book.image" />
+              <mat-card-title class="fs-2 text-center"><a routerLink="/books/{{ book._id }}"> {{book.title | titlecase}}
+                </a></mat-card-title>
+              <a routerLink="/authors/{{  book.authorId._id  }}">
+                <mat-card-subtitle class="fs-4 text-center"> {{ book.authorId.firstName }} {{ book.authorId.lastName
+                  }}</mat-card-subtitle>
+              </a>
+              <mat-card-content>
+                <p class="text-center mt-4">
+                  <p-rating class="stars" iconCancelClass="pi pi-times" [ngModel]="3" [cancel]="false"></p-rating>
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+
+
+
+
+
+
+
+
+    <!-- <div class="row py-5">
        <div *ngFor="let book of newbooks"  class="col-12">
                <div class="movie my-2 position-relative ">
                    <div class=" h-50 ">
@@ -9,52 +40,37 @@
                    <a routerLink='/authors/{{ book.authorId._id }}' ><h6 class="my-2 h3" style="color:  #45171d;font-size: 1vw;opacity: 0.9;">{{book.authorId.firstName}} {{book.authorId.lastName}}</h6> </a>       
                </div>
        </div>
-    </div>
+    </div> -->
 </div>
-
-
-<div class="card flex justify-content-center">
-    <p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
-        <ng-template pTemplate="header">
-            <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
-        </ng-template>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-            quas!
-        </p>
-        
-    </p-card>
-</div>
-
-
 
 
 <div *ngIf="checkcategory" class="container">
-    <div class="row py-5">
-       <div *ngFor="let catagory of newcatagories"  class="col-md-2 ">
-               <div class="movie my-2 position-relative">
-                   <div class=" h-75">
-                    <a routerLink='/categories/{{ catagory._id }}' ><img class="unimation" [src]="imageCategory + '/' + catagory.image" >  </a> 
-                   </div>          
-                   <a routerLink='/categories/{{ catagory._id }}' ><h1 class="my-2 h1" style="color:  #45171d;"><b>{{ catagory.name }}</b></h1> </a> 
-                       
-               </div>
-       </div>
-    </div>
+    <div class="row mt-5 justify-content-center">
+        <ng-container *ngFor="let catagory of newcatagories">
+          <div class="col-12 col-md-3 mt-4 catagory">
+            <mat-card class="example-card">
+              <img mat-card-image [src]="imageCategory + '/' + catagory.image" />
+              <mat-card-title class="fs-2 text-center"><a routerLink="/categories/{{ catagory._id }}"><b> {{ catagory.name  }}</b>
+                </a></mat-card-title>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
 </div>
 
 
 <div *ngIf=" checkauthor"  class="container">
-    <div class="row py-5">
-       <div *ngFor="let author of newauthors"  class="col-md-2 ">
-               <div class="movie my-2 position-relative">
-                   <div class=" h-75">
-                    <a routerLink='/authors/{{ author._id }}' ><img class="unimation w-100" [src]="imageAuthor + '/' + author.photo" >  </a> 
-                   </div>          
-                   <a routerLink='/authors/{{ author._id }}' ><h1 class="my-2 h1" style="color:  #45171d;"><b>{{author.firstName}} {{author.lastName}}</b></h1> </a>       
-               </div>
-       </div>
-    </div>
+    <div class="row mt-5 justify-content-center">
+        <ng-container *ngFor="let author of newauthors">
+          <div class="col-12 col-md-3 mt-4 catagory">
+            <mat-card class="example-card">
+              <img mat-card-image [src]="imageAuthor + '/' + author.photo" />
+              <mat-card-title class="fs-2 text-center"> <a routerLink='/authors/{{ author._id }}'><b> {{author.firstName}} {{author.lastName}}</b>
+                </a></mat-card-title>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
 </div>
 
 <div *ngIf="checkall" class="alert  noresult " >

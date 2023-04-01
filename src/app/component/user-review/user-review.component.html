@@ -5,14 +5,13 @@
     <div class="slide-container swiper">
       <div class="slide-content">
         <div class="card-wrapper swiper-wrapper">
-
-          <div *ngFor="let user of users" class="card swiper-slide">
+          <div *ngFor="let userRate of usersRates" class="card swiper-slide">
             <div class="image-content">
               <span class="overlay"></span>
 
               <div class="card-image">
                 <img
-                  [src]="imageUser +'/' + user.image"
+                  [src]="imageUser +'/' + userRate.user.image"
                   alt=""
                   class="card-img"
                 />
@@ -20,20 +19,19 @@
             </div>
 
             <div class="card-content">
-              <h2 class="name p-4">{{ user.firstname}} {{ user.lastname}}</h2>
+              <h2 class="name p-4">{{ userRate.user.firstname}} {{ userRate.user.lastname}}</h2>
               <p class="description">
-                 {{ user.email}}
+                 {{ userRate.user.email}}
               </p>
 
-              <p-rating
+              <p-rating  
                 iconCancelClass="pi pi-times"
-                [ngModel]="3"
+                [ngModel]="userRate.rate"
                 [readonly]="true"
                 [cancel]="false"
               ></p-rating>
             </div>
           </div>
-
         </div>
       </div>
 

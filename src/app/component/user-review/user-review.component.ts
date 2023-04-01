@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { enableDebugTools } from '@angular/platform-browser';
+import { UsersRates } from 'src/app/interface/UsersRates';
 import { user } from 'src/app/interface/user';
+import { userrate } from 'src/app/interface/userrate';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
 import Swiper, { Navigation, Pagination } from 'swiper';
@@ -11,18 +13,24 @@ import Swiper, { Navigation, Pagination } from 'swiper';
   styleUrls: ['./user-review.component.css'],
 })
 export class UserReviewComponent implements OnInit {
-  users!: user[];
   imageUser = `${environment.APIBaseURL}/assets/uploads/user`;
+
+  usersRates!:UsersRates[]
+
+
 
   constructor(private _UserService: UserService) {
     Swiper.use([Navigation, Pagination]);
   }
 
   ngOnInit() {
-    this._UserService.getAllUser().subscribe((users) => {
-      this.users = users;
-      console.log(this.users);
-    });
+   
+     this._UserService.getAllusers_rates().subscribe((usersRates) => {
+        this.usersRates = usersRates;
+     })
+    
+
+
 
     var swiper = new Swiper('.slide-content', {
       spaceBetween: 10,

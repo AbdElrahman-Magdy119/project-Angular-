@@ -6,6 +6,7 @@ import { userrate } from '../interface/userrate';
 // import { MatConfirmDialogComponent } from './component/mat-confirm-dialog/mat-confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatConfirmDialogComponent } from '../component/mat-confirm-dialog/mat-confirm-dialog.component';
+import { UsersRates } from '../interface/UsersRates';
 // import { MatConfirmDialogComponent} from '../shared/delete-dialog/delete-dialog.component';
 
 
@@ -22,6 +23,16 @@ export class UserService {
       )
     }
    
+
+    getAllusers_rates(): Observable<UsersRates[]>{
+      return this.http.get<UsersRates[]>(
+        `http://localhost:5000/users/reviews/rates`
+      )
+    }
+
+
+
+
     getuserrate(id:String | undefined): Observable<userrate> {
       return this.http.get<userrate>(
         `http://localhost:5000/users/rate/${id}`

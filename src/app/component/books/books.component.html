@@ -3,9 +3,6 @@
     <ng-container *ngFor="let book of paginated">
       <div class="col-12 col-md-3 mt-4 book">
         <mat-card class="example-card">
-          <!-- <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-        </mat-card-header> -->
           <img mat-card-image [src]="image + '/' + book.image" />
           <mat-card-title class="fs-2 text-center"><a routerLink="/books/{{ book._id }}"> {{book.title | titlecase}}
             </a></mat-card-title>
