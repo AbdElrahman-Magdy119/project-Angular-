@@ -8,7 +8,7 @@ a{
 }
 .example-card{
   width: 90%;
-  height: 50rem;
+  min-height: 40rem;
 }
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel),
 :host ::ng-deep .p-rating-icon:not(.p-rating-cancel):hover {

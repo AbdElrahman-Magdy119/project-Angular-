@@ -27,7 +27,7 @@
   <div class="image">
     <img [src]="bookImage + book?.image" alt="" />
     <div class="row">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 ">
         <p-dropdown
           (onChange)="getStatus($event)"
           class="dropdownStyle"
@@ -35,9 +35,10 @@
           [(ngModel)]="selectedStatus"
           optionLabel="value"
           placeholder="{{userReview?.status}}"
+          [showClear]="true"
         ></p-dropdown>
       </div>
-      <div class="col-12 col-lg-6">
+      <div class="col-12 ">
         <p-rating
           class="stars"
           iconCancelClass="pi pi-times"

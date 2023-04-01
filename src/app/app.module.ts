@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeheaderComponent } from './component/homeheader/homeheader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { OnebookComponent } from './component/onebook/onebook.component';
 import { OneAuthorComponent } from './component/oneauthor/one-author.component';
 import { OneCategoryComponent } from './component/one-category/one-category.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -60,7 +59,6 @@ import {MatListModule} from '@angular/material/list';
     NotfoundComponent,
     NavbarComponent,
     HomeheaderComponent,
-    OnebookComponent,
     OneAuthorComponent,
     OneCategoryComponent,
     MainComponentComponent,

@@ -11,11 +11,11 @@ a{
 }
 .example-card{
   width: 90%;
-  height: 35rem;
+  min-height: 35rem;
 }
 .card{
     width: 90%;
-    height: 50rem;
+    min-height: 40rem;
   }
 
   :host ::ng-deep .p-rating-icon:not(.p-rating-cancel),

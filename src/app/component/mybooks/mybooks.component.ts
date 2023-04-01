@@ -6,7 +6,8 @@ import { BooksService } from '../../services/books.service';
 import { environment } from 'src/environments/environment';
 import { DropdownModule } from 'primeng/dropdown';
 import { MatTableModule } from '@angular/material/table';
-
+import { ReviewService } from 'src/app/services/review.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-mybooks',
   templateUrl: './mybooks.component.html',
@@ -30,7 +31,10 @@ export class MybooksComponent {
   count: number = 0;
   userbooks!: any;
   oneuser!: any;
+  userRate!: number;
+  userstate!:string;
   userId!: any;
+  reviewId!:string
   status = [
     { value: 'reading', viewValue: 'reading' },
     { value: 'want to read', viewValue: 'want to read' },
@@ -43,7 +47,8 @@ export class MybooksComponent {
     private router: Router,
     private _ActivatedRoute: ActivatedRoute,
     private _BooksService: BooksService,
-    private _AuthService: AuthService
+    private _AuthService: AuthService,
+    private ReviewService: ReviewService
   ) {
     this.currentPage = 1;
     this.pageSize = 5;
@@ -71,9 +76,7 @@ export class MybooksComponent {
     this.router.navigate([], { queryParams: { state: status } });
   }
 
-  getStatus(e: any) {
-    console.log(e.value);
-  }
+ 
 
   calculatePages() {
     this.totalPages = Math.ceil(this.userbooks.length / this.pageSize);
@@ -114,4 +117,79 @@ export class MybooksComponent {
     this.pageSize -= 5;
     this.paginated = this.userbooks.slice(this.count,this.pageSize);
   }
+
+  getrate(e:any,id:string)
+  {
+    this.userRate=e.value;
+    const data = {
+      rating: this.userRate,
+    };
+    
+      this.ReviewService.updatereview(data,id).subscribe({
+        next: (d) => {
+          Swal.fire("review updated successfully!", "", "success");
+          this._ActivatedRoute.queryParamMap.subscribe((params) => {
+            this._AuthService.currentuser.subscribe((user) => {
+              this.oneuser = user;
+              this.userId = this.oneuser.user_id;
+              this._BooksService
+                .getallbookrate(params.get('state'), this.userId)
+                .subscribe((userbook) => {
+                  this.userbooks = userbook;
+                });
+            });
+          });
+        },
+        error: (err) => {
+          Swal.fire({
+            icon: "error",
+            title: 'Oops...',
+            text: "Something went wrong",
+          });
+        },
+      });
+  }
+  
+
+   getStatus(e: any,id:string) {
+     this.userstate = e.value.value;
+     const data = {
+      status:this.userstate 
+    };
+    this.ReviewService.updatereview(data,id).subscribe({
+      next: (d) => {
+        Swal.fire("review updated successfully!", "", "success");
+        this._ActivatedRoute.queryParamMap.subscribe((params) => {
+          this._AuthService.currentuser.subscribe((user) => {
+            this.oneuser = user;
+            this.userId = this.oneuser.user_id;
+            this._BooksService
+              .getallbookrate(params.get('state'), this.userId)
+              .subscribe((userbook) => {
+                this.userbooks = userbook;
+              });
+          });
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: "error",
+          title: 'Oops...',
+          text: "Something went wrong",
+        });
+      },
+    });
+
+
+  }
+
+
+
+
+
+
+
+
+
+
 }

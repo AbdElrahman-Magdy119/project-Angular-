@@ -214,6 +214,10 @@ body {
 .home .row .content{
     flex: 1 1 42rem;
 }
+.home .row .content p
+{
+    font-size: 1.5rem;
+}
 .home .row .books-slider{
         flex: 1 1 42rem;
 text-align: center;
@@ -533,4 +537,61 @@ transform: scale(1.1);
         padding: 2rem;
     }
 
+}
+
+.footer .box-container{
+    border-top: var(--border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+    gap: 1.5rem;
+}
+.footer .box-container .box h3{
+font-size: 2.2rem;
+color: var(--black);
+padding: 1rem 0;
+}
+
+.footer .box-container .box a{
+    display: block;
+font-size: 1.4rem;
+color: var(--light-color);
+padding: 1rem 0;
+}
+.footer .box-container .box a i{
+    color: var(--green);
+    padding-right: .5rem;
+}
+.footer .box-container .box a:hover i{
+    padding-right: 2rem;
+}
+.footer .share{
+    margin-top:3rem ;
+    padding: 1rem 0;
+    text-align: center;
+}
+.footer .share a{
+    height: 5rem;
+    width: 5rem;
+   line-height: 5rem;
+    font-size: 2rem;
+    color: #fff;
+    background: var(--green);
+   margin: 0 .3rem;
+   border-radius: 50%;
+}
+.footer .share a:hover{
+        background: var(--black);
+
+}
+.footer .credit{
+    border-top: var(--border);
+    margin-top: 2rem;
+    padding: 0 1rem;
+    padding-top: 2.5rem;
+    font-size: 2rem;
+    color: var(--light-color);
+
+}
+.footer .credit span{
+        color: var(--green);
 }

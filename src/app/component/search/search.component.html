@@ -5,19 +5,12 @@
           <div class="col-12 col-md-3 mt-4 book">
             <mat-card class="card">
               <img mat-card-image [src]="imageBook + '/' + book.image" />
-              <mat-card-title class="fs-2 text-center"><a routerLink="/books/{{ book._id }}"> {{book.title | titlecase}}
+              <mat-card-title class="fs-2 text-center"><a routerLink="/books/{{ book._id }}"> <b>{{book.title | titlecase}}</b>
                 </a></mat-card-title>
               <a routerLink="/authors/{{  book.authorId._id  }}">
                 <mat-card-subtitle class="fs-4 text-center"> {{ book.authorId.firstName }} {{ book.authorId.lastName
                   }}</mat-card-subtitle>
               </a>
-              <mat-card-content>
-                <p class="text-center mt-4">
-                  <p-rating class="stars" iconCancelClass="pi pi-times" [ngModel]="3" [cancel]="false"></p-rating>
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-              </mat-card-actions>
             </mat-card>
           </div>
         </ng-container>

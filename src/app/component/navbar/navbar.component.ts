@@ -25,9 +25,8 @@ export class NavbarComponent implements OnInit {
   image!: any;
   searchdata!: any;
 
-  myImage = `${
-    environment.APIBaseURL
-  }/assets/uploads/user/${localStorage.getItem('image')}`;
+  myImage = `${environment.APIBaseURL
+  }/assets/uploads/user`;
   userName = localStorage.getItem('userName');
 
   constructor(

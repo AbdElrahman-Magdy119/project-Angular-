@@ -212,8 +212,8 @@ export class UserprofileComponent implements OnInit {
     this._UserService.getuser(this.userEmail).subscribe((user) => {
       this.user = user;
       this.password = user.password;
-      this._UserService.getuserrate(this.user._id).subscribe((userrate) => {
-        this.userrate = userrate;
+      this._UserService.getAllusers_rates().subscribe((userrate) => {
+        this.userrate = userrate.filter(rate => rate.user._id == this.user._id)[0];
       })
       this.newUserForm.patchValue({
         firstname: user.firstname,

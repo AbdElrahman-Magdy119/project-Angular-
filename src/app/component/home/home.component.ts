@@ -7,7 +7,6 @@ import { HomeService } from '../../services/home.service';
 import { environment } from 'src/environments/environment';
 import Swiper, { Navigation, Pagination } from 'swiper';
 import { BooksService } from 'src/app/services/books.service';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
