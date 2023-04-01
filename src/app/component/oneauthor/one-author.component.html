@@ -11,9 +11,8 @@
   </div>
 </section>
 <section class="featured" id="featured">
-  <ng-container *ngIf="authorBooks.length >0 ; else NotFound">
   <h1 class="heading">
-    <span>Authors Books</span>
+    <span>{{authorBooks.length >0 ? "Authors Books" : "This Author Has No Books"}}</span>
   </h1>
   
   <div class="swiper featured-slider">
@@ -27,7 +26,7 @@
           <div class="price">
             <p-rating 
               iconCancelClass="pi pi-times" 
-              [ngModel]="authorBook.avg.avg "
+              [ngModel]="3"
               [readonly]="true"
               [cancel]="false"
             ></p-rating>
@@ -42,10 +41,4 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
-</ng-container>
-<ng-template #NotFound>
-  <h1 class="heading">
-    <span>This Author Has No Books</span>
-  </h1>
-</ng-template>
 </section>
