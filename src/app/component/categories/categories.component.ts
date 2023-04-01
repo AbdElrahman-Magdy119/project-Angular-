@@ -25,7 +25,6 @@ export class CategoriesComponent {
       this.catagories = catagories.slice(0, 12);
       this.calculatePages();
       this.paginated = this.catagories.slice(this.count, this.pageSize);
-      console.log(this.catagories);
     });
     this.currentPage = 1;
     this.pageSize = 10 ;
@@ -37,7 +36,6 @@ export class CategoriesComponent {
   calculatePages() {
     this.totalPages = Math.ceil(this.catagories.length / this.pageSize);
 
-    console.log(this.totalPages);
     this.pages = [];
     for (let i = 1; i <= this.totalPages; i++) {
       this.pages.push(i);
@@ -57,7 +55,6 @@ export class CategoriesComponent {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
-    // console.log('next');
 
     this.count += 10;
     this.pageSize += 10;

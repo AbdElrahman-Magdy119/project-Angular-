@@ -39,7 +39,6 @@ export class OneAuthorComponent implements OnInit {
         .getbookOfAuthor(paramMap.get('id'))
         .subscribe((authorBooks) => {
           this.authorBooks = authorBooks;
-          console.log(authorBooks);
         });
     });
   }

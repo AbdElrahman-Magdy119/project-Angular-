@@ -49,9 +49,7 @@ section {
 }
 
 .castmBtn {
-  /* margin-top: 1rem; */
-  /* display:inline-block ; */
-  /* padding: .9rem 3rem; */
+ 
   height: 3.5rem;
   border-radius: .5rem;
   color: #fff;
@@ -59,8 +57,7 @@ section {
   font-size: 2.4rem;
   cursor: pointer;
   font-weight: 500;
-  /* margin-left: 50rem ;
-    transform: translateY(-5.5rem);   */
+
 }
 
 .deal {
@@ -292,49 +289,3 @@ section {
 
 
 
-
-/* .head1{
-    color: #ebccb3d5; 
-    -webkit-text-stroke: 2px #45171d;
-  }
-  
-  .head3{
-      color: #45171d; 
-    }
-  
-  
-  .head5{
-      color: #45171d; 
-      font-family: Didot, serif;
-    }
-  
-  .image{
-      width: 70vw;
-      height: 35vw;
-    }
-  
-    .paragraph{
-      color: #45171d;
-    }
-  
-    .select{
-      background-color:#ebccb3d5 ; 
-      color: #45171d;
-    }
-    .selected{
-      color: #45171d;
-      font-size: 20px;
-    }
-  
-  button
-  {
-    color: #45171d;
-    border: 0px;
-    background-color: white;
-  }
-  
-  ngx-stars{
-    z-index: 0;
-  }
-  
-   */

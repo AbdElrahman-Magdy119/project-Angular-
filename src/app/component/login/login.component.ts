@@ -16,7 +16,6 @@ export class LoginComponent {
       [Validators.required, Validators.email]),
     password: new FormControl(null,
       [Validators.required]),
-    // Validators.pattern('^[A-Z][a-z0-9]{3,8}$')]
   })
 
   constructor(private _AuthService: AuthService, private _Router: Router) { }

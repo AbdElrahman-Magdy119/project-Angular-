@@ -14,24 +14,9 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterComponent {
 
   error: string = ''
-  // form!: FormGroup;
   registerform: FormGroup
   selectedImage!: File;
-  //    registerform = new FormGroup ({
-  //     firstname : new FormControl(null ,
-  //       [Validators.required , Validators.minLength(3), Validators.maxLength(10)]),
-  //     lastname  : new FormControl(null ,
-  //       [Validators.required , Validators.minLength(3), Validators.maxLength(10)]),
-  //     email     : new FormControl(null ,
-  //       [Validators.required , Validators.email]),
-  //     password  : new FormControl(null ,
-  //       [Validators.required , Validators.pattern('^[A-Z][a-z0-9]{3,8}$')]),
-  //       confirmPassword : new FormControl(null ,
-  //         [Validators.required ]),
-  //     image     : new FormControl(null ,
-  // [Validators.required]),
-  //    })
-
+  
 
 
 

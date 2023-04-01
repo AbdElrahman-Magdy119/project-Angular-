@@ -86,13 +86,11 @@ export class BookDetailsComponent implements OnInit {
     this.bookService
       .getUserrateFromBook(this.userId, this.bookId)
       .subscribe((userRate) => {
-        console.log(userRate);
         this.userReview = userRate;
       });
 
     this.bookService.getbookreviews(this.bookId).subscribe((bookReviews) => {
       this.allReviews = bookReviews;
-      console.log(this.allReviews);
     });
   }
 )}
@@ -281,42 +279,6 @@ addReview() {
        }
   }
 
-  // edit(review:Review,t:HTMLInputElement)
-  // {
-  //   this.isEdit=false;
-  //   if (!this.userId) {
-  //     this.router.navigate(['/login']);
-  //     return;
-  //   }
-  //     let data={}
-  //     data = {
-  //       userId: this.userId,
-  //       bookId: this.bookId,
-  //       rating: this.userRate,
-  //       review: t.value,
-  //       status: this.userStatus,
-  //     };
-  //     this.ReviewService.updatereview(data, this.userReview._id).subscribe({
-  //       next: (d) => {
-  //         Swal.fire("Comment Updated Successfully!", "", "success");
-  //         this.bookService.getbookrate(this.bookId).subscribe(bookRate => {
-  //           this.bookRate = bookRate;
-  //         });
-  //         this.bookService.getbookreviews(this.bookId).subscribe(bookReviews => {
-  //           this.allReviews = bookReviews
-  //         })
-  //         this.bookService.getUserrateFromBook(this.userId, this.bookId).subscribe(userRate => {
-  //           this.userReview = userRate
-  //         })
-  //       },
-  //       error: (err) => {
-  //         Swal.fire({
-  //           icon: "error",
-  //           title: 'Oops...',
-  //           text: "Something went wrong",
-  //         });
-  //       },
-  //     });
-  // }
+ 
 
 }
